@@ -216,7 +216,7 @@ def map_rct_desc_to_pm_desc(pm_wos: list, rct_wos: list) -> None:
         if rct_wo_idx < 1:
             util_functions.save_dict_to_excel_workbook_with_row_formatting(
                 file_path=_map_file_path,
-                headers=['mapping_code', 'pm_wo_desc', 'rct_desc', 'similarity'],
+                headers=['mapping_code', 'rct_desc', 'pm_wo_desc', 'similarity'],
                 rows=curr_rows)
         else:
             util_functions.append_excel_workbook(file_path=_map_file_path, rows=curr_rows)
