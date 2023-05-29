@@ -7,6 +7,7 @@ from pandas.io.json import json_normalize
 from datetime import datetime
 from tqdm import tqdm
 import random
+from openpyxl import load_workbook
 
 
 def subtract_lists(large_list: list, small_list: list) -> list:
@@ -126,9 +127,23 @@ def save_dict_to_excel_workbook_with_row_formatting(file_path: str, headers: lis
     workbook = openpyxl.Workbook()
     sheet = workbook.active
     sheet.append(headers)
-    print('Saving to excel...')
+    print(f'Writing new excel workbook at {file_path}:')
     for row in tqdm(rows):
         sheet.append(row)
+    workbook.save(file_path)
+
+
+def append_excel_workbook(file_path: str, rows: list, worksheet_name='Sheet') -> None:
+    if file_path.isspace():
+        return
+    workbook = load_workbook(filename=file_path)
+    worksheet = workbook[worksheet_name]
+    max_row = worksheet.max_row
+
+    print(f'Writing to excel workbook at {file_path}:')
+    for new_row in tqdm(rows):
+        for col_index, value in enumerate(new_row, start=1):
+            worksheet.cell(row=max_row + 1, column=col_index, value=value)
     workbook.save(file_path)
 
 
