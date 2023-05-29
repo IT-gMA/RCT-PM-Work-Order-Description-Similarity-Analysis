@@ -196,25 +196,31 @@ def _map_rct_to_pms(rct_wos: list, pm_wos: list) -> tuple:
 
 
 def map_rct_desc_to_pm_desc(pm_wos: list, rct_wos: list) -> None:
-    _maps = []
+    _map_file_path = '../../xlsx_resources/for_trainings/rct_pm_desc_similarity.xlsx'
     # copy_rct_wos = sorted(rct_wos, key=itemgetter('wo_desc'))
     print('Map RCT to PM work order descriptions:')
+    no_duplicate_pm_desc = sorted(list(set([pm['wo_desc'] for pm in pm_wos])))
 
     rct_wo_idx = 0
     for rct_wo in rct_wos:
+        curr_rows = []
         candidate_pm_descs = [util_functions.lower_case_and_clear_white_space(candidate_pm['wo_desc']) for candidate_pm
                               in rct_wo['pms']]
         print(f"{round(rct_wo_idx * 100 / len(rct_wos), 2)}% -- reading from {rct_wo['wo_desc']}")
-        [_maps.append([f"{rct_wo['wo_num']}:{pm_wos[idx]}", rct_wo['wo_desc'], pm_wos[idx]['wo_desc'],
-                       round(random.uniform(0.45, 0.55), 2) if util_functions.lower_case_and_clear_white_space(
-                           pm_wos[idx]['wo_desc']) in candidate_pm_descs else 0.0])
-         for idx in tqdm(range(len(pm_wos)))]
+        [curr_rows.append([f"{rct_wo['wo_num']}:{pm_wos[idx]}", rct_wo['wo_desc'], no_duplicate_pm_desc[idx],
+                           round(random.uniform(0.45, 0.55), 2) if util_functions.lower_case_and_clear_white_space(
+                               no_duplicate_pm_desc[idx]) in candidate_pm_descs else 0.0]
+                          )
+         for idx in tqdm(range(len(no_duplicate_pm_desc)))
+         ]
+        if rct_wo_idx < 1:
+            util_functions.save_dict_to_excel_workbook_with_row_formatting(
+                file_path=_map_file_path,
+                headers=['mapping_code', 'pm_wo_desc', 'rct_desc', 'similarity'],
+                rows=curr_rows)
+        else:
+            util_functions.append_excel_workbook(file_path=_map_file_path, rows=curr_rows)
         rct_wo_idx += 1
-
-    util_functions.save_dict_to_excel_workbook_with_row_formatting(
-        file_path='../../xlsx_resources/for_trainings/rct_pm_desc_similarity.xlsx',
-        headers=['mapping_code', 'pm_wo_desc', 'rct_desc', 'similarity'],
-        rows=_maps)
 
 
 def main():
