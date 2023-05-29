@@ -1,70 +1,158 @@
 import torch
 import torch.nn as nn
-import torch.optim as optim
-import torch.optim.lr_scheduler as lr_scheduler
 from configs import *
 from model import SentenceSimilarityModel
 from dataset import get_splitted_dataset, get_data_loaders
+from util_fucntions import util_functions
+from metrics import cal_rmse, cal_mae
+import copy
+
+
+def write_training_config(num_trains: int, num_vals: int, num_tests: int):
+    _min_lr_stmt = f'Min learning rate {MIN_LEARNING_RATE}\n' if MIN_LEARNING_RATE > 0 else ''
+    _saved_log = f"\t{util_functions.get_formatted_today_str(twelve_h=True)}\n" \
+                 f"Dataset directory: {DATA_FILE_PATH}\nScheduled Learning: {SCHEDULED}\nLearning rate: {INIT_LEARNING_RATE}\n{_min_lr_stmt}" \
+                 f"Dropout: {DROPOUT}\nWeight decay: {WEIGHT_DECAY}\nPatience: {PATIENCE}\n" \
+                 f"Number of running epochs: {NUM_EPOCHS}\nValidate after every {SAVED_EPOCH}th epoch\n" \
+                 f"MSE Reduction: {MSE_REDUCTION}\nTrain-Validation-Test ratio: {TRAIN_RATIO}-{VALIDATION_RATIO}-{TEST_RATIO}\n" \
+                 f"Number of train - validation - test samples: {num_trains} - {num_vals} - {num_tests}\n" \
+                 f"Train batch size: {TRAIN_BATCH_SIZE}\nValidation batch size: {VAL_BATCH_SIZE}\n" \
+                 f"Max length token: {MAX_LENGTH_TOKEN}\nModel name: {PRETRAINED_MODEL_NAME}\n" \
+                 f"Running log location: {RUNNING_LOG_LOCATION}\nModel location: {SAVED_MODEL_LOCATION}" \
+                 f"{[print('_', end='') for i in range(200)]}\n"
+    util_functions.save_running_logs(_saved_log, RUNNING_LOG_LOCATION)
 
 
 def model_param_tweaking(model) -> tuple:
     loss_func = nn.MSELoss(reduction=MSE_REDUCTION)
     optimiser = torch.optim.Adam(model.parameters(), lr=INIT_LEARNING_RATE, weight_decay=WEIGHT_DECAY)
-    train_scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimiser, mode='min', factor=.1, patience=PATIENCE,
-                                                                 threshold=.0001, threshold_mode='abs')
 
-    return loss_func, optimiser, train_scheduler
+    if MIN_LEARNING_RATE > 0:
+        lr_scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimiser, mode='min', factor=.1, patience=PATIENCE,
+                                                                  min_lr=MIN_LEARNING_RATE)
+    else:
+        lr_scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimiser, mode='min', factor=.1, patience=PATIENCE)
+    return loss_func, optimiser, lr_scheduler
 
 
-def train(train_dataloader, model, loss_func, optimiser, epoch: int):
-    size = len(train_dataloader.dataset)
+def run_model(dataloader, model, loss_func, optimiser, is_train=True) -> tuple:
     total_loss = 0
-    model.train()
-    for batch_inputs, batch_targets in train_dataloader:
-        # Forward pass
-        outputs = model(batch_inputs)
+    total_rmse = 0
+    total_mae = 0
+    model.train() if is_train else model.eval()
+
+    '''for batch in dataloader:
+        input_ids = batch['input_ids']
+        attention_mask = batch['attention_mask']
+        token_type_ids = batch['token_type_ids']  # Include token_type_ids
+
+        similarity = batch['similarity']
+
+        optimizer.zero_grad()
+        outputs = model(input_ids, attention_mask, token_type_ids)  # Pass token_type_ids
+        loss = criterion(outputs, similarity)
+        loss.backward()
+        optimizer.step()'''
+
+    for batch in dataloader:
+        target_similarity_scores = batch['similarity']     # actual similarity scores
+        outputs = model(batch['input_ids'], batch['attention_mask'], batch['token_type_ids'])   # Forward pass
 
         # Compute the loss
-        loss = loss_func(outputs, batch_targets)
+        loss = loss_func(outputs, target_similarity_scores)
+        if DEVICE == 'mps':
+            loss = loss.type(torch.float32)
 
-        # Backward pass and optimization
-        optimiser.zero_grad()
-        loss.backward()
-        optimiser.step()
+        if is_train and optimiser is not None:
+            # Backward pass and optimization
+            optimiser.zero_grad()
+            loss.backward()
+            optimiser.step()
 
         # Accumulate the epoch loss
         total_loss += loss.item()
+        total_mae += cal_mae(target_similarity_scores, outputs)
+        total_rmse += cal_rmse(target_similarity_scores, outputs)
 
-    avg_loss = total_loss / len(train_dataloader)
-    print(f"Epoch [{epoch + 1}/{NUM_EPOCHS}], Train Loss: {avg_loss:.4f}")
+    return total_loss / len(dataloader), total_mae / len(dataloader), total_rmse / len(dataloader)
 
 
-def validate(val_dataloader, model, loss_func, epoch: int):
-    model.eval()
-    total_loss = 0
-    with torch.no_grad() if torch.cuda.is_available() else True:
-        for val_batch_inputs, val_batch_targets in val_dataloader:
-            # Forward pass
-            val_outputs = model(val_batch_inputs)
-            # Compute the validation loss
-            total_loss += loss_func(val_outputs, val_batch_targets).item()
+def train(train_dataloader, model, loss_func, optimiser, epoch: int) -> tuple:
+    avg_loss, avg_mae, avg_rmse = run_model(dataloader=train_dataloader, model=model, loss_func=loss_func,
+                                            optimiser=optimiser)
+    util_functions.save_running_logs(
+        f'Epoch [{epoch + 1}/{NUM_EPOCHS}] Average train Loss: {avg_loss:.4f}\tAverage RMSE: {avg_rmse:.4f}\tAverage MAE: {avg_mae:.4f}',
+        RUNNING_LOG_LOCATION)
+    return avg_loss, avg_mae, avg_rmse
 
-        avg_loss = total_loss / len(val_dataloader)
-        print(f"Epoch [{epoch + 1}/{NUM_EPOCHS}], Validation Loss: {avg_loss:.4f}")
+
+def validate(val_dataloader, model, loss_func, optimiser, epoch: int) -> tuple:
+    def _process_model_validation() -> tuple:
+        avg_loss, avg_mae, avg_rmse = run_model(dataloader=val_dataloader, model=model, loss_func=loss_func,
+                                                optimiser=optimiser, is_train=False)
+        util_functions.save_running_logs(
+            f'Epoch [{epoch + 1}/{NUM_EPOCHS}] Average validation Loss: {avg_loss:.4f}\tAverage RMSE: {avg_rmse:.4f}\tAverage MAE: {avg_mae:.4f}',
+            RUNNING_LOG_LOCATION)
+        return avg_loss, avg_mae, avg_rmse
+
+    if torch.cuda.is_available():
+        with torch.no_grad():
+            return _process_model_validation()
+    else:
+        return _process_model_validation()
+
+
+def test(test_dataloader, model, loss_func):
+    if torch.cuda.is_available():
+        with torch.no_grad():
+            avg_loss, avg_mae, avg_rmse = run_model(dataloader=test_dataloader, model=model, is_train=False,
+                                                    loss_func=loss_func, optimiser=None)
+    else:
+        avg_loss, avg_mae, avg_rmse = run_model(dataloader=test_dataloader, model=model, is_train=False,
+                                                loss_func=loss_func, optimiser=None)
+    util_functions.save_running_logs(
+        f'Average test Loss: {avg_loss:.4f}\tAverage RMSE: {avg_rmse:.4f}\tAverage MAE: {avg_mae:.4f}',
+        RUNNING_LOG_LOCATION)
 
 
 def main():
     model = SentenceSimilarityModel().to(DEVICE)
-    loss_func, optimiser, train_scheduler = model_param_tweaking(model)
-    train_set, val_test, test_set = get_splitted_dataset()
-    train_loader, validation_loader, test_loader = get_data_loaders(train_set, val_test, test_set)
+    best_model = copy.deepcopy(model)
+
+    loss_func, optimiser, lr_scheduler = model_param_tweaking(model)
+    train_set, val_set, test_set = get_splitted_dataset()
+    train_loader, validation_loader, test_loader = get_data_loaders(train_set, val_set, test_set)
+    best_mae = 0.1
+
+    write_training_config(len(train_set), len(val_set), len(test_set))
     for epoch in range(NUM_EPOCHS):
-        write_info = "___Epoch {}______________________________________________________________________".format(epoch + 1)
-        print(write_info)
-        if (epoch + 1) % VAL_EPOCH == 0:
-            validate(val_dataloader=validation_loader, model=model, epoch=epoch, loss_func=loss_func)
+        if epoch > 1 and (epoch + 1) % VAL_EPOCH == 0:
+            avg_loss, avg_mae, avg_rmse = validate(val_dataloader=validation_loader, model=model, epoch=epoch,
+                                                   loss_func=loss_func,
+                                                   optimiser=optimiser)
+            if avg_mae > best_mae:
+                best_mae = avg_mae
+                best_model = copy.deepcopy(model)
+                util_functions.save_running_logs(f'\tCurrent best model at epoch {epoch + 1}', RUNNING_LOG_LOCATION)
+                util_functions.save_model(model=best_model,
+                                          optimiser=optimiser, loss=avg_loss, epoch=epoch,
+                                          saved_location=f"{SAVED_MODEL_LOCATION}best_model_epoch_{epoch}{SAVED_MODEL_FORMAT}")
         else:
-            train(train_dataloader=train_loader, model=model, epoch=epoch, loss_func=loss_func, optimiser=optimiser)
+            avg_loss, avg_mae, avg_rmse = train(train_dataloader=train_loader, model=model, epoch=epoch,
+                                                loss_func=loss_func, optimiser=optimiser)
+            if epoch > 1 and (epoch + 1) % SAVED_EPOCH == 0:
+                util_functions.save_model(model=model, optimiser=optimiser, loss=avg_loss, epoch=epoch,
+                                          saved_location=f'{SAVED_MODEL_LOCATION}model_epoch{epoch}{SAVED_MODEL_FORMAT}')
+
+        if SCHEDULED:
+            lr_scheduler.step(best_mae)
+
+    util_functions.save_running_logs('Training complete, running final testing:', RUNNING_LOG_LOCATION)
+    test(test_dataloader=test_loader, model=model, loss_func=loss_func)
+    util_functions.save_model(model=model, optimiser=optimiser,
+                              saved_location=f'{SAVED_MODEL_LOCATION}final_model{SAVED_MODEL_FORMAT}')
+
+    util_functions.save_running_logs('Testing with best VAL model:', RUNNING_LOG_LOCATION)
 
 
 if __name__ == '__main__':
