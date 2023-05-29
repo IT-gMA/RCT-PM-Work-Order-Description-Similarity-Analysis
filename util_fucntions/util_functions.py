@@ -8,6 +8,7 @@ from datetime import datetime
 from tqdm import tqdm
 import random
 from openpyxl import load_workbook
+import torch
 
 
 def subtract_lists(large_list: list, small_list: list) -> list:
@@ -140,7 +141,7 @@ def append_excel_workbook(file_path: str, rows: list, worksheet_name='Sheet') ->
     worksheet = workbook[worksheet_name]
     max_row = worksheet.max_row
 
-    print(f'Writing to excel workbook at {file_path}:')
+    print(f"Appending {len(rows)} row{'s' if len(rows) > 1 else ''} to excel workbook at {file_path}:")
     for new_row in tqdm(rows):
         for col_index, value in enumerate(new_row, start=1):
             worksheet.cell(row=max_row + 1, column=col_index, value=value)
@@ -154,3 +155,31 @@ def convert_datetime_obj_to_str(datetime_obj: datetime, str_format='%Y-%m-%d %H:
 def random_seed_shuffle(seed: int, og_list: list) -> None:
     random.seed(seed)
     random.shuffle(og_list)
+
+
+def save_running_logs(info: str, saved_path: str):
+    print(info)
+    with open(saved_path, 'a') as f:
+        f.write(f'{info}\n')
+
+
+def save_model(model, saved_location: str, optimiser, final=False, epoch=0, loss=0):
+    if final:
+        torch.save({
+            'model_state_dict': model.state_dict(),
+            'optimizer_state_dict': optimiser.state_dict(),
+        }, saved_location)
+    else:
+        torch.save({
+            'epoch': epoch,
+            'model_state_dict': model.state_dict(),
+            'optimizer_state_dict': optimiser.state_dict(),
+            'loss': loss,
+        }, saved_location)
+
+    print(f'Pytorch models state is saved to {saved_location}')
+
+
+def get_formatted_today_str(twelve_h=False):
+    today_date = datetime.now()
+    return today_date.strftime('%I:%M %p %d/%m/%Y' if twelve_h else '%H:%M %d/%m/%Y')
