@@ -1,22 +1,52 @@
 from util_fucntions import util_functions
-from configs import TRAIN_RATIO, VALIDATION_RATIO, TEST_RATIO, DATA_FILE_PATH, RANDOM_SEED, TRAIN_BATCH_SIZE, VAL_BATCH_SIZE
+from configs import TRAIN_RATIO, VALIDATION_RATIO, TEST_RATIO, DATA_FILE_PATH, RANDOM_SEED, TRAIN_BATCH_SIZE, VAL_BATCH_SIZE, ACTUAL_VALUE_KEY_NAME, BERT_TOKENIZER, MAX_LENGTH_TOKEN, TEXT1_KEY_NAME, TEXT2_KEY_NAME
 from tqdm import tqdm
 from torch.utils.data import DataLoader, Dataset
+import torch
 
 
 class WorkOrderDescriptionSemanticDataset(Dataset):
-    def __init__(self, data):
+    def __init__(self, data, tokenizer, max_length):
         self.data = data
+        self.tokenizer = tokenizer
+        self.max_length = max_length
 
     def __len__(self):
         return len(self.data)
 
-    def __getitem__(self, index):
-        sample = self.data[index]
-        # Extract the label and any other necessary data from the dictionary
-        y_true = sample['similarity']
-        # ... extract other data from the dictionary if needed ...
-        return y_true, sample  # Return the label and the dictionary sample
+    def __getitem__(self, idx):
+        item = self.data[idx]
+
+        # Extract the text and similarity score from the dictionary
+        text1 = str(item[TEXT1_KEY_NAME])
+        text2 = str(item[TEXT2_KEY_NAME])
+        similarity = item[ACTUAL_VALUE_KEY_NAME]
+
+        # Tokenize the text pair using the BERT tokenizer
+        inputs = self.tokenizer.encode_plus(
+            text1,
+            text2,
+            add_special_tokens=True,
+            truncation=True,
+            max_length=self.max_length,
+            padding='max_length',
+            return_tensors='pt'
+        )
+        # Obtain the token_type_ids
+        token_type_ids = inputs.get('token_type_ids', None)
+        if token_type_ids is not None:
+            token_type_ids = token_type_ids.squeeze()
+
+        # Convert the similarity score to a torch.Tensor
+        similarity = torch.tensor(similarity, dtype=torch.float32)
+
+        # Return the tokenized inputs and the similarity score
+        return {
+            'input_ids': inputs['input_ids'].squeeze(),
+            'attention_mask': inputs['attention_mask'].squeeze(),
+            'token_type_ids': token_type_ids,
+            'similarity': similarity,
+        }
 
 
 def _even_out_similarities(excel_data: list) -> list:
@@ -62,19 +92,19 @@ def get_splitted_dataset() -> tuple:
 
 def get_data_loaders(train_set: list, validation_set: list, test_set: list) -> tuple:
     train_loader = DataLoader(
-        dataset=WorkOrderDescriptionSemanticDataset(train_set),
+        dataset=WorkOrderDescriptionSemanticDataset(train_set, BERT_TOKENIZER, MAX_LENGTH_TOKEN),
         batch_size=TRAIN_BATCH_SIZE,
         num_workers=1
     )
 
     validation_loader = DataLoader(
-        dataset=WorkOrderDescriptionSemanticDataset(validation_set),
+        dataset=WorkOrderDescriptionSemanticDataset(validation_set, BERT_TOKENIZER, MAX_LENGTH_TOKEN),
         batch_size=VAL_BATCH_SIZE,
         num_workers=1
     )
 
     test_loader = DataLoader(
-        dataset=WorkOrderDescriptionSemanticDataset(test_set),
+        dataset=WorkOrderDescriptionSemanticDataset(test_set, BERT_TOKENIZER, MAX_LENGTH_TOKEN),
         batch_size=VAL_BATCH_SIZE,
         num_workers=1
     )
