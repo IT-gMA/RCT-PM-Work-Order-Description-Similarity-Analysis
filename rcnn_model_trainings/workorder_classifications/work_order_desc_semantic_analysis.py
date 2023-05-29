@@ -96,8 +96,7 @@ def main():
     # calculate the cosine similarity
     cls_dist = normalized.matmul(normalized.T)
     cls_dist = cls_dist.new_ones(cls_dist.shape) - cls_dist
-    cls_dist = cls_dist.cpu()
-    #cls_dist
+    cls_dist = cls_dist.cpu().numpy()
 
     visualize([cls_dist], titles=["CLS"])
 

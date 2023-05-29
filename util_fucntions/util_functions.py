@@ -1,3 +1,4 @@
+import itertools
 import math, re, json, csv, os, openpyxl
 import pandas as pd
 from operator import itemgetter
@@ -5,10 +6,15 @@ from itertools import groupby, filterfalse
 from pandas.io.json import json_normalize
 from datetime import datetime
 from tqdm import tqdm
+import random
 
 
 def subtract_lists(large_list: list, small_list: list) -> list:
     return [item for item in large_list if item not in small_list]
+
+
+def flatten_list(multi_dim_list: list) -> list:
+    return list(itertools.chain.from_iterable(multi_dim_list))
 
 
 def reformat_key(old_key: str) -> str:
@@ -129,3 +135,7 @@ def save_dict_to_excel_workbook_with_row_formatting(file_path: str, headers: lis
 def convert_datetime_obj_to_str(datetime_obj: datetime, str_format='%Y-%m-%d %H:%M:%S') -> str:
     return datetime_obj.strftime(str_format)
 
+
+def random_seed_shuffle(seed: int, og_list: list) -> None:
+    random.seed(seed)
+    random.shuffle(og_list)
