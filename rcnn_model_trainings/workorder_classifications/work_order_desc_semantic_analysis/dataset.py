@@ -21,6 +21,8 @@ class WorkOrderDescriptionSemanticDataset(Dataset):
         text1 = str(item[TEXT1_KEY_NAME])
         text2 = str(item[TEXT2_KEY_NAME])
         similarity = item[ACTUAL_VALUE_KEY_NAME]
+        if type(similarity) != float:
+            similarity = float(similarity)
 
         # Tokenize the text pair using the BERT tokenizer
         inputs = self.tokenizer.encode_plus(
