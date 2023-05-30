@@ -149,12 +149,14 @@ def save_dict_to_excel_workbook_with_row_formatting(file_path: str, headers: lis
     workbook.save(file_path)
 
 
-def append_excel_workbook(file_path: str, rows: list, worksheet_name='Sheet') -> None:
-    if file_path.isspace():
-        return
+def append_excel_workbook(file_path: str, rows: list, worksheet_name='Sheet') -> bool:
+    #if file_path.isspace():
+    #    return
     workbook = load_workbook(filename=file_path)
     worksheet = workbook[worksheet_name]
     last_row = worksheet.max_row + 1    # start appending after the current last row
+    if last_row + len(rows) >= 1048572:
+        return True
 
     print(f"Appending {len(rows)} row{'s' if len(rows) > 1 else ''} to excel workbook at {file_path}:")
     for row in tqdm(rows):
@@ -162,6 +164,7 @@ def append_excel_workbook(file_path: str, rows: list, worksheet_name='Sheet') ->
             worksheet.cell(row=last_row, column=col_index, value=value)
         last_row += 1   # make sure the next last row is appended to
     workbook.save(file_path)
+    return False
 
 
 def convert_datetime_obj_to_str(datetime_obj: datetime, str_format='%Y-%m-%d %H:%M:%S') -> str:

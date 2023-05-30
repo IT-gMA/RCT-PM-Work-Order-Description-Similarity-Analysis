@@ -196,7 +196,8 @@ def _map_rct_to_pms(rct_wos: list, pm_wos: list) -> tuple:
 
 
 def map_rct_desc_to_pm_desc(pm_wos: list, rct_wos: list) -> None:
-    _map_file_path = '../../xlsx_resources/for_trainings/rct_pm_desc_similarity.xlsx'
+    _map_iter = 0
+    _map_file_path = '../../xlsx_resources/for_trainings/rct_pm_desc_similarity'
     # copy_rct_wos = sorted(rct_wos, key=itemgetter('wo_desc'))
     print('Map RCT to PM work order descriptions:')
     no_duplicate_pm_desc = sorted(list(set([pm['wo_desc'] for pm in pm_wos])))
@@ -217,11 +218,17 @@ def map_rct_desc_to_pm_desc(pm_wos: list, rct_wos: list) -> None:
          ]
         if rct_wo_idx < 1:
             util_functions.save_dict_to_excel_workbook_with_row_formatting(
-                file_path=_map_file_path,
+                file_path=f'{_map_file_path}_{_map_iter}.xlsx',
                 headers=['mapping_code', 'rct_desc', 'pm_wo_desc', 'similarity'],
                 rows=curr_rows)
         else:
-            util_functions.append_excel_workbook(file_path=_map_file_path, rows=curr_rows)
+            reach_limit = util_functions.append_excel_workbook(file_path=f'{_map_file_path}_{_map_iter}.xlsx', rows=curr_rows)
+            if reach_limit:
+                _map_iter += 1
+                util_functions.save_dict_to_excel_workbook_with_row_formatting(
+                    file_path=f'{_map_file_path}_{_map_iter}.xlsx',
+                    headers=['mapping_code', 'rct_desc', 'pm_wo_desc', 'similarity'],
+                    rows=curr_rows)
         rct_wo_idx += 1
 
 
