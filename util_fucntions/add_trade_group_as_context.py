@@ -4,7 +4,7 @@ from operator import itemgetter
 from datetime import datetime
 
 DESC_MAPPING_FILE_PATH = '../xlsx_resources/for_trainings/rct_pm_desc_similarity.xlsx'
-RCT_WORK_ORDER_FILE_PATH = '../../xlsx_resources/work_orders/RCT_work_order.xlsx'
+RCT_WORK_ORDER_FILE_PATH = '../xlsx_resources/work_orders/RCT_work_order.xlsx'
 
 
 def _wo_completion_date_to_dt_obj(completion_date: str, wo_num='') -> datetime:
@@ -50,7 +50,7 @@ def read_rct_pm_desc_map_data() -> list:
 
 
 def _assign_trade_as_context(rct_wos: list, desc_wo_maps: list) -> None:
-    _map_file_path = '../../xlsx_resources/book88.xlsx'
+    _map_file_path = '../xlsx_resources/book88.xlsx'
     first = True
     print('Start mapping:')
     for desc_wo_map in tqdm(desc_wo_maps):

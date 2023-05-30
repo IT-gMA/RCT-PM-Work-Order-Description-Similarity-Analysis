@@ -122,7 +122,7 @@ def main():
     train_loader, validation_loader, test_loader = get_data_loaders(train_set, val_test, test_set)
     #samples_not_used_for_training = util_functions.read_from_json_file(SAVED_UNTRAINED_SAMPLE_IDX_LOCATION)
     samples_used_for_training = util_functions.read_from_json_file(SAVED_TRAINED_SAMPLE_IDX_LOCATION)
-    print(f'there are {len(samples_used_for_training)} not used for training:\n{samples_used_for_training}')
+    print(f'there are {len(samples_used_for_training)} used for training:\n{samples_used_for_training}')
 
 
 if __name__ == '__main__':
