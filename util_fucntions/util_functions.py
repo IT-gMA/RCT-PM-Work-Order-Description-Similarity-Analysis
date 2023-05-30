@@ -122,6 +122,21 @@ def is_json(data):
         return False
 
 
+def write_to_json_file(data_list: list, file_path: str) -> None:
+    if file_path.isspace():
+        return
+    with open(file_path, 'w') as json_file:
+        json.dump(data_list, json_file)
+
+
+def read_from_json_file(file_path: str):
+    if file_path.isspace():
+        return
+    with open(file_path, 'r') as json_file:
+        # Load the JSON data
+        return json.load(json_file)
+
+
 def save_dict_to_excel_workbook_with_row_formatting(file_path: str, headers: list, rows: list) -> None:
     if file_path.isspace():
         return
