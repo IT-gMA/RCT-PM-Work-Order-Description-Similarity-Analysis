@@ -43,3 +43,4 @@ SAVED_MODEL_LOCATION = 'saved_models/bert_based_uncased_models_iteration_1/'
 SAVED_MODEL_FORMAT = '.pt'
 
 SAVED_UNTRAINED_SAMPLE_IDX_LOCATION = 'saved_untrained_wos/bert_based_uncased/running_iteration_1.json'
+SAVED_TRAINED_SAMPLE_IDX_LOCATION = 'saved_trained_wos/bert_based_uncased/running_iteration_1.json'
