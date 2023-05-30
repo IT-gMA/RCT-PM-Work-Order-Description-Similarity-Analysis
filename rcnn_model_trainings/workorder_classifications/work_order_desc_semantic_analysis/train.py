@@ -40,7 +40,6 @@ def run_model(dataloader, model, loss_func, optimiser, is_train=True) -> tuple:
     total_rmse = 0
     total_mae = 0
     model.train() if is_train else model.eval()
-
     '''for batch in dataloader:
         input_ids = batch['input_ids']
         attention_mask = batch['attention_mask']
@@ -53,10 +52,9 @@ def run_model(dataloader, model, loss_func, optimiser, is_train=True) -> tuple:
         loss = criterion(outputs, similarity)
         loss.backward()
         optimizer.step()'''
-
     for batch in dataloader:
-        target_similarity_scores = batch['similarity']     # actual similarity scores
-        outputs = model(batch['input_ids'], batch['attention_mask'], batch['token_type_ids'])   # Forward pass
+        target_similarity_scores = batch['similarity'].to(DEVICE)     # actual similarity scores
+        outputs = model(batch['input_ids'].to(DEVICE), batch['attention_mask'].to(DEVICE), batch['token_type_ids'].to(DEVICE))   # Forward pass
 
         # Compute the loss
         loss = loss_func(outputs, target_similarity_scores)
