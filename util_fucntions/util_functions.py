@@ -139,12 +139,13 @@ def append_excel_workbook(file_path: str, rows: list, worksheet_name='Sheet') ->
         return
     workbook = load_workbook(filename=file_path)
     worksheet = workbook[worksheet_name]
-    max_row = worksheet.max_row
+    last_row = worksheet.max_row + 1    # start appending after the current last row
 
     print(f"Appending {len(rows)} row{'s' if len(rows) > 1 else ''} to excel workbook at {file_path}:")
-    for new_row in tqdm(rows):
-        for col_index, value in enumerate(new_row, start=1):
-            worksheet.cell(row=max_row + 1, column=col_index, value=value)
+    for row in tqdm(rows):
+        for col_index, value in enumerate(row, start=1):    # assign values to the corresponding cells in the worksheet
+            worksheet.cell(row=last_row, column=col_index, value=value)
+        last_row += 1   # make sure the next last row is appended to
     workbook.save(file_path)
 
 
