@@ -208,7 +208,7 @@ def map_rct_desc_to_pm_desc(pm_wos: list, rct_wos: list) -> None:
                               in rct_wo['pms']]
         print(f"{round(rct_wo_idx * 100 / len(rct_wos), 2)}% -- reading from {rct_wo['wo_desc']}")
         [curr_rows.append([f"{rct_wo['wo_num']}:{idx}",
-                           str(rct_wo['wo_desc']),
+                           f"{rct_wo['trade_grp']} {rct_wo['trade']} : {rct_wo['wo_desc']}",
                            no_duplicate_pm_desc[idx],
                            round(random.uniform(0.45, 0.55), 2) if util_functions.lower_case_and_clear_white_space(
                                no_duplicate_pm_desc[idx]) in candidate_pm_descs else 0.0]
