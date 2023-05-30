@@ -11,6 +11,7 @@ MIN_LEARNING_RATE = 2e-5
 ACTUAL_VALUE_KEY_NAME = 'similarity'
 TEXT1_KEY_NAME = 'rct_desc'
 TEXT2_KEY_NAME = 'pm_wo_desc'
+SAMPLE_IDX_CODE_NAME = 'mapping_code'
 
 
 PRETRAINED_MODEL_NAME = 'bert-base-uncased'
@@ -40,3 +41,5 @@ DATA_FILE_PATH = '../../../xlsx_resources/for_trainings/rct_pm_desc_similarity.x
 RUNNING_LOG_LOCATION = 'saved_logs/bert_based_uncased_run_logs/running_iteration_1.txt'
 SAVED_MODEL_LOCATION = 'saved_models/bert_based_uncased_models_iteration_1/'
 SAVED_MODEL_FORMAT = '.pt'
+
+SAVED_UNTRAINED_SAMPLE_IDX_LOCATION = 'saved_untrained_wos/bert_based_uncased/running_iteration_1.json'

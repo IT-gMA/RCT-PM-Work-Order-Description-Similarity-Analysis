@@ -1,5 +1,5 @@
 from util_fucntions import util_functions
-from configs import TRAIN_RATIO, VALIDATION_RATIO, TEST_RATIO, DATA_FILE_PATH, RANDOM_SEED, TRAIN_BATCH_SIZE, VAL_BATCH_SIZE, ACTUAL_VALUE_KEY_NAME, BERT_TOKENIZER, MAX_LENGTH_TOKEN, TEXT1_KEY_NAME, TEXT2_KEY_NAME
+from configs import TRAIN_RATIO, VALIDATION_RATIO, TEST_RATIO, DATA_FILE_PATH, RANDOM_SEED, TRAIN_BATCH_SIZE, VAL_BATCH_SIZE, ACTUAL_VALUE_KEY_NAME, BERT_TOKENIZER, MAX_LENGTH_TOKEN, TEXT1_KEY_NAME, TEXT2_KEY_NAME, RUNNING_LOG_LOCATION, SAMPLE_IDX_CODE_NAME, SAVED_UNTRAINED_SAMPLE_IDX_LOCATION
 from tqdm import tqdm
 from torch.utils.data import DataLoader, Dataset
 import torch
@@ -93,6 +93,9 @@ def get_splitted_dataset() -> tuple:
 
 
 def get_data_loaders(train_set: list, validation_set: list, test_set: list) -> tuple:
+    samples_not_used_for_training = sorted(list(set([sample[SAMPLE_IDX_CODE_NAME].split(':')[0] for sample in util_functions.flatten_list([validation_set, test_set])])))
+    util_functions.write_to_json_file(samples_not_used_for_training, SAVED_UNTRAINED_SAMPLE_IDX_LOCATION)
+
     train_loader = DataLoader(
         dataset=WorkOrderDescriptionSemanticDataset(train_set, BERT_TOKENIZER, MAX_LENGTH_TOKEN),
         batch_size=TRAIN_BATCH_SIZE,
@@ -116,6 +119,8 @@ def get_data_loaders(train_set: list, validation_set: list, test_set: list) -> t
 def main():
     train_set, val_test, test_set = get_splitted_dataset()
     train_loader, validation_loader, test_loader = get_data_loaders(train_set, val_test, test_set)
+    samples_not_used_for_training = util_functions.read_from_json_file(SAVED_UNTRAINED_SAMPLE_IDX_LOCATION)
+    print(f'there are {len(samples_not_used_for_training)} not used for training:\n{samples_not_used_for_training}')
 
 
 if __name__ == '__main__':
