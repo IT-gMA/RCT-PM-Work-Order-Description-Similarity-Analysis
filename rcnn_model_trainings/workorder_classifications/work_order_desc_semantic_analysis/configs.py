@@ -25,17 +25,17 @@ PATIENCE = 16
 DROPOUT = 0.1
 
 
-NUM_EPOCHS = 1000
-VAL_EPOCH = 15
-SAVED_EPOCH = 100
-TRAIN_BATCH_SIZE = 16
-VAL_BATCH_SIZE = 8
+NUM_EPOCHS = 100
+VAL_EPOCH = 5
+SAVED_EPOCH = 10
+TRAIN_BATCH_SIZE = 8
+VAL_BATCH_SIZE = 4
 
 RANDOM_SEED = 10
 TRAIN_RATIO = .65
 VALIDATION_RATIO = .2
 TEST_RATIO = .15
-DATA_FILE_PATH = '../../../xlsx_resources/for_trainings/rct_pm_desc_similarity.xlsx'
+DATA_FILE_PATH = '../../../xlsx_resources/for_trainings/Book5.xlsx'
 
 
 RUNNING_LOG_LOCATION = 'saved_logs/bert_based_uncased_run_logs/running_iteration_1.txt'
