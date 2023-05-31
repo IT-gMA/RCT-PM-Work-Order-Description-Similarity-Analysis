@@ -94,7 +94,7 @@ def get_splitted_dataset() -> tuple:
 
 def get_data_loaders(train_set: list, validation_set: list, test_set: list) -> tuple:
     #samples_not_used_for_training = sorted(list(set([sample[SAMPLE_IDX_CODE_NAME].split(':')[0] for sample in util_functions.flatten_list([validation_set, test_set])])))
-    samples_used_for_training = sorted(list(set([sample[SAMPLE_IDX_CODE_NAME].split(':')[0] for sample in train_set])))
+    samples_used_for_training = util_functions.get_unique_list(old_list=[sample[SAMPLE_IDX_CODE_NAME].split(':')[0] for sample in train_set], sort_code=1)
     util_functions.write_to_json_file(samples_used_for_training, SAVED_TRAINED_SAMPLE_IDX_LOCATION)
 
     train_loader = DataLoader(

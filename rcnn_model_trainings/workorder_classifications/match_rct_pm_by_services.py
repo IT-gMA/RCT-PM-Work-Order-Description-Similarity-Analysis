@@ -200,7 +200,7 @@ def map_rct_desc_to_pm_desc(pm_wos: list, rct_wos: list) -> None:
     _map_file_path = '../../xlsx_resources/for_trainings/rct_pm_desc_similarity_v2'
     # copy_rct_wos = sorted(rct_wos, key=itemgetter('wo_desc'))
     print('Map RCT to PM work order descriptions:')
-    no_duplicate_pm_desc = sorted(list(set([pm['wo_desc'] for pm in pm_wos])))
+    no_duplicate_pm_desc = util_functions.get_unique_list(old_list=[pm['wo_desc'] for pm in pm_wos])
 
     rct_wo_idx = 0
     for rct_wo in rct_wos:

@@ -19,6 +19,17 @@ def flatten_list(multi_dim_list: list) -> list:
     return list(itertools.chain.from_iterable(multi_dim_list))
 
 
+def get_unique_list(old_list: list, sort_code=None) -> list:
+    # sort_code:
+    # 0: no sort
+    # 1: sort ascending
+    # 2: sort descending
+    unique_list = list(set(old_list))
+    if sort_code is None or sort_code <= 0:
+        return unique_list
+    return sorted(unique_list, reverse=sort_code != 1)
+
+
 def reformat_key(old_key: str) -> str:
     return old_key.lower().replace(' ', '_')
 
@@ -150,19 +161,19 @@ def save_dict_to_excel_workbook_with_row_formatting(file_path: str, headers: lis
 
 
 def append_excel_workbook(file_path: str, rows: list, worksheet_name='Sheet') -> bool:
-    #if file_path.isspace():
+    # if file_path.isspace():
     #    return
     workbook = load_workbook(filename=file_path)
     worksheet = workbook[worksheet_name]
-    last_row = worksheet.max_row + 1    # start appending after the current last row
+    last_row = worksheet.max_row + 1  # start appending after the current last row
     if last_row + len(rows) >= 1048572:
         return True
 
     print(f"Appending {len(rows)} row{'s' if len(rows) > 1 else ''} to excel workbook at {file_path}:")
     for row in tqdm(rows):
-        for col_index, value in enumerate(row, start=1):    # assign values to the corresponding cells in the worksheet
+        for col_index, value in enumerate(row, start=1):  # assign values to the corresponding cells in the worksheet
             worksheet.cell(row=last_row, column=col_index, value=value)
-        last_row += 1   # make sure the next last row is appended to
+        last_row += 1  # make sure the next last row is appended to
     workbook.save(file_path)
     return False
 
