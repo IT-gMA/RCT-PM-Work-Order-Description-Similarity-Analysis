@@ -197,7 +197,7 @@ def _map_rct_to_pms(rct_wos: list, pm_wos: list) -> tuple:
 
 def map_rct_desc_to_pm_desc(pm_wos: list, rct_wos: list) -> None:
     _map_iter = 0
-    _map_file_path = '../../xlsx_resources/for_trainings/rct_pm_desc_similarity'
+    _map_file_path = '../../xlsx_resources/for_trainings/rct_pm_desc_similarity_v2'
     # copy_rct_wos = sorted(rct_wos, key=itemgetter('wo_desc'))
     print('Map RCT to PM work order descriptions:')
     no_duplicate_pm_desc = sorted(list(set([pm['wo_desc'] for pm in pm_wos])))
@@ -205,24 +205,32 @@ def map_rct_desc_to_pm_desc(pm_wos: list, rct_wos: list) -> None:
     rct_wo_idx = 0
     for rct_wo in rct_wos:
         curr_rows = []
-        candidate_pm_descs = [util_functions.lower_case_and_clear_white_space(candidate_pm['wo_desc']) for candidate_pm
-                              in rct_wo['pms']]
+        assigned_pm_descs = [pm['wo_desc'] for pm in rct_wo['pms']]
+        candidate_pm_descs = [pm_desc for pm_desc in no_duplicate_pm_desc if pm_desc not in assigned_pm_descs]
+        util_functions.random_seed_shuffle(seed=rct_wo_idx + 1, og_list=candidate_pm_descs)
+        candidate_pm_descs = util_functions.flatten_list([
+            assigned_pm_descs,
+            candidate_pm_descs[0:3] if len(candidate_pm_descs) > 3 else candidate_pm_descs
+        ])
+
         print(f"{round(rct_wo_idx * 100 / len(rct_wos), 2)}% -- reading from {rct_wo['wo_desc']}")
         [curr_rows.append([f"{rct_wo['wo_num']}:{idx}",
                            f"{rct_wo['trade_grp']} {rct_wo['trade']} : {rct_wo['wo_desc']}",
-                           no_duplicate_pm_desc[idx],
-                           round(random.uniform(0.45, 0.55), 2) if util_functions.lower_case_and_clear_white_space(
-                               no_duplicate_pm_desc[idx]) in candidate_pm_descs else 0.0]
+                           candidate_pm_descs[idx],
+                           round(random.uniform(0.35, 0.51), 2) if candidate_pm_descs[
+                                                                       idx] in assigned_pm_descs else 0.0]
                           )
-         for idx in tqdm(range(len(no_duplicate_pm_desc)))
+         for idx in tqdm(range(len(candidate_pm_descs)))
          ]
+
         if rct_wo_idx < 1:
             util_functions.save_dict_to_excel_workbook_with_row_formatting(
                 file_path=f'{_map_file_path}_{_map_iter}.xlsx',
                 headers=['mapping_code', 'rct_desc', 'pm_wo_desc', 'similarity'],
                 rows=curr_rows)
         else:
-            reach_limit = util_functions.append_excel_workbook(file_path=f'{_map_file_path}_{_map_iter}.xlsx', rows=curr_rows)
+            reach_limit = util_functions.append_excel_workbook(file_path=f'{_map_file_path}_{_map_iter}.xlsx',
+                                                               rows=curr_rows)
             if reach_limit:
                 _map_iter += 1
                 util_functions.save_dict_to_excel_workbook_with_row_formatting(
