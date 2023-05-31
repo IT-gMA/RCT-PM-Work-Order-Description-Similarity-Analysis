@@ -120,7 +120,7 @@ def main():
     loss_func, optimiser, lr_scheduler = model_param_tweaking(model)
     train_set, val_set, test_set = get_splitted_dataset()
     train_loader, validation_loader, test_loader = get_data_loaders(train_set, val_set, test_set)
-    best_mae = 0.1
+    best_mae = 1000
 
     write_training_config(len(train_set), len(val_set), len(test_set))
     for epoch in range(NUM_EPOCHS):
@@ -128,7 +128,7 @@ def main():
             avg_loss, avg_mae, avg_rmse = validate(val_dataloader=validation_loader, model=model, epoch=epoch,
                                                    loss_func=loss_func,
                                                    optimiser=optimiser)
-            if avg_mae > best_mae:
+            if avg_mae < best_mae and epoch > SAVED_EPOCH + 3:
                 best_mae = avg_mae
                 best_model = copy.deepcopy(model)
                 util_functions.save_running_logs(f'\tCurrent best model at epoch {epoch + 1}', RUNNING_LOG_LOCATION)
@@ -143,7 +143,7 @@ def main():
                                           saved_location=f'{SAVED_MODEL_LOCATION}model_epoch{epoch}{SAVED_MODEL_FORMAT}')
                 util_functions.save_running_logs(f'-----------Save model at epoch [{epoch + 1}/{NUM_EPOCHS}] at {SAVED_MODEL_LOCATION} -----------', RUNNING_LOG_LOCATION)
 
-        if SCHEDULED:
+        if SCHEDULED and epoch > SAVED_EPOCH + 3:
             lr_scheduler.step(best_mae)
 
     util_functions.save_running_logs('Training complete, running final testing:', RUNNING_LOG_LOCATION)
