@@ -141,6 +141,7 @@ def main():
             if epoch > 1 and (epoch + 1) % SAVED_EPOCH == 0:
                 util_functions.save_model(model=model, optimiser=optimiser, loss=avg_loss, epoch=epoch,
                                           saved_location=f'{SAVED_MODEL_LOCATION}model_epoch{epoch}{SAVED_MODEL_FORMAT}')
+                util_functions.save_running_logs(f'-----------Save model at epoch [{epoch + 1}/{NUM_EPOCHS}] at {SAVED_MODEL_LOCATION} -----------', RUNNING_LOG_LOCATION)
 
         if SCHEDULED:
             lr_scheduler.step(best_mae)

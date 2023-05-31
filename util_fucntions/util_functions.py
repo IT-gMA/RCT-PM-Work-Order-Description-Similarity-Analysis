@@ -194,22 +194,18 @@ def save_running_logs(info: str, saved_path: str):
 
 
 def save_model(model, saved_location: str, optimiser, final=False, epoch=0, loss=0):
-    if final:
-        torch.save({
+    _save_model_state = {
             'model_state_dict': model.state_dict(),
             'optimizer_state_dict': optimiser.state_dict(),
-        }, saved_location)
-    else:
-        torch.save({
+        }
+    if not final:
+        _save_model_state = {**_save_model_state, **{
             'epoch': epoch,
-            'model_state_dict': model.state_dict(),
-            'optimizer_state_dict': optimiser.state_dict(),
-            'loss': loss,
-        }, saved_location)
-
+            'loss': loss
+        }}
+    torch.save(_save_model_state, saved_location)
     print(f'Pytorch models state is saved to {saved_location}')
 
 
 def get_formatted_today_str(twelve_h=False):
-    today_date = datetime.now()
-    return today_date.strftime('%I:%M %p %d/%m/%Y' if twelve_h else '%H:%M %d/%m/%Y')
+    return datetime.now().strftime('%I:%M %p %d/%m/%Y' if twelve_h else '%H:%M %d/%m/%Y')
