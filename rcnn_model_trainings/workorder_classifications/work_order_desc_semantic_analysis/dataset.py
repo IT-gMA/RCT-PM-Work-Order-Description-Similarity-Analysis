@@ -58,9 +58,9 @@ def _even_out_similarities(excel_data: list) -> list:
 
     print(f'Looking at {len(excel_data)} similarity values:')
     for data in tqdm(excel_data):
-        if data['similarity'] >= .9:
+        if data['similarity'] >= .75:
             exacts.append(data)
-        elif data['similarity'] <= .1:
+        elif data['similarity'] <= .3:
             neutrals.append(data)
         else:
             similars.append(data)
@@ -95,7 +95,7 @@ def get_splitted_dataset() -> tuple:
 def get_data_loaders(train_set: list, validation_set: list, test_set: list) -> tuple:
     #samples_not_used_for_training = sorted(list(set([sample[SAMPLE_IDX_CODE_NAME].split(':')[0] for sample in util_functions.flatten_list([validation_set, test_set])])))
     samples_used_for_training = util_functions.get_unique_list(old_list=[sample[SAMPLE_IDX_CODE_NAME].split(':')[0] for sample in train_set], sort_code=1)
-    util_functions.write_to_json_file(samples_used_for_training, SAVED_TRAINED_SAMPLE_IDX_LOCATION)
+    #util_functions.write_to_json_file(samples_used_for_training, SAVED_TRAINED_SAMPLE_IDX_LOCATION)
 
     train_loader = DataLoader(
         dataset=WorkOrderDescriptionSemanticDataset(train_set, BERT_TOKENIZER, MAX_LENGTH_TOKEN),
@@ -120,9 +120,11 @@ def get_data_loaders(train_set: list, validation_set: list, test_set: list) -> t
 def main():
     train_set, val_test, test_set = get_splitted_dataset()
     train_loader, validation_loader, test_loader = get_data_loaders(train_set, val_test, test_set)
+    print(len(validation_loader))
+    print(len(test_loader))
     #samples_not_used_for_training = util_functions.read_from_json_file(SAVED_UNTRAINED_SAMPLE_IDX_LOCATION)
-    samples_used_for_training = util_functions.read_from_json_file(SAVED_TRAINED_SAMPLE_IDX_LOCATION)
-    print(f'there are {len(samples_used_for_training)} used for training:\n{samples_used_for_training}')
+    #samples_used_for_training = util_functions.read_from_json_file(SAVED_TRAINED_SAMPLE_IDX_LOCATION)
+    #print(f'there are {len(samples_used_for_training)} used for training:\n{samples_used_for_training}')
 
 
 if __name__ == '__main__':
