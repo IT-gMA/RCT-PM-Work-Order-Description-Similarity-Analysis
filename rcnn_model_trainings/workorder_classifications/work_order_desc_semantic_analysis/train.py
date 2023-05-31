@@ -122,7 +122,7 @@ def main():
     train_loader, validation_loader, test_loader = get_data_loaders(train_set, val_set, test_set)
     best_mae = 10
 
-    write_training_config(len(train_set), len(val_set), len(test_set))
+    write_training_config(len(train_loader), len(validation_loader), len(test_loader))
     for epoch in range(NUM_EPOCHS):
         if epoch > 1 and (epoch + 1) % VAL_EPOCH == 0:
             avg_loss, avg_mae, avg_rmse = validate(val_dataloader=validation_loader, model=model, epoch=epoch,
