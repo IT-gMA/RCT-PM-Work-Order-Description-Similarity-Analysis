@@ -143,7 +143,7 @@ def main():
                                           saved_location=f'{SAVED_MODEL_LOCATION}model_epoch{epoch}{SAVED_MODEL_FORMAT}')
                 util_functions.save_running_logs(f'-----------Save model at epoch [{epoch + 1}/{NUM_EPOCHS}] at {SAVED_MODEL_LOCATION} -----------', RUNNING_LOG_LOCATION)
 
-        if SCHEDULED and epoch > VAL_EPOCH + 1:
+        if SCHEDULED and epoch >= VAL_EPOCH:
             lr_scheduler.step(best_mae)
 
     util_functions.save_running_logs('Training complete, running final testing:', RUNNING_LOG_LOCATION)
