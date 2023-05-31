@@ -120,7 +120,7 @@ def main():
     loss_func, optimiser, lr_scheduler = model_param_tweaking(model)
     train_set, val_set, test_set = get_splitted_dataset()
     train_loader, validation_loader, test_loader = get_data_loaders(train_set, val_set, test_set)
-    best_mae = 1000
+    best_mae = 10
 
     write_training_config(len(train_set), len(val_set), len(test_set))
     for epoch in range(NUM_EPOCHS):
