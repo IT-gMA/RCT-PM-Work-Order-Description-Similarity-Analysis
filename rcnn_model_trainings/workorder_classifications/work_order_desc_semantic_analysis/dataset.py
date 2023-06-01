@@ -80,7 +80,6 @@ def get_splitted_dataset() -> tuple:
     num_vals = int(len(excel_data) * VALIDATION_RATIO)
     num_tests = len(excel_data) - num_vals - num_trains
 
-    print(f'Splitting train: {num_trains}\tvalidation: {num_vals}\ttest: {num_tests}')
     for distributed_desc in tqdm(distributed_desc_list):
         train_set.append(distributed_desc[0:num_trains])
         validation_set.append(distributed_desc[num_trains:num_trains + num_vals])
@@ -95,7 +94,7 @@ def get_splitted_dataset() -> tuple:
 def get_data_loaders(train_set: list, validation_set: list, test_set: list) -> tuple:
     #samples_not_used_for_training = sorted(list(set([sample[SAMPLE_IDX_CODE_NAME].split(':')[0] for sample in util_functions.flatten_list([validation_set, test_set])])))
     samples_used_for_training = util_functions.get_unique_list(old_list=[sample[SAMPLE_IDX_CODE_NAME].split(':')[0] for sample in train_set], sort_code=1)
-    #util_functions.write_to_json_file(samples_used_for_training, SAVED_TRAINED_SAMPLE_IDX_LOCATION)
+    util_functions.write_to_json_file(samples_used_for_training, SAVED_TRAINED_SAMPLE_IDX_LOCATION)
 
     train_loader = DataLoader(
         dataset=WorkOrderDescriptionSemanticDataset(train_set, BERT_TOKENIZER, MAX_LENGTH_TOKEN),
