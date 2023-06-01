@@ -126,7 +126,7 @@ def main():
     train_loader, validation_loader, test_loader = get_data_loaders(train_set, val_set, test_set)
     best_mae = 10
 
-    write_training_config(len(train_loader), len(validation_loader), len(test_loader))
+    write_training_config(len(train_set), len(val_set), len(test_set))
     for epoch in range(NUM_EPOCHS):
         wandb.log({'Train/lr': get_learning_rate(optimiser)})
 
