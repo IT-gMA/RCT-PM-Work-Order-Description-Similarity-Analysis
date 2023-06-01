@@ -37,15 +37,15 @@ class WorkOrderDescriptionSemanticDataset(Dataset):
         # Obtain the token_type_ids
         token_type_ids = inputs.get('token_type_ids', None)
         if token_type_ids is not None:
-            token_type_ids = token_type_ids.squeeze()
+            token_type_ids = token_type_ids
 
         # Convert the similarity score to a torch.Tensor
         similarity = torch.tensor(similarity, dtype=torch.float32)
 
         # Return the tokenized inputs and the similarity score
         return {
-            'input_ids': inputs['input_ids'].squeeze(),
-            'attention_mask': inputs['attention_mask'].squeeze(),
+            'input_ids': inputs['input_ids'],
+            'attention_mask': inputs['attention_mask'],
             'token_type_ids': token_type_ids,
             'similarity': similarity,
         }
