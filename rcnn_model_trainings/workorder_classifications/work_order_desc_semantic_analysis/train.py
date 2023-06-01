@@ -8,6 +8,11 @@ from metrics import cal_rmse, cal_mae
 import copy
 
 
+def get_learning_rate(optimiser):
+    for param_group in optimiser.param_groups:
+        return param_group['lr']
+
+
 def write_training_config(num_trains: int, num_vals: int, num_tests: int):
     _min_lr_stmt = f'Min learning rate {MIN_LEARNING_RATE}\n' if MIN_LEARNING_RATE > 0 else ''
     _saved_log = f"\t{util_functions.get_formatted_today_str(twelve_h=True)}\n" \
@@ -42,11 +47,11 @@ def run_model(dataloader, model, loss_func, optimiser, is_train=True) -> tuple:
     model.train() if is_train else model.eval()
 
     for batch in dataloader:
-        target_similarity_scores = batch['similarity'].to(DEVICE).squeeze()     # actual similarity scores
+        target_similarity_scores = batch['similarity'].to(DEVICE).squeeze()  # actual similarity scores
 
         outputs = model(batch['input_ids'].to(DEVICE).squeeze(),
                         batch['attention_mask'].to(DEVICE).squeeze(),
-                        batch['token_type_ids'].to(DEVICE).squeeze())   # Forward pass
+                        batch['token_type_ids'].to(DEVICE).squeeze())  # Forward pass
 
         # Compute the loss
         loss = loss_func(outputs, target_similarity_scores)
@@ -71,7 +76,7 @@ def train(train_dataloader, model, loss_func, optimiser, epoch: int) -> tuple:
     avg_loss, avg_mae, avg_rmse = run_model(dataloader=train_dataloader, model=model, loss_func=loss_func,
                                             optimiser=optimiser)
     util_functions.save_running_logs(
-        f'Epoch [{epoch + 1}/{NUM_EPOCHS}] Average train Loss: {avg_loss:.4f}\tAverage RMSE: {avg_rmse:.4f}\tAverage MAE: {avg_mae:.4f}',
+        f'Epoch [{epoch + 1}/{NUM_EPOCHS}] Average train Loss: {avg_loss:.4f}\tAverage RMSE: {avg_rmse:.4f}\tAverage MAE: {avg_mae:.4f}\tLearning rate: {get_learning_rate(optimiser):.4f}',
         RUNNING_LOG_LOCATION)
     return avg_loss, avg_mae, avg_rmse
 
@@ -81,7 +86,7 @@ def validate(val_dataloader, model, loss_func, optimiser, epoch: int) -> tuple:
         avg_loss, avg_mae, avg_rmse = run_model(dataloader=val_dataloader, model=model, loss_func=loss_func,
                                                 optimiser=optimiser, is_train=False)
         util_functions.save_running_logs(
-            f'Epoch [{epoch + 1}/{NUM_EPOCHS}] Average validation Loss: {avg_loss:.4f}\tAverage RMSE: {avg_rmse:.4f}\tAverage MAE: {avg_mae:.4f}',
+            f'Epoch [{epoch + 1}/{NUM_EPOCHS}] Average validation Loss: {avg_loss:.4f}\tAverage RMSE: {avg_rmse:.4f}\tAverage MAE: {avg_mae:.4f}\tLearning rate: {get_learning_rate(optimiser):.4f}',
             RUNNING_LOG_LOCATION)
         return avg_loss, avg_mae, avg_rmse
 
@@ -133,7 +138,9 @@ def main():
             if epoch > 1 and (epoch + 1) % SAVED_EPOCH == 0:
                 util_functions.save_model(model=model, optimiser=optimiser, loss=avg_loss, epoch=epoch,
                                           saved_location=f'{SAVED_MODEL_LOCATION}model_epoch{epoch}{SAVED_MODEL_FORMAT}')
-                util_functions.save_running_logs(f'-----------Save model at epoch [{epoch + 1}/{NUM_EPOCHS}] at {SAVED_MODEL_LOCATION} -----------', RUNNING_LOG_LOCATION)
+                util_functions.save_running_logs(
+                    f'-----------Save model at epoch [{epoch + 1}/{NUM_EPOCHS}] at {SAVED_MODEL_LOCATION} -----------',
+                    RUNNING_LOG_LOCATION)
 
         if SCHEDULED and epoch >= VAL_EPOCH:
             lr_scheduler.step(best_mae)
