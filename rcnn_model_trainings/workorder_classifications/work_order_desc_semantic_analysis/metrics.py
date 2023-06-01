@@ -7,10 +7,10 @@ import numpy as np
 def cal_rmse(y_true, y_pred) -> Tensor:
     eps = 1e-6
     criterion = nn.MSELoss()
-    return torch.sqrt(criterion(y_true, y_pred) * eps)
+    return torch.sqrt(criterion(y_true.squeeze(), y_pred.squeeze()) * eps)
 
 
 def cal_mae(y_true, y_pred) -> Tensor:
     # Calculate Mean Absolute Error
     mae = nn.L1Loss()
-    return mae(y_true, y_pred).item()
+    return mae(y_true.squeeze(), y_pred.squeeze()).item()

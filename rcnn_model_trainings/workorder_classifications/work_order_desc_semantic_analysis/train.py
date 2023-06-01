@@ -51,14 +51,14 @@ def run_model(dataloader, model, loss_func, optimiser, is_train=True) -> tuple:
     model.train() if is_train else model.eval()
 
     for batch in dataloader:
-        target_similarity_scores = batch['similarity'].to(DEVICE).squeeze()  # actual similarity scores
+        target_similarity_scores = batch['similarity'].to(DEVICE)  # actual similarity scores
 
-        outputs = model(batch['input_ids'].to(DEVICE).squeeze(),
-                        batch['attention_mask'].to(DEVICE).squeeze(),
-                        batch['token_type_ids'].to(DEVICE).squeeze())  # Forward pass
+        outputs = model(batch['input_ids'].to(DEVICE),
+                        batch['attention_mask'].to(DEVICE),
+                        batch['token_type_ids'].to(DEVICE))  # Forward pass
 
         # Compute the loss
-        loss = loss_func(outputs, target_similarity_scores)
+        loss = loss_func(outputs.squeeze(), target_similarity_scores.squeeze())
         if DEVICE == 'mps':
             loss = loss.type(torch.float32)
 
