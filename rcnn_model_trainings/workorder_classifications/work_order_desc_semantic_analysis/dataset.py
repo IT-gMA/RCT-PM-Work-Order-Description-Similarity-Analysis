@@ -76,17 +76,13 @@ def get_splitted_dataset() -> tuple:
     util_functions.random_seed_shuffle(seed=RANDOM_SEED, og_list=excel_data)
     distributed_desc_list = _even_out_similarities(excel_data)
 
-    num_trains = int(len(excel_data) * TRAIN_RATIO)
-    num_vals = int(len(excel_data) * VALIDATION_RATIO)
-    num_tests = len(excel_data) - num_vals - num_trains
-
     for distributed_desc in tqdm(distributed_desc_list):
+        num_trains = int(len(distributed_desc) * TRAIN_RATIO)
+        num_vals = int(len(distributed_desc) * VALIDATION_RATIO)
+
         train_set.append(distributed_desc[0:num_trains])
         validation_set.append(distributed_desc[num_trains:num_trains + num_vals])
-        test_set.append(distributed_desc[num_trains + num_vals:len(excel_data)])
-        '''[train_set.append(data) for data in distributed_desc[0:num_trains]]
-        [validation_set.append(data) for data in distributed_desc[num_trains:num_trains + num_vals]]
-        [test_set.append(data) for data in distributed_desc[num_trains + num_vals:len(excel_data)]]'''
+        test_set.append(distributed_desc[num_trains + num_vals:len(distributed_desc)])
 
     return util_functions.flatten_list(train_set), util_functions.flatten_list(validation_set), util_functions.flatten_list(test_set)
 
