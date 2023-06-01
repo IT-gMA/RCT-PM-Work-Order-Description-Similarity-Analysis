@@ -162,6 +162,7 @@ def main():
                               saved_location=f'{SAVED_MODEL_LOCATION}final_model{SAVED_MODEL_FORMAT}')
 
     util_functions.save_running_logs('Testing with best VAL model:', RUNNING_LOG_LOCATION)
+    test(test_dataloader=test_loader, model=best_model, loss_func=loss_func)
 
 
 if __name__ == '__main__':
