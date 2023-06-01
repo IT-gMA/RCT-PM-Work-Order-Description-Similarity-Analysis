@@ -1,5 +1,5 @@
 import torch
-import torch.nn as nn
+import wandb
 from configs import *
 from model import SentenceSimilarityModel
 from dataset import get_splitted_dataset, get_data_loaders
@@ -11,6 +11,10 @@ import copy
 def get_learning_rate(optimiser):
     for param_group in optimiser.param_groups:
         return param_group['lr']
+
+
+def wandb_running_log(loss, mae, rmse, state="Train"):
+    wandb.log({f'{state}/loss': loss, f'{state}/rmse': rmse, f'{state}/mape': mae})
 
 
 def write_training_config(num_trains: int, num_vals: int, num_tests: int):
@@ -78,6 +82,7 @@ def train(train_dataloader, model, loss_func, optimiser, epoch: int) -> tuple:
     util_functions.save_running_logs(
         f'Epoch [{epoch + 1}/{NUM_EPOCHS}] Average train Loss: {avg_loss:.4f}\tAverage RMSE: {avg_rmse:.4f}\tAverage MAE: {avg_mae:.4f}\tLearning rate: {get_learning_rate(optimiser):.4f}',
         RUNNING_LOG_LOCATION)
+    wandb_running_log(loss=avg_loss, mae=avg_mae, rmse=avg_rmse)
     return avg_loss, avg_mae, avg_rmse
 
 
@@ -88,6 +93,7 @@ def validate(val_dataloader, model, loss_func, optimiser, epoch: int) -> tuple:
         util_functions.save_running_logs(
             f'Epoch [{epoch + 1}/{NUM_EPOCHS}] Average validation Loss: {avg_loss:.4f}\tAverage RMSE: {avg_rmse:.4f}\tAverage MAE: {avg_mae:.4f}\tLearning rate: {get_learning_rate(optimiser):.4f}',
             RUNNING_LOG_LOCATION)
+        wandb_running_log(loss=avg_loss, mae=avg_mae, rmse=avg_rmse, state='Validation')
         return avg_loss, avg_mae, avg_rmse
 
     if torch.cuda.is_available():
@@ -108,6 +114,7 @@ def test(test_dataloader, model, loss_func):
     util_functions.save_running_logs(
         f'Average test Loss: {avg_loss:.4f}\tAverage RMSE: {avg_rmse:.4f}\tAverage MAE: {avg_mae:.4f}',
         RUNNING_LOG_LOCATION)
+    wandb_running_log(loss=avg_loss, mae=avg_mae, rmse=avg_rmse, state='Test')
 
 
 def main():
@@ -121,6 +128,8 @@ def main():
 
     write_training_config(len(train_loader), len(validation_loader), len(test_loader))
     for epoch in range(NUM_EPOCHS):
+        wandb.log({'Train/lr': get_learning_rate(optimiser)})
+
         if epoch > 1 and (epoch + 1) % VAL_EPOCH == 0:
             avg_loss, avg_mae, avg_rmse = validate(val_dataloader=validation_loader, model=model, epoch=epoch,
                                                    loss_func=loss_func,
@@ -154,4 +163,6 @@ def main():
 
 
 if __name__ == '__main__':
+    wandb.init(project=WANDB_PROJECT_NAME)
     main()
+    wandb.finish()
