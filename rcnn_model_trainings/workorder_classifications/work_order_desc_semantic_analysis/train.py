@@ -56,7 +56,7 @@ def run_model(dataloader, model, loss_func, optimiser, is_train=True) -> tuple:
             target_similarity_scores = target_similarity_scores.squeeze()
 
         outputs = model(batch['input_ids'].to(DEVICE), batch['attention_mask'].to(DEVICE), batch['token_type_ids'].to(DEVICE))  # Forward pass
-        if len(outputs.shape > 1):
+        if len(outputs.shape) > 1:
             outputs = outputs.squeeze()
 
         # Compute the loss
