@@ -14,7 +14,7 @@ def get_learning_rate(optimiser):
 
 
 def wandb_running_log(loss, mae, rmse, state="Train"):
-    wandb.log({f'{state}/loss': loss, f'{state}/rmse': rmse, f'{state}/mape': mae})
+    wandb.log({f'{state}/loss': loss, f'{state}/rmse': rmse, f'{state}/mae': mae})
 
 
 def write_training_config(num_trains: int, num_vals: int, num_tests: int):
