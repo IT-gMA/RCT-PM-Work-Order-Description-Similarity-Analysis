@@ -1,5 +1,5 @@
 from util_fucntions import util_functions
-from configs import TRAIN_RATIO, VALIDATION_RATIO, TEST_RATIO, DATA_FILE_PATH, RANDOM_SEED, TRAIN_BATCH_SIZE, VAL_BATCH_SIZE, ACTUAL_VALUE_KEY_NAME, BERT_TOKENIZER, MAX_LENGTH_TOKEN, TEXT1_KEY_NAME, TEXT2_KEY_NAME, RUNNING_LOG_LOCATION, SAMPLE_IDX_CODE_NAME, SAVED_UNTRAINED_SAMPLE_IDX_LOCATION, SAVED_TRAINED_SAMPLE_IDX_LOCATION, NUM_WORKERS
+from configs import TRAIN_RATIO, VALIDATION_RATIO, TEST_RATIO, DATA_FILE_PATH, RANDOM_SEED, TRAIN_BATCH_SIZE, VAL_BATCH_SIZE, ACTUAL_VALUE_KEY_NAME, MODEL_TOKENIZER, MAX_LENGTH_TOKEN, TEXT1_KEY_NAME, TEXT2_KEY_NAME, RUNNING_LOG_LOCATION, SAMPLE_IDX_CODE_NAME, SAVED_UNTRAINED_SAMPLE_IDX_LOCATION, SAVED_TRAINED_SAMPLE_IDX_LOCATION, NUM_WORKERS, PADDING_TOKEN
 from tqdm import tqdm
 from torch.utils.data import DataLoader, Dataset
 import torch
@@ -93,19 +93,19 @@ def get_data_loaders(train_set: list, validation_set: list, test_set: list) -> t
     util_functions.write_to_json_file(samples_used_for_training, SAVED_TRAINED_SAMPLE_IDX_LOCATION)
 
     train_loader = DataLoader(
-        dataset=WorkOrderDescriptionSemanticDataset(train_set, BERT_TOKENIZER, MAX_LENGTH_TOKEN),
+        dataset=WorkOrderDescriptionSemanticDataset(train_set, MODEL_TOKENIZER, MAX_LENGTH_TOKEN),
         batch_size=TRAIN_BATCH_SIZE,
         num_workers=NUM_WORKERS
     )
 
     validation_loader = DataLoader(
-        dataset=WorkOrderDescriptionSemanticDataset(validation_set, BERT_TOKENIZER, MAX_LENGTH_TOKEN),
+        dataset=WorkOrderDescriptionSemanticDataset(validation_set, MODEL_TOKENIZER, MAX_LENGTH_TOKEN),
         batch_size=VAL_BATCH_SIZE,
         num_workers=NUM_WORKERS
     )
 
     test_loader = DataLoader(
-        dataset=WorkOrderDescriptionSemanticDataset(test_set, BERT_TOKENIZER, MAX_LENGTH_TOKEN),
+        dataset=WorkOrderDescriptionSemanticDataset(test_set, MODEL_TOKENIZER, MAX_LENGTH_TOKEN),
         batch_size=VAL_BATCH_SIZE,
         num_workers=NUM_WORKERS
     )

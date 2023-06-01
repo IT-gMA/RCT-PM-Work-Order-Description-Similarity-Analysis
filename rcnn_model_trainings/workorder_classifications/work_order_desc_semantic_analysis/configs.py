@@ -17,7 +17,13 @@ SAMPLE_IDX_CODE_NAME = 'mapping_code'
 
 
 PRETRAINED_MODEL_NAME = 'gpt2'
-BERT_TOKENIZER = BertTokenizer.from_pretrained(PRETRAINED_MODEL_NAME) if 'bert' in util_functions.lower_case_and_clear_white_space(PRETRAINED_MODEL_NAME) else GPT2TokenizerFast.from_pretrained(PRETRAINED_MODEL_NAME)
+
+MODEL_TOKENIZER = BertTokenizer.from_pretrained(PRETRAINED_MODEL_NAME) if 'bert' in util_functions.lower_case_and_clear_white_space(PRETRAINED_MODEL_NAME) else GPT2TokenizerFast.from_pretrained(PRETRAINED_MODEL_NAME)
+PADDING_TOKEN = '[PAD]'
+if type(PADDING_TOKEN) is str and not PADDING_TOKEN.isspace():
+    MODEL_TOKENIZER.add_tokens([PADDING_TOKEN])
+    padding_token_id = MODEL_TOKENIZER.encode(MODEL_TOKENIZER)[0]
+
 MAX_LENGTH_TOKEN = 256
 
 MSE_REDUCTION = 'mean'

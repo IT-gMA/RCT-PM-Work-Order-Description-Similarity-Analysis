@@ -23,7 +23,10 @@ class SentenceSimilarityModel(nn.Module):
         self.regression_layer = nn.Linear(16, 1)
 
     def forward(self, input_ids, attention_mask, token_type_ids):
-        outputs = self.bert(input_ids=input_ids, attention_mask=attention_mask, token_type_ids=token_type_ids)
+        if is_bert:
+            outputs = self.bert(input_ids=input_ids, attention_mask=attention_mask, token_type_ids=token_type_ids)
+        else:
+            outputs = self.gpt(input_ids=input_ids, attention_mask=attention_mask, token_type_ids=token_type_ids)
         pooled_output = outputs.pooler_output
         pooled_output = self.dropout(pooled_output)
         hidden_output = self.hidden_layer(pooled_output)
