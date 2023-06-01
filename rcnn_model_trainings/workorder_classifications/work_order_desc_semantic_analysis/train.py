@@ -52,11 +52,11 @@ def run_model(dataloader, model, loss_func, optimiser, is_train=True) -> tuple:
 
     for batch in dataloader:
         target_similarity_scores = batch['similarity'].to(DEVICE)  # actual similarity scores
-        if target_similarity_scores.shape > 1:
+        if len(target_similarity_scores.shape) > 1:
             target_similarity_scores = target_similarity_scores.squeeze()
 
         outputs = model(batch['input_ids'].to(DEVICE), batch['attention_mask'].to(DEVICE), batch['token_type_ids'].to(DEVICE))  # Forward pass
-        if outputs.shape > 1:
+        if len(outputs.shape > 1):
             outputs = outputs.squeeze()
 
         # Compute the loss
