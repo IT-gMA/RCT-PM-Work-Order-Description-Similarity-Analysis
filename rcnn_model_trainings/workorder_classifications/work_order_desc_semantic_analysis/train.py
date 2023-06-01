@@ -22,13 +22,13 @@ def write_training_config(num_trains: int, num_vals: int, num_tests: int):
     _saved_log = f"\t{util_functions.get_formatted_today_str(twelve_h=True)}\n" \
                  f"Dataset directory: {DATA_FILE_PATH}\nScheduled Learning: {SCHEDULED}\nLearning rate: {INIT_LEARNING_RATE}\n{_min_lr_stmt}" \
                  f"Dropout: {DROPOUT}\nWeight decay: {WEIGHT_DECAY}\nPatience: {PATIENCE}\n" \
-                 f"Number of running epochs: {NUM_EPOCHS}\nValidate after every {SAVED_EPOCH}th epoch\n" \
+                 f"Number of running epochs: {NUM_EPOCHS}\nValidate after every {VAL_EPOCH}th epoch\n" \
                  f"MSE Reduction: {MSE_REDUCTION}\nTrain-Validation-Test ratio: {TRAIN_RATIO}-{VALIDATION_RATIO}-{TEST_RATIO}\n" \
                  f"Number of train - validation - test samples: {num_trains} - {num_vals} - {num_tests}\n" \
                  f"Train batch size: {TRAIN_BATCH_SIZE}\nValidation batch size: {VAL_BATCH_SIZE}\n" \
                  f"Max length token: {MAX_LENGTH_TOKEN}\nModel name: {PRETRAINED_MODEL_NAME}\n" \
                  f"Running log location: {RUNNING_LOG_LOCATION}\nModel location: {SAVED_MODEL_LOCATION}" \
-                 f"_________________________________________________________\n"
+                 f"\n_______________________________________________________________________________________\n"
     util_functions.save_running_logs(_saved_log, RUNNING_LOG_LOCATION)
 
 
