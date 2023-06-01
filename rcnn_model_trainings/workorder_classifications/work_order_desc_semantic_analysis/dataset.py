@@ -1,5 +1,5 @@
 from util_fucntions import util_functions
-from configs import TRAIN_RATIO, VALIDATION_RATIO, TEST_RATIO, DATA_FILE_PATH, RANDOM_SEED, TRAIN_BATCH_SIZE, VAL_BATCH_SIZE, ACTUAL_VALUE_KEY_NAME, BERT_TOKENIZER, MAX_LENGTH_TOKEN, TEXT1_KEY_NAME, TEXT2_KEY_NAME, RUNNING_LOG_LOCATION, SAMPLE_IDX_CODE_NAME, SAVED_UNTRAINED_SAMPLE_IDX_LOCATION, SAVED_TRAINED_SAMPLE_IDX_LOCATION
+from configs import TRAIN_RATIO, VALIDATION_RATIO, TEST_RATIO, DATA_FILE_PATH, RANDOM_SEED, TRAIN_BATCH_SIZE, VAL_BATCH_SIZE, ACTUAL_VALUE_KEY_NAME, BERT_TOKENIZER, MAX_LENGTH_TOKEN, TEXT1_KEY_NAME, TEXT2_KEY_NAME, RUNNING_LOG_LOCATION, SAMPLE_IDX_CODE_NAME, SAVED_UNTRAINED_SAMPLE_IDX_LOCATION, SAVED_TRAINED_SAMPLE_IDX_LOCATION, NUM_WORKERS
 from tqdm import tqdm
 from torch.utils.data import DataLoader, Dataset
 import torch
@@ -100,19 +100,19 @@ def get_data_loaders(train_set: list, validation_set: list, test_set: list) -> t
     train_loader = DataLoader(
         dataset=WorkOrderDescriptionSemanticDataset(train_set, BERT_TOKENIZER, MAX_LENGTH_TOKEN),
         batch_size=TRAIN_BATCH_SIZE,
-        num_workers=1
+        num_workers=NUM_WORKERS
     )
 
     validation_loader = DataLoader(
         dataset=WorkOrderDescriptionSemanticDataset(validation_set, BERT_TOKENIZER, MAX_LENGTH_TOKEN),
         batch_size=VAL_BATCH_SIZE,
-        num_workers=1
+        num_workers=NUM_WORKERS
     )
 
     test_loader = DataLoader(
         dataset=WorkOrderDescriptionSemanticDataset(test_set, BERT_TOKENIZER, MAX_LENGTH_TOKEN),
         batch_size=VAL_BATCH_SIZE,
-        num_workers=1
+        num_workers=NUM_WORKERS
     )
     return train_loader, validation_loader, test_loader
 
@@ -120,8 +120,6 @@ def get_data_loaders(train_set: list, validation_set: list, test_set: list) -> t
 def main():
     train_set, val_test, test_set = get_splitted_dataset()
     train_loader, validation_loader, test_loader = get_data_loaders(train_set, val_test, test_set)
-    print(len(validation_loader))
-    print(len(test_loader))
     #samples_not_used_for_training = util_functions.read_from_json_file(SAVED_UNTRAINED_SAMPLE_IDX_LOCATION)
     #samples_used_for_training = util_functions.read_from_json_file(SAVED_TRAINED_SAMPLE_IDX_LOCATION)
     #print(f'there are {len(samples_used_for_training)} used for training:\n{samples_used_for_training}')

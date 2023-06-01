@@ -19,7 +19,7 @@ def write_training_config(num_trains: int, num_vals: int, num_tests: int):
                  f"Train batch size: {TRAIN_BATCH_SIZE}\nValidation batch size: {VAL_BATCH_SIZE}\n" \
                  f"Max length token: {MAX_LENGTH_TOKEN}\nModel name: {PRETRAINED_MODEL_NAME}\n" \
                  f"Running log location: {RUNNING_LOG_LOCATION}\nModel location: {SAVED_MODEL_LOCATION}" \
-                 f"{[print('_', end='') for i in range(200)]}\n"
+                 f"_________________________________________________________\n"
     util_functions.save_running_logs(_saved_log, RUNNING_LOG_LOCATION)
 
 
@@ -40,21 +40,13 @@ def run_model(dataloader, model, loss_func, optimiser, is_train=True) -> tuple:
     total_rmse = 0
     total_mae = 0
     model.train() if is_train else model.eval()
-    '''for batch in dataloader:
-        input_ids = batch['input_ids']
-        attention_mask = batch['attention_mask']
-        token_type_ids = batch['token_type_ids']  # Include token_type_ids
 
-        similarity = batch['similarity']
-
-        optimizer.zero_grad()
-        outputs = model(input_ids, attention_mask, token_type_ids)  # Pass token_type_ids
-        loss = criterion(outputs, similarity)
-        loss.backward()
-        optimizer.step()'''
     for batch in dataloader:
-        target_similarity_scores = batch['similarity'].to(DEVICE)     # actual similarity scores
-        outputs = model(batch['input_ids'].to(DEVICE), batch['attention_mask'].to(DEVICE), batch['token_type_ids'].to(DEVICE))   # Forward pass
+        target_similarity_scores = batch['similarity'].to(DEVICE).squeeze()     # actual similarity scores
+
+        outputs = model(batch['input_ids'].to(DEVICE).squeeze(),
+                        batch['attention_mask'].to(DEVICE).squeeze(),
+                        batch['token_type_ids'].to(DEVICE).squeeze())   # Forward pass
 
         # Compute the loss
         loss = loss_func(outputs, target_similarity_scores)
