@@ -5,7 +5,7 @@ from transformers import BertModel, BertTokenizer
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "mps")
 print(f'Running on {DEVICE}')
-INIT_LEARNING_RATE = 2e-3
+INIT_LEARNING_RATE = 1e-3
 MIN_LEARNING_RATE = 2e-5
 
 ACTUAL_VALUE_KEY_NAME = 'similarity'
@@ -16,7 +16,7 @@ SAMPLE_IDX_CODE_NAME = 'mapping_code'
 
 PRETRAINED_MODEL_NAME = 'bert-base-uncased'
 BERT_TOKENIZER = BertTokenizer.from_pretrained(PRETRAINED_MODEL_NAME)
-MAX_LENGTH_TOKEN = 256
+MAX_LENGTH_TOKEN = 512
 
 MSE_REDUCTION = 'mean'
 WEIGHT_DECAY = .0001
@@ -25,9 +25,9 @@ PATIENCE = 16
 DROPOUT = 0.1
 
 NUM_WORKERS = 0
-NUM_EPOCHS = 100
+NUM_EPOCHS = 1000
 VAL_EPOCH = 5
-SAVED_EPOCH = 10
+SAVED_EPOCH = 25
 TRAIN_BATCH_SIZE = 16
 VAL_BATCH_SIZE = 4
 
