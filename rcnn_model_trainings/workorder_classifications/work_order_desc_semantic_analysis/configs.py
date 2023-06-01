@@ -37,7 +37,7 @@ VALIDATION_RATIO = .2
 TEST_RATIO = .15
 DATA_FILE_PATH = '../../../xlsx_resources/for_trainings/Book5.xlsx'
 
-
+WANDB_PROJECT_NAME = 'BERT Based Uncased Iter 01'
 RUNNING_LOG_LOCATION = 'saved_logs/bert_based_uncased_run_logs/running_iteration_1.txt'
 SAVED_MODEL_LOCATION = 'saved_models/bert_based_uncased_models_iteration_1/'
 SAVED_MODEL_FORMAT = '.pt'
