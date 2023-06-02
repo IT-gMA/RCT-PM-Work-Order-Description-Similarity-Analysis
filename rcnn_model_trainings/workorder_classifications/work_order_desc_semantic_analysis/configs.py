@@ -3,7 +3,7 @@ from torch import nn, optim
 from transformers import GPT2TokenizerFast, BertTokenizer
 from util_fucntions import util_functions
 
-MODEL_ITERATION = 2
+MODEL_ITERATION = 3
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "mps")
 print(f'Running on {DEVICE}')
@@ -24,7 +24,7 @@ if type(PADDING_TOKEN) is str and not PADDING_TOKEN.isspace():
     MODEL_TOKENIZER.add_tokens([PADDING_TOKEN])
     padding_token_id = MODEL_TOKENIZER.encode(MODEL_TOKENIZER)[0]
 
-MAX_LENGTH_TOKEN = 256
+MAX_LENGTH_TOKEN = 128
 
 MSE_REDUCTION = 'mean'
 WEIGHT_DECAY = .0001
@@ -32,11 +32,14 @@ SCHEDULED = True
 PATIENCE = 16
 DROPOUT = 0.1
 
+# Model config
+HIDDEN_LAYER_SIZE = 8
+
 NUM_WORKERS = 0
-NUM_EPOCHS = 1500
+NUM_EPOCHS = 2000
 VAL_EPOCH = 10
-SAVED_EPOCH = 300
-TRAIN_BATCH_SIZE = 18
+SAVED_EPOCH = 200
+TRAIN_BATCH_SIZE = 42
 VAL_BATCH_SIZE = 4
 
 RANDOM_SEED = 10
