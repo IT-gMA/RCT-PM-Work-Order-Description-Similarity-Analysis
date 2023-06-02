@@ -67,10 +67,6 @@ def run_model(dataloader, model, loss_func, optimiser, is_train=True) -> tuple:
             outputs = outputs.squeeze()
 
         # Compute the loss
-        print(f'Outputs: {outputs}')
-        print(f'Target: {target_similarity_scores}')
-        print(len(outputs))
-        print(len(target_similarity_scores))
         loss = loss_func(outputs, target_similarity_scores)
         if DEVICE == 'mps':
             loss = loss.type(torch.float32)

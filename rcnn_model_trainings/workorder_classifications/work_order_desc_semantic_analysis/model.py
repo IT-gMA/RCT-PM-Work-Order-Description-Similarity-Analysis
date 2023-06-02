@@ -11,9 +11,7 @@ class SentenceSimilarityModel(nn.Module):
         self.model = BertModel.from_pretrained(PRETRAINED_MODEL_NAME) if IS_BERT else GPT2Model.from_pretrained(PRETRAINED_MODEL_NAME)
         self.dropout = nn.Dropout(dropout_rate)
         self.fc = nn.Sequential(
-            nn.Linear(self.model.config.hidden_size, HIDDEN_LAYER_SIZE),
-            nn.LeakyReLU(),
-            nn.Linear(HIDDEN_LAYER_SIZE, 1),
+            nn.Linear(self.model.config.hidden_size, 1),
             nn.Sigmoid(),
         )
 

@@ -3,7 +3,7 @@ from torch import nn, optim
 from transformers import GPT2TokenizerFast, GPT2Tokenizer, BertTokenizer
 from util_fucntions import util_functions
 
-MODEL_ITERATION = 4
+MODEL_ITERATION = 3
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "mps")
 print(f'Running on {DEVICE}')
