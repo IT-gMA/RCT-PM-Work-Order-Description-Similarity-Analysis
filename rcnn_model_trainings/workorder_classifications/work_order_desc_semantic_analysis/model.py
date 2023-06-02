@@ -12,8 +12,10 @@ class SentenceSimilarityModel(nn.Module):
         self.dropout = nn.Dropout(dropout_rate)
         self.fc = nn.Sequential(
             nn.Linear(self.model.config.hidden_size, HIDDEN_LAYER_SIZE),
+            nn.LeakyReLU(),
+            nn.Linear(HIDDEN_LAYER_SIZE, 8),
             nn.Sigmoid(),
-            nn.Linear(HIDDEN_LAYER_SIZE, 1),
+            nn.Linear(8, 1),
         )
 
     def forward(self, input_ids, attention_mask, token_type_ids=None):
