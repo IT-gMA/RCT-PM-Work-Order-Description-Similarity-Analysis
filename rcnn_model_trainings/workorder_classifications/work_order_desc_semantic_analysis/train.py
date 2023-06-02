@@ -44,6 +44,11 @@ def model_param_tweaking(model) -> tuple:
     return loss_func, optimiser, lr_scheduler
 
 
+def _get_forward_pass(batch, model):
+    return model(batch['input_ids'].to(DEVICE), batch['attention_mask'].to(DEVICE),
+                 batch['token_type_ids'].to(DEVICE)) if IS_BERT else model(batch['input_ids'].to(DEVICE), batch['attention_mask'].to(DEVICE))
+
+
 def run_model(dataloader, model, loss_func, optimiser, is_train=True) -> tuple:
     total_loss = 0
     total_rmse = 0
@@ -55,11 +60,17 @@ def run_model(dataloader, model, loss_func, optimiser, is_train=True) -> tuple:
         if len(target_similarity_scores.shape) > 1:
             target_similarity_scores = target_similarity_scores.squeeze()
 
-        outputs = model(batch['input_ids'].to(DEVICE), batch['attention_mask'].to(DEVICE), batch['token_type_ids'].to(DEVICE))  # Forward pass
+        # Forward pass
+        outputs = _get_forward_pass(batch, model)
+
         if len(outputs.shape) > 1:
             outputs = outputs.squeeze()
 
         # Compute the loss
+        print(f'Outputs: {outputs}')
+        print(f'Target: {target_similarity_scores}')
+        print(len(outputs))
+        print(len(target_similarity_scores))
         loss = loss_func(outputs, target_similarity_scores)
         if DEVICE == 'mps':
             loss = loss.type(torch.float32)

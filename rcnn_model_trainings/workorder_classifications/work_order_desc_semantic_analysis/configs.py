@@ -1,9 +1,9 @@
 import torch
 from torch import nn, optim
-from transformers import GPT2TokenizerFast, BertTokenizer
+from transformers import GPT2TokenizerFast, GPT2Tokenizer, BertTokenizer
 from util_fucntions import util_functions
 
-MODEL_ITERATION = 3
+MODEL_ITERATION = 4
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "mps")
 print(f'Running on {DEVICE}')
@@ -18,11 +18,12 @@ SAMPLE_IDX_CODE_NAME = 'mapping_code'
 
 PRETRAINED_MODEL_NAME = 'bert-base-uncased'
 
-MODEL_TOKENIZER = BertTokenizer.from_pretrained(PRETRAINED_MODEL_NAME) if 'bert' in util_functions.lower_case_and_clear_white_space(PRETRAINED_MODEL_NAME) else GPT2TokenizerFast.from_pretrained(PRETRAINED_MODEL_NAME)
-PADDING_TOKEN = None
-if type(PADDING_TOKEN) is str and not PADDING_TOKEN.isspace():
-    MODEL_TOKENIZER.add_tokens([PADDING_TOKEN])
-    padding_token_id = MODEL_TOKENIZER.encode(MODEL_TOKENIZER)[0]
+IS_BERT = 'bert' in util_functions.lower_case_and_clear_white_space(PRETRAINED_MODEL_NAME)
+MODEL_TOKENIZER = BertTokenizer.from_pretrained(PRETRAINED_MODEL_NAME) if IS_BERT else GPT2Tokenizer.from_pretrained(PRETRAINED_MODEL_NAME)
+PADDING_TOKEN = None if IS_BERT else '[PAD]'
+if PADDING_TOKEN is not None:
+    MODEL_TOKENIZER.add_special_tokens({'pad_token': PADDING_TOKEN})
+    padding_token_id = MODEL_TOKENIZER.encode(PADDING_TOKEN)[0]
 
 MAX_LENGTH_TOKEN = 128
 
@@ -39,7 +40,7 @@ NUM_WORKERS = 0
 NUM_EPOCHS = 2000
 VAL_EPOCH = 10
 SAVED_EPOCH = 200
-TRAIN_BATCH_SIZE = 42
+TRAIN_BATCH_SIZE = 44
 VAL_BATCH_SIZE = 4
 
 RANDOM_SEED = 10

@@ -1,5 +1,5 @@
 from util_fucntions import util_functions
-from configs import TRAIN_RATIO, VALIDATION_RATIO, TEST_RATIO, DATA_FILE_PATH, RANDOM_SEED, TRAIN_BATCH_SIZE, VAL_BATCH_SIZE, ACTUAL_VALUE_KEY_NAME, MODEL_TOKENIZER, MAX_LENGTH_TOKEN, TEXT1_KEY_NAME, TEXT2_KEY_NAME, RUNNING_LOG_LOCATION, SAMPLE_IDX_CODE_NAME, SAVED_UNTRAINED_SAMPLE_IDX_LOCATION, SAVED_TRAINED_SAMPLE_IDX_LOCATION, NUM_WORKERS, PADDING_TOKEN
+from configs import *
 from tqdm import tqdm
 from torch.utils.data import DataLoader, Dataset
 import torch
@@ -29,26 +29,28 @@ class WorkOrderDescriptionSemanticDataset(Dataset):
             text1,
             text2,
             add_special_tokens=True,
-            truncation=True,
             max_length=self.max_length,
+            truncation=True,
             padding='max_length',
             return_tensors='pt'
         )
-        # Obtain the token_type_ids
-        token_type_ids = inputs.get('token_type_ids', None)
-        if token_type_ids is not None:
-            token_type_ids = token_type_ids.squeeze()
 
         # Convert the similarity score to a torch.Tensor
         similarity = torch.tensor(similarity, dtype=torch.float32)
 
         # Return the tokenized inputs and the similarity score
-        return {
+        _item = {
             'input_ids': inputs['input_ids'].squeeze(),
             'attention_mask': inputs['attention_mask'].squeeze(),
-            'token_type_ids': token_type_ids,
             'similarity': similarity.squeeze(),
         }
+        if IS_BERT:
+            token_type_ids = inputs.get('token_type_ids', None)  # Obtain the token_type_ids
+            if token_type_ids is not None:
+                token_type_ids = token_type_ids.squeeze()
+            _item['token_type_ids'] = token_type_ids
+
+        return _item
 
 
 def _even_out_similarities(excel_data: list) -> list:
@@ -84,12 +86,14 @@ def get_splitted_dataset() -> tuple:
         validation_set.append(distributed_desc[num_trains:num_trains + num_vals])
         test_set.append(distributed_desc[num_trains + num_vals:len(distributed_desc)])
 
-    return util_functions.flatten_list(train_set), util_functions.flatten_list(validation_set), util_functions.flatten_list(test_set)
+    return util_functions.flatten_list(train_set), util_functions.flatten_list(
+        validation_set), util_functions.flatten_list(test_set)
 
 
 def get_data_loaders(train_set: list, validation_set: list, test_set: list) -> tuple:
-    #samples_not_used_for_training = sorted(list(set([sample[SAMPLE_IDX_CODE_NAME].split(':')[0] for sample in util_functions.flatten_list([validation_set, test_set])])))
-    samples_used_for_training = util_functions.get_unique_list(old_list=[sample[SAMPLE_IDX_CODE_NAME].split(':')[0] for sample in train_set], sort_code=1)
+    # samples_not_used_for_training = sorted(list(set([sample[SAMPLE_IDX_CODE_NAME].split(':')[0] for sample in util_functions.flatten_list([validation_set, test_set])])))
+    samples_used_for_training = util_functions.get_unique_list(
+        old_list=[sample[SAMPLE_IDX_CODE_NAME].split(':')[0] for sample in train_set], sort_code=1)
     util_functions.write_to_json_file(samples_used_for_training, SAVED_TRAINED_SAMPLE_IDX_LOCATION)
 
     train_loader = DataLoader(
@@ -115,11 +119,10 @@ def get_data_loaders(train_set: list, validation_set: list, test_set: list) -> t
 def main():
     train_set, val_test, test_set = get_splitted_dataset()
     train_loader, validation_loader, test_loader = get_data_loaders(train_set, val_test, test_set)
-    #samples_not_used_for_training = util_functions.read_from_json_file(SAVED_UNTRAINED_SAMPLE_IDX_LOCATION)
-    #samples_used_for_training = util_functions.read_from_json_file(SAVED_TRAINED_SAMPLE_IDX_LOCATION)
-    #print(f'there are {len(samples_used_for_training)} used for training:\n{samples_used_for_training}')
+    # samples_not_used_for_training = util_functions.read_from_json_file(SAVED_UNTRAINED_SAMPLE_IDX_LOCATION)
+    # samples_used_for_training = util_functions.read_from_json_file(SAVED_TRAINED_SAMPLE_IDX_LOCATION)
+    # print(f'there are {len(samples_used_for_training)} used for training:\n{samples_used_for_training}')
 
 
 if __name__ == '__main__':
     main()
-
