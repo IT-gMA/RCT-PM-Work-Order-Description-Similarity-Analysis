@@ -89,7 +89,7 @@ def train(train_dataloader, model, loss_func, optimiser, epoch: int) -> tuple:
     avg_loss, avg_mae, avg_rmse = run_model(dataloader=train_dataloader, model=model, loss_func=loss_func,
                                             optimiser=optimiser)
     util_functions.save_running_logs(
-        f'Epoch [{epoch + 1}/{NUM_EPOCHS}] Average train Loss: {avg_loss:.4f}\tAverage RMSE: {avg_rmse:.4f}\tAverage MAE: {avg_mae:.4f}\tLearning rate: {get_learning_rate(optimiser):.4f}',
+        f'Epoch [{epoch + 1}/{NUM_EPOCHS}] Average train Loss: {avg_loss:.4f}\tAverage RMSE: {avg_rmse:.4f}\tAverage MAE: {avg_mae:.4f}\tLearning rate: {get_learning_rate(optimiser)}',
         RUNNING_LOG_LOCATION)
     wandb_running_log(loss=avg_loss, mae=avg_mae, rmse=avg_rmse)
     return avg_loss, avg_mae, avg_rmse
@@ -100,7 +100,7 @@ def validate(val_dataloader, model, loss_func, optimiser, epoch: int) -> tuple:
         avg_loss, avg_mae, avg_rmse = run_model(dataloader=val_dataloader, model=model, loss_func=loss_func,
                                                 optimiser=optimiser, is_train=False)
         util_functions.save_running_logs(
-            f'Epoch [{epoch + 1}/{NUM_EPOCHS}] Average validation Loss: {avg_loss:.4f}\tAverage RMSE: {avg_rmse:.4f}\tAverage MAE: {avg_mae:.4f}\tLearning rate: {get_learning_rate(optimiser):.4f}',
+            f'Epoch [{epoch + 1}/{NUM_EPOCHS}] Average validation Loss: {avg_loss:.4f}\tAverage RMSE: {avg_rmse:.4f}\tAverage MAE: {avg_mae:.4f}\tLearning rate: {get_learning_rate(optimiser)}',
             RUNNING_LOG_LOCATION)
         wandb_running_log(loss=avg_loss, mae=avg_mae, rmse=avg_rmse, state='Validation')
         return avg_loss, avg_mae, avg_rmse
@@ -149,7 +149,7 @@ def main():
                 util_functions.save_running_logs(f'\tCurrent best model at epoch {epoch + 1}', RUNNING_LOG_LOCATION)
                 util_functions.save_model(model=best_model,
                                           optimiser=optimiser, loss=avg_loss, epoch=epoch,
-                                          saved_location=f"{SAVED_MODEL_LOCATION}best_model_epoch_{epoch}{SAVED_MODEL_FORMAT}")
+                                          saved_location=f"{SAVED_MODEL_LOCATION}best_model{SAVED_MODEL_FORMAT}")
         else:
             avg_loss, avg_mae, avg_rmse = train(train_dataloader=train_loader, model=model, epoch=epoch,
                                                 loss_func=loss_func, optimiser=optimiser)

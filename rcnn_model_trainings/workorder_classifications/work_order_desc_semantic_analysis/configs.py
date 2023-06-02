@@ -3,12 +3,12 @@ from torch import nn, optim
 from transformers import GPT2TokenizerFast, GPT2Tokenizer, BertTokenizer
 from util_fucntions import util_functions
 
-MODEL_ITERATION = 3
+MODEL_ITERATION = 4
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "mps")
 print(f'Running on {DEVICE}')
-INIT_LEARNING_RATE = 1e-3
-MIN_LEARNING_RATE = 2e-5
+INIT_LEARNING_RATE = 2e-4
+MIN_LEARNING_RATE = 1e-6
 
 ACTUAL_VALUE_KEY_NAME = 'similarity'
 TEXT1_KEY_NAME = 'rct_desc'
@@ -25,7 +25,7 @@ if PADDING_TOKEN is not None:
     MODEL_TOKENIZER.add_special_tokens({'pad_token': PADDING_TOKEN})
     padding_token_id = MODEL_TOKENIZER.encode(PADDING_TOKEN)[0]
 
-MAX_LENGTH_TOKEN = 128
+MAX_LENGTH_TOKEN = 256
 
 MSE_REDUCTION = 'mean'
 WEIGHT_DECAY = .0001
@@ -34,13 +34,13 @@ PATIENCE = 16
 DROPOUT = 0.1
 
 # Model config
-HIDDEN_LAYER_SIZE = 256
+HIDDEN_LAYER_SIZE = 16
 
 NUM_WORKERS = 0
-NUM_EPOCHS = 2000
-VAL_EPOCH = 10
-SAVED_EPOCH = 200
-TRAIN_BATCH_SIZE = 44
+NUM_EPOCHS = 10000
+VAL_EPOCH = 20
+SAVED_EPOCH = 1000
+TRAIN_BATCH_SIZE = 18
 VAL_BATCH_SIZE = 4
 
 RANDOM_SEED = 10
