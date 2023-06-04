@@ -14,8 +14,9 @@ class SentenceSimilarityModel(nn.Module):
             nn.Linear(self.model.config.hidden_size, 256),
             nn.LeakyReLU(),
             nn.Linear(256, 16),
-            nn.Sigmoid(),
+            nn.ReLU(),
             nn.Linear(16, 1),
+            nn.Sigmoid(),
         )
 
     def forward(self, input_ids, attention_mask, token_type_ids=None):
@@ -25,3 +26,6 @@ class SentenceSimilarityModel(nn.Module):
         similarity_score = self.fc(pooled_output)
 
         return similarity_score
+
+    def validation_step(self, val_mae):
+        self.log('val_mae', val_mae)
