@@ -2,8 +2,10 @@ import torch
 from torch import nn, optim
 from transformers import GPT2TokenizerFast, GPT2Tokenizer, BertTokenizer
 from util_fucntions import util_functions
+from lightning.pytorch.trainer import Trainer
+from lightning.pytorch.callbacks.early_stopping import EarlyStopping
 
-MODEL_ITERATION = 4
+MODEL_ITERATION = 5
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "mps")
 print(f'Running on {DEVICE}')
@@ -32,12 +34,14 @@ WEIGHT_DECAY = .0001
 SCHEDULED = True
 PATIENCE = 16
 DROPOUT = 0.1
+EARLY_STOPPING_CALLBACK = EarlyStopping(monitor="val_mae", patience=PATIENCE, mode="min")
+MY_TRAINER = Trainer(callbacks=[EARLY_STOPPING_CALLBACK])
 
 # Model config
 HIDDEN_LAYER_SIZE = 16
 
 NUM_WORKERS = 0
-NUM_EPOCHS = 10000
+NUM_EPOCHS = 5000
 VAL_EPOCH = 20
 SAVED_EPOCH = 1000
 TRAIN_BATCH_SIZE = 18
