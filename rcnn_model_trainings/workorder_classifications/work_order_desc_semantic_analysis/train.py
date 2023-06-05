@@ -129,7 +129,7 @@ def test(test_dataloader, model, loss_func):
 def main():
     model = SentenceSimilarityModel().to(DEVICE)
     best_model = copy.deepcopy(model)
-    MY_TRAINER.fit(model)
+    #MY_TRAINER.fit(model)
 
     loss_func, optimiser, lr_scheduler = model_param_tweaking(model)
     train_set, val_set, test_set = get_splitted_dataset()
@@ -144,7 +144,7 @@ def main():
             avg_loss, avg_mae, avg_rmse = validate(val_dataloader=validation_loader, model=model, epoch=epoch,
                                                    loss_func=loss_func,
                                                    optimiser=optimiser)
-            model.validation_step(avg_mae)
+            #model.validation_step(avg_mae)
             if avg_mae < best_mae:
                 best_mae = avg_mae
                 best_model = copy.deepcopy(model)

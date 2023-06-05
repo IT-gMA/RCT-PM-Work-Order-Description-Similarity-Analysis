@@ -14,7 +14,7 @@ class SentenceSimilarityModel(nn.Module):
             nn.Linear(self.model.config.hidden_size, 256),
             nn.LeakyReLU(),
             nn.Linear(256, 16),
-            nn.ReLU(),
+            nn.LeakyReLU(),
             nn.Linear(16, 1),
             nn.Sigmoid(),
         )
