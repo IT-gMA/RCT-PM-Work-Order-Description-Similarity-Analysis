@@ -17,7 +17,7 @@ class TextClassification(nn.Module):
             # nn.Linear(256, 16),
             # nn.LeakyReLU(),
             # nn.Linear(16, 1),
-            nn.Sigmoid(),
+            nn.Sigmoid()
         )
 
     def forward(self, input_ids, attention_mask):
@@ -28,3 +28,6 @@ class TextClassification(nn.Module):
 
     def get_num_classes(self) -> int:
         return self.num_classes
+
+    def set_num_classes(self, num_classes: int) -> None:
+        self.num_classes = num_classes
