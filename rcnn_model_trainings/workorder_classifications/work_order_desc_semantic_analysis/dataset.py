@@ -6,6 +6,8 @@ import torch
 from itertools import groupby
 from operator import itemgetter
 
+GROUPED_DATA_KEY_NAME = 'grouped_data'
+
 
 class WorkOrderDescriptionSemanticDataset(Dataset):
     def __init__(self, data, tokenizer, max_length):
@@ -75,7 +77,7 @@ def _even_out_pm_desc(excel_data: list) -> list:
     util_functions.random_seed_shuffle(seed=int(RANDOM_SEED / 1.5), og_list=excel_data)
     return [{
         TEXT1_KEY_NAME: key,
-        'grouped_data': list(value)
+        GROUPED_DATA_KEY_NAME: list(value)
     } for key, value in groupby(sorted(excel_data, key=itemgetter(TEXT2_KEY_NAME)), lambda x: x[TEXT2_KEY_NAME])]
 
 
@@ -89,6 +91,9 @@ def get_splitted_dataset() -> tuple:
     distributed_desc_list = _even_out_pm_desc(excel_data)
 
     for distributed_desc in tqdm(distributed_desc_list):
+        distributed_desc = distributed_desc[GROUPED_DATA_KEY_NAME]
+        util_functions.random_seed_shuffle(seed=int(RANDOM_SEED * 1.5), og_list=distributed_desc)
+
         num_trains = int(len(distributed_desc) * TRAIN_RATIO)
         num_vals = int(len(distributed_desc) * VALIDATION_RATIO)
 
@@ -99,9 +104,6 @@ def get_splitted_dataset() -> tuple:
     train_set = util_functions.flatten_list(train_set)
     validation_set = util_functions.flatten_list(validation_set)
     test_set = util_functions.flatten_list(test_set)
-
-    for _set in [train_set, validation_set, test_set]:
-        util_functions.random_seed_shuffle(seed=int(RANDOM_SEED * 1.5), og_list=_set)
 
     return train_set, validation_set, test_set, util_functions.flatten_list(test_set)
 
