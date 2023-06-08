@@ -88,10 +88,10 @@ def get_splitted_dataset() -> tuple:
 
     excel_data = util_functions.read_excel_file(path=DATA_FILE_PATH, format_key=True)
     util_functions.random_seed_shuffle(seed=RANDOM_SEED, og_list=excel_data)
-    distributed_desc_list = _even_out_pm_desc(excel_data)
+    distributed_desc_list = _even_out_similarities(excel_data)
 
     for distributed_desc in tqdm(distributed_desc_list):
-        distributed_desc = distributed_desc[GROUPED_DATA_KEY_NAME]
+        # distributed_desc = distributed_desc[GROUPED_DATA_KEY_NAME]
         util_functions.random_seed_shuffle(seed=int(RANDOM_SEED * 1.5), og_list=distributed_desc)
 
         num_trains = int(len(distributed_desc) * TRAIN_RATIO)
@@ -138,6 +138,8 @@ def get_data_loaders(train_set: list, validation_set: list, test_set: list) -> t
 
 def main():
     train_set, val_test, test_set = get_splitted_dataset()
+    print(len(train_set))
+    print(len(test_set))
     train_loader, validation_loader, test_loader = get_data_loaders(train_set, val_test, test_set)
     # samples_not_used_for_training = util_functions.read_from_json_file(SAVED_UNTRAINED_SAMPLE_IDX_LOCATION)
     # samples_used_for_training = util_functions.read_from_json_file(SAVED_TRAINED_SAMPLE_IDX_LOCATION)
