@@ -11,12 +11,11 @@ class SentenceSimilarityModel(nn.Module):
         self.model = BertModel.from_pretrained(PRETRAINED_MODEL_NAME) if IS_BERT else GPT2Model.from_pretrained(PRETRAINED_MODEL_NAME)
         self.dropout = nn.Dropout(dropout_rate)
         self.fc = nn.Sequential(
-            nn.Linear(self.model.config.hidden_size, 256),
+            nn.Linear(self.model.config.hidden_size, 64),
             nn.LeakyReLU(),
-            nn.Linear(256, 16),
-            nn.LeakyReLU(),
-            nn.Linear(16, 1),
+            nn.Linear(64, 8),
             nn.Sigmoid(),
+            nn.Linear(8, 1),
         )
 
     def forward(self, input_ids, attention_mask, token_type_ids=None):

@@ -104,6 +104,8 @@ def get_splitted_dataset() -> tuple:
     train_set = util_functions.flatten_list(train_set)
     validation_set = util_functions.flatten_list(validation_set)
     test_set = util_functions.flatten_list(test_set)
+    for _set in [train_set, validation_set, test_set]:
+        util_functions.random_seed_shuffle(seed=int(RANDOM_SEED * 1.5), og_list=_set)
 
     return train_set, validation_set, test_set
 
