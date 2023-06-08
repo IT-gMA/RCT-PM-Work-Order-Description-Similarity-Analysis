@@ -5,3 +5,4 @@ util_fucntions/fill_missing_rct_pm_wo_des_data.py
 util_fucntions/add_trade_group_as_context.py
 rcnn_model_trainings/workorder_classifications/work_order_desc_semantic_analysis/wandb
 rcnn_model_trainings/workorder_classifications/pm_harmonisation_classification/wandb
+util_fucntions/format_some_excel.py
