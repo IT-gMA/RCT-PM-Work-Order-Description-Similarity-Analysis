@@ -3,6 +3,8 @@ from configs import *
 from tqdm import tqdm
 from torch.utils.data import DataLoader, Dataset
 import torch
+from itertools import groupby
+from operator import itemgetter
 
 
 class WorkOrderDescriptionSemanticDataset(Dataset):
@@ -69,6 +71,14 @@ def _even_out_similarities(excel_data: list) -> list:
     return [exacts, similars, neutrals]
 
 
+def _even_out_pm_desc(excel_data: list) -> list:
+    util_functions.random_seed_shuffle(seed=int(RANDOM_SEED / 1.5), og_list=excel_data)
+    return [{
+        TEXT1_KEY_NAME: key,
+        'grouped_data': list(value)
+    } for key, value in groupby(sorted(excel_data, key=itemgetter(TEXT2_KEY_NAME)), lambda x: x[TEXT2_KEY_NAME])]
+
+
 def get_splitted_dataset() -> tuple:
     train_set = []
     validation_set = []
@@ -76,7 +86,7 @@ def get_splitted_dataset() -> tuple:
 
     excel_data = util_functions.read_excel_file(path=DATA_FILE_PATH, format_key=True)
     util_functions.random_seed_shuffle(seed=RANDOM_SEED, og_list=excel_data)
-    distributed_desc_list = _even_out_similarities(excel_data)
+    distributed_desc_list = _even_out_pm_desc(excel_data)
 
     for distributed_desc in tqdm(distributed_desc_list):
         num_trains = int(len(distributed_desc) * TRAIN_RATIO)
@@ -86,8 +96,14 @@ def get_splitted_dataset() -> tuple:
         validation_set.append(distributed_desc[num_trains:num_trains + num_vals])
         test_set.append(distributed_desc[num_trains + num_vals:len(distributed_desc)])
 
-    return util_functions.flatten_list(train_set), util_functions.flatten_list(
-        validation_set), util_functions.flatten_list(test_set)
+    train_set = util_functions.flatten_list(train_set)
+    validation_set = util_functions.flatten_list(validation_set)
+    test_set = util_functions.flatten_list(test_set)
+
+    for _set in [train_set, validation_set, test_set]:
+        util_functions.random_seed_shuffle(seed=int(RANDOM_SEED * 1.5), og_list=_set)
+
+    return train_set, validation_set, test_set, util_functions.flatten_list(test_set)
 
 
 def get_data_loaders(train_set: list, validation_set: list, test_set: list) -> tuple:

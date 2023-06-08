@@ -14,3 +14,4 @@ def cal_mae(y_true, y_pred) -> Tensor:
     # Calculate Mean Absolute Error
     mae = nn.L1Loss()
     return mae(y_true, y_pred).item()
+
