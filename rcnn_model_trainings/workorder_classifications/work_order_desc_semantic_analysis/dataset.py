@@ -105,7 +105,7 @@ def get_splitted_dataset() -> tuple:
     validation_set = util_functions.flatten_list(validation_set)
     test_set = util_functions.flatten_list(test_set)
 
-    return train_set, validation_set, test_set, util_functions.flatten_list(test_set)
+    return train_set, validation_set, test_set
 
 
 def get_data_loaders(train_set: list, validation_set: list, test_set: list) -> tuple:
