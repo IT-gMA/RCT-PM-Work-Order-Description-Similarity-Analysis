@@ -2,8 +2,8 @@ import torch
 from torch import nn, optim
 from transformers import GPT2TokenizerFast, GPT2Tokenizer, BertTokenizer
 from util_fucntions import util_functions
-from lightning.pytorch.trainer import Trainer
-from lightning.pytorch.callbacks.early_stopping import EarlyStopping
+#from lightning.pytorch.trainer import Trainer
+#from lightning.pytorch.callbacks.early_stopping import EarlyStopping
 
 MODEL_ITERATION = 0
 
@@ -33,8 +33,8 @@ WEIGHT_DECAY = .0001
 SCHEDULED = True
 PATIENCE = 4
 DROPOUT = 0.1
-EARLY_STOPPING_CALLBACK = EarlyStopping(monitor="val_mae", patience=PATIENCE, mode="min")
-MY_TRAINER = Trainer(callbacks=[EARLY_STOPPING_CALLBACK])
+#EARLY_STOPPING_CALLBACK = EarlyStopping(monitor="val_mae", patience=PATIENCE, mode="min")
+#MY_TRAINER = Trainer(callbacks=[EARLY_STOPPING_CALLBACK])
 
 # Model config
 HIDDEN_LAYER_SIZE = 16

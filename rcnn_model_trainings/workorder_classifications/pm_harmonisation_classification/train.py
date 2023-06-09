@@ -20,6 +20,7 @@ def wandb_running_log(loss, accuracy, precision, recall, f1_macro, f1_micro, sta
 
 
 def write_training_config(num_trains: int, num_vals: int, num_tests: int, classes: list):
+    all_classes_to_str = ', '.join(classes)
     _min_lr_stmt = f'Min learning rate {MIN_LEARNING_RATE}\n' if MIN_LEARNING_RATE > 0 else ''
     _saved_log = f"\t{util_functions.get_formatted_today_str(twelve_h=True)}\n" \
                  f"Dataset directory: {DATA_FILE_PATH}\nScheduled Learning: {SCHEDULED}\nLearning rate: {INIT_LEARNING_RATE}\n{_min_lr_stmt}" \
@@ -30,7 +31,7 @@ def write_training_config(num_trains: int, num_vals: int, num_tests: int, classe
                  f"Train batch size: {TRAIN_BATCH_SIZE}\nValidation batch size: {VAL_BATCH_SIZE}\n" \
                  f"Max length token: {MAX_LENGTH_TOKEN}\nModel name: {PRETRAINED_MODEL_NAME}\n" \
                  f"Running log location: {RUNNING_LOG_LOCATION}\nModel location: {SAVED_MODEL_LOCATION}" \
-                 f"{len(classes)} of Class{'es' if len(classes) > 1 else ''}:{classes}" \
+                 f"{len(classes)} of Class{'es' if len(classes) > 1 else ''}:{all_classes_to_str}" \
                  f"\n_______________________________________________________________________________________\n"
     util_functions.save_running_logs(_saved_log, RUNNING_LOG_LOCATION)
 
