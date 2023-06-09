@@ -8,10 +8,13 @@ from operator import itemgetter
 
 
 class TextClassificationDataset(Dataset):
-    def __init__(self, data, tokenizer, max_length):
+    def __init__(self, data, tokenizer, max_length, classes: list):
         self.data = data
         self.tokenizer = tokenizer
         self.max_length = max_length
+        self.classes = classes
+        self.num_classes = len(classes)
+        self.label_to_index = {label: index for index, label in enumerate(classes)}
 
     def __len__(self):
         return len(self.data)
@@ -38,6 +41,12 @@ class TextClassificationDataset(Dataset):
             'attention_mask': attention_mask,
             'harmonised_desc': label_text
         }
+
+    def get_label_index(self, labels: list):
+        return torch.tensor([self.label_to_index[label] for label in labels]).to(DEVICE)
+
+    def get_num_classes(self) -> int:
+        return self.num_classes
 
 
 def _even_out_labels(excel_data: list) -> list:
@@ -75,24 +84,24 @@ def get_splitted_dataset() -> tuple:
     return train_set, validation_set, test_set, sorted([data['grouped_label'] for data in grouped_by_label_datas])
 
 
-def get_data_loaders(train_set: list, validation_set: list, test_set: list) -> tuple:
+def get_data_loaders(train_set: list, validation_set: list, test_set: list, classes: list) -> tuple:
     samples_used_for_training = [data[SAMPLE_IDX_CODE_NAME] for data in train_set]
     util_functions.write_to_json_file(samples_used_for_training, SAVED_TRAINED_SAMPLE_IDX_LOCATION)
 
     train_loader = DataLoader(
-        dataset=TextClassificationDataset(train_set, MODEL_TOKENIZER, MAX_LENGTH_TOKEN),
+        dataset=TextClassificationDataset(train_set, MODEL_TOKENIZER, MAX_LENGTH_TOKEN, classes),
         batch_size=TRAIN_BATCH_SIZE,
         num_workers=NUM_WORKERS
     )
 
     validation_loader = DataLoader(
-        dataset=TextClassificationDataset(validation_set, MODEL_TOKENIZER, MAX_LENGTH_TOKEN),
+        dataset=TextClassificationDataset(validation_set, MODEL_TOKENIZER, MAX_LENGTH_TOKEN, classes),
         batch_size=VAL_BATCH_SIZE,
         num_workers=NUM_WORKERS
     )
 
     test_loader = DataLoader(
-        dataset=TextClassificationDataset(test_set, MODEL_TOKENIZER, MAX_LENGTH_TOKEN),
+        dataset=TextClassificationDataset(test_set, MODEL_TOKENIZER, MAX_LENGTH_TOKEN, classes),
         batch_size=VAL_BATCH_SIZE,
         num_workers=NUM_WORKERS
     )
@@ -101,7 +110,7 @@ def get_data_loaders(train_set: list, validation_set: list, test_set: list) -> t
 
 def main():
     train_set, val_test, test_set, classes = get_splitted_dataset()
-    train_loader, validation_loader, test_loader = get_data_loaders(train_set, val_test, test_set)
+    train_loader, validation_loader, test_loader = get_data_loaders(train_set, val_test, test_set, classes)
     # samples_not_used_for_training = util_functions.read_from_json_file(SAVED_UNTRAINED_SAMPLE_IDX_LOCATION)
     # samples_used_for_training = util_functions.read_from_json_file(SAVED_TRAINED_SAMPLE_IDX_LOCATION)
     # print(f'there are {len(samples_used_for_training)} used for training:\n{samples_used_for_training}')

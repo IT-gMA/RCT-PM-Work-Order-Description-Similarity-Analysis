@@ -50,9 +50,7 @@ def model_param_tweaking(model) -> tuple:
 
 
 def _get_forward_pass(batch, model):
-    return model(batch['input_ids'].to(DEVICE), batch['attention_mask'].to(DEVICE),
-                 batch['token_type_ids'].to(DEVICE)) if IS_BERT else model(batch['input_ids'].to(DEVICE),
-                                                                           batch['attention_mask'].to(DEVICE))
+    return model(batch['input_ids'].to(DEVICE), batch['attention_mask'].to(DEVICE))
 
 
 def run_model(dataloader, model, loss_func, optimiser, is_train=True) -> tuple:
@@ -65,7 +63,7 @@ def run_model(dataloader, model, loss_func, optimiser, is_train=True) -> tuple:
     model.train() if is_train else model.eval()
 
     for batch in dataloader:
-        true_labels = batch[LABEL_KEY_NAME].to(DEVICE)  # actual similarity scores
+        true_labels = dataloader.dataset.get_label_index(batch[LABEL_KEY_NAME])
         if len(true_labels.shape) > 1:
             true_labels = true_labels.squeeze()
 
@@ -154,7 +152,7 @@ def test(test_dataloader, model, loss_func):
 
 def main():
     train_set, val_set, test_set, _classes = get_splitted_dataset()
-    train_loader, validation_loader, test_loader = get_data_loaders(train_set, val_set, test_set)
+    train_loader, validation_loader, test_loader = get_data_loaders(train_set, val_set, test_set, _classes)
     model = TextClassification(num_classes=len(_classes)).to(DEVICE)
     best_model = copy.deepcopy(model)
     # MY_TRAINER.fit(model)
