@@ -12,12 +12,11 @@ class TextClassification(nn.Module):
         self.model = BertModel.from_pretrained(PRETRAINED_MODEL_NAME) if IS_BERT else GPT2Model.from_pretrained(PRETRAINED_MODEL_NAME)
         self.dropout = nn.Dropout(dropout_rate)
         self.fc = nn.Sequential(
-            nn.Linear(self.model.config.hidden_size, num_classes),
-            # nn.LeakyReLU(),
-            # nn.Linear(256, 16),
+            nn.Linear(self.model.config.hidden_size, 256),
+            nn.LeakyReLU(),
+            nn.Linear(256, num_classes),
             # nn.LeakyReLU(),
             # nn.Linear(16, 1),
-            nn.Sigmoid()
         )
 
     def forward(self, input_ids, attention_mask):
