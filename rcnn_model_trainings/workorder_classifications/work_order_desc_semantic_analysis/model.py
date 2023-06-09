@@ -22,9 +22,8 @@ class SentenceSimilarityModel(nn.Module):
         outputs = self.model(input_ids=input_ids, attention_mask=attention_mask, token_type_ids=token_type_ids) if IS_BERT else self.model(input_ids=input_ids, attention_mask=attention_mask)
         pooled_output = outputs.pooler_output
         pooled_output = self.dropout(pooled_output)  # Apply dropout
-        similarity_score = self.fc(pooled_output)
 
-        return similarity_score
+        return self.fc(pooled_output)
 
     def validation_step(self, val_mae):
         self.log('val_mae', val_mae)

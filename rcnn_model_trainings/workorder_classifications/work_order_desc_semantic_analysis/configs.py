@@ -5,7 +5,7 @@ from util_fucntions import util_functions
 from lightning.pytorch.trainer import Trainer
 from lightning.pytorch.callbacks.early_stopping import EarlyStopping
 
-MODEL_ITERATION = 6
+MODEL_ITERATION = 7
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "mps")
 print(f'Running on {DEVICE}')
