@@ -26,7 +26,7 @@ if PADDING_TOKEN is not None:
     MODEL_TOKENIZER.add_special_tokens({'pad_token': PADDING_TOKEN})
     padding_token_id = MODEL_TOKENIZER.encode(PADDING_TOKEN)[0]
 
-MAX_LENGTH_TOKEN = 128
+MAX_LENGTH_TOKEN = 160
 
 MSE_REDUCTION = 'mean'
 WEIGHT_DECAY = .0001
