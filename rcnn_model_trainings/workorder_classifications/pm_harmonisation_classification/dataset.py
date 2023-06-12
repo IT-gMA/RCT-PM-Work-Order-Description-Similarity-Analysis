@@ -101,8 +101,8 @@ def get_splitted_dataset() -> tuple:
 
 
 def get_data_loaders(train_set: list, validation_set: list, test_set: list, classes: list) -> tuple:
-    # samples_used_for_training = [data[SAMPLE_IDX_CODE_NAME] for data in train_set]
-    # util_functions.write_to_json_file(samples_used_for_training, SAVED_TRAINED_SAMPLE_IDX_LOCATION)
+    samples_used_for_training = [data[SAMPLE_IDX_CODE_NAME] for data in train_set]
+    util_functions.write_to_json_file(samples_used_for_training, SAVED_TRAINED_SAMPLE_IDX_LOCATION)
 
     train_loader = DataLoader(
         dataset=TextClassificationDataset(train_set, MODEL_TOKENIZER, MAX_LENGTH_TOKEN, classes),

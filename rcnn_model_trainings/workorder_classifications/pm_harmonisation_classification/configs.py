@@ -26,7 +26,7 @@ if PADDING_TOKEN is not None:
     MODEL_TOKENIZER.add_special_tokens({'pad_token': PADDING_TOKEN})
     padding_token_id = MODEL_TOKENIZER.encode(PADDING_TOKEN)[0]
 
-MAX_LENGTH_TOKEN = 256
+MAX_LENGTH_TOKEN = 128
 
 MSE_REDUCTION = 'mean'
 WEIGHT_DECAY = .0001
@@ -43,7 +43,7 @@ NUM_WORKERS = 0
 NUM_EPOCHS = 4000
 VAL_EPOCH = 20
 SAVED_EPOCH = 400
-TRAIN_BATCH_SIZE = 18
+TRAIN_BATCH_SIZE = 32
 VAL_BATCH_SIZE = 4
 
 RANDOM_SEED = 10
@@ -64,4 +64,5 @@ SAVED_TRAINED_SAMPLE_IDX_LOCATION = f'saved_trained_wos/bert_based_uncased/runni
 STATIC_CLASS_LABEL_FILE_LOCATION = 'static_classes.json'
 STATIC_CLASS_IDX_KEY_NAME = 'class_idx'
 STATIC_CLASS_LABEL_KEY_NAME = 'class_label'
+STATIC_ENUMERATED_CLASS_DATA_NAME = 'enumerated_class_data'
 
