@@ -17,7 +17,7 @@ def wandb_running_log(loss, mae, rmse, state="Train"):
     wandb.log({f'{state}/loss': loss, f'{state}/rmse': rmse, f'{state}/mae': mae})
 
 
-def write_training_config(num_trains: int, num_vals: int, num_tests: int):
+def write_training_config(num_trains: int, num_vals: int, num_tests: int, model: SentenceSimilarityModel):
     _min_lr_stmt = f'Min learning rate {MIN_LEARNING_RATE}\n' if MIN_LEARNING_RATE > 0 else ''
     _saved_log = f"\t{util_functions.get_formatted_today_str(twelve_h=True)}\n" \
                  f"Dataset directory: {DATA_FILE_PATH}\nScheduled Learning: {SCHEDULED}\nLearning rate: {INIT_LEARNING_RATE}\n{_min_lr_stmt}" \
@@ -28,6 +28,7 @@ def write_training_config(num_trains: int, num_vals: int, num_tests: int):
                  f"Train batch size: {TRAIN_BATCH_SIZE}\nValidation batch size: {VAL_BATCH_SIZE}\n" \
                  f"Max length token: {MAX_LENGTH_TOKEN}\nModel name: {PRETRAINED_MODEL_NAME}\n" \
                  f"Running log location: {RUNNING_LOG_LOCATION}\nModel location: {SAVED_MODEL_LOCATION}" \
+                 f"Model's Full Connect Layer Structure:{model.fc}\n" \
                  f"\n_______________________________________________________________________________________\n"
     util_functions.save_running_logs(_saved_log, RUNNING_LOG_LOCATION)
 
@@ -127,16 +128,16 @@ def test(test_dataloader, model, loss_func):
 
 
 def main():
+    train_set, val_set, test_set = get_splitted_dataset()
+    train_loader, validation_loader, test_loader = get_data_loaders(train_set, val_set, test_set)
+
     model = SentenceSimilarityModel().to(DEVICE)
     best_model = copy.deepcopy(model)
     #MY_TRAINER.fit(model)
-
     loss_func, optimiser, lr_scheduler = model_param_tweaking(model)
-    train_set, val_set, test_set = get_splitted_dataset()
-    train_loader, validation_loader, test_loader = get_data_loaders(train_set, val_set, test_set)
     best_mae = 10
 
-    write_training_config(len(train_set), len(val_set), len(test_set))
+    write_training_config(len(train_set), len(val_set), len(test_set), model)
     for epoch in range(NUM_EPOCHS):
         wandb.log({'Train/lr': get_learning_rate(optimiser)})
 
