@@ -75,8 +75,8 @@ def run_model(dataloader, model, loss_func, optimiser, is_train=True) -> tuple:
             predicted_labels = predicted_labels.squeeze()'''
 
         # Compute the loss
-        print(f'actuals: {true_labels}')
-        print(f'predicted: {predicted_label_probs}')
+        # print(f'actuals: {true_labels}')
+        # print(f'predicted: {predicted_label_probs}')
         loss = F.cross_entropy(predicted_label_probs, true_labels)
         if DEVICE == 'mps':
             loss = loss.type(torch.float32)
