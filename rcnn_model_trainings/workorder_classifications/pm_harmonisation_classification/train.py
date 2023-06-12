@@ -104,8 +104,9 @@ def train(train_dataloader, model, loss_func, optimiser, epoch: int) -> tuple:
     avg_loss, avg_accuracy, avg_recall, avg_precision, avg_f1_macro, avg_f1_micro = run_model(
         dataloader=train_dataloader, model=model, loss_func=loss_func,
         optimiser=optimiser)
+    print('\n')
     util_functions.save_running_logs(
-        f'\nEpoch [{epoch + 1}/{NUM_EPOCHS}] Average train Loss: {avg_loss:.4f}\tAverage Accuracy: {round(avg_accuracy * 100, 2)}%\tAverage Precision: {avg_precision:.4f}\t'
+        f'Epoch [{epoch + 1}/{NUM_EPOCHS}] Average train Loss: {avg_loss:.4f}\tAverage Accuracy: {round(avg_accuracy * 100, 2)}%\tAverage Precision: {avg_precision:.4f}\t'
         f'Average Recall: {avg_recall:.4f}\tAverage F1 Macro: {avg_f1_macro:.4f}\tAverage F1 Micro: {avg_f1_micro:.4f}\t'
         f'Learning rate: {get_learning_rate(optimiser)}',
         RUNNING_LOG_LOCATION)
@@ -119,8 +120,9 @@ def validate(val_dataloader, model, loss_func, optimiser, epoch: int) -> tuple:
         avg_loss, avg_accuracy, avg_recall, avg_precision, avg_f1_macro, avg_f1_micro = run_model(
             dataloader=val_dataloader, model=model, loss_func=loss_func,
             optimiser=optimiser, is_train=False)
+        print('\n')
         util_functions.save_running_logs(
-            f'\nValidation Epoch [{epoch + 1}/{NUM_EPOCHS}] Average Loss: {avg_loss:.4f}\tAverage Accuracy: {round(avg_accuracy * 100, 2)}%\tAverage Precision: {avg_precision:.4f}\t'
+            f'Validation Epoch [{epoch + 1}/{NUM_EPOCHS}] Average Loss: {avg_loss:.4f}\tAverage Accuracy: {round(avg_accuracy * 100, 2)}%\tAverage Precision: {avg_precision:.4f}\t'
             f'Average Recall: {avg_recall:.4f}\tAverage F1 Macro: {avg_f1_macro:.4f}\tAverage F1 Micro: {avg_f1_micro:.4f}\t',
             RUNNING_LOG_LOCATION)
         wandb_running_log(loss=avg_loss, accuracy=avg_accuracy, precision=avg_precision, recall=avg_recall,
@@ -144,8 +146,9 @@ def test(test_dataloader, model, loss_func):
         avg_loss, avg_accuracy, avg_recall, avg_precision, avg_f1_macro, avg_f1_micro = run_model(
             dataloader=test_dataloader, model=model, is_train=False,
             loss_func=loss_func, optimiser=None)
+    print('\n')
     util_functions.save_running_logs(
-        f'\nTest --- Average Loss: {avg_loss:.4f}\tAverage Accuracy: {round(avg_accuracy * 100, 2)}%\tAverage Precision: {avg_precision:.4f}\t'
+        f'Test --- Average Loss: {avg_loss:.4f}\tAverage Accuracy: {round(avg_accuracy * 100, 2)}%\tAverage Precision: {avg_precision:.4f}\t'
         f'Average Recall: {avg_recall:.4f}\tAverage F1 Macro: {avg_f1_macro:.4f}\tAverage F1 Micro: {avg_f1_micro:.4f}\t',
         RUNNING_LOG_LOCATION)
     wandb_running_log(loss=avg_loss, accuracy=avg_accuracy, precision=avg_precision, recall=avg_recall,
