@@ -36,6 +36,8 @@ class TextClassificationDataset(Dataset):
         input_ids = encoding['input_ids'].squeeze()
         attention_mask = encoding['attention_mask'].squeeze()
 
+        # print(f'maximo desc: {input_text}\tlabel text: {label_text}')
+
         return {
             'input_ids': input_ids,
             'attention_mask': attention_mask,
@@ -45,8 +47,19 @@ class TextClassificationDataset(Dataset):
     def get_label_index(self, labels: list):
         return torch.tensor([self.label_to_index[label] for label in labels]).to(DEVICE)
 
+    def get_label_strings(self, index_tensors) -> list:
+        if DEVICE != 'cuda':
+            index_tensors = index_tensors.cpu()
+        return [self.label_to_index[idx.item()] for idx in index_tensors]
+
     def get_num_classes(self) -> int:
         return self.num_classes
+
+    def format_label_to_index(self) -> list:
+        return [{'idx': idx, 'label': label} for label, idx in self.label_to_index.items()]
+
+    def format_label_indexes(self, label_indexes: list) -> list:
+        return [{'idx': idx, 'label': label.item()} for idx, label in label_indexes]
 
 
 def _even_out_labels(excel_data: list) -> list:

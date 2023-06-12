@@ -36,7 +36,7 @@ def cal_recall(y_true, y_pred) -> float:
 
 def cal_f1_scores(y_true, y_pred, num_classes) -> dict:
     return {
-        'micro': torchmetrics.functional.f1_score(_to_torch_tensor(y_pred), _to_torch_tensor(y_true), num_classes=num_classes, average='mirco').item(),
+        'micro': torchmetrics.functional.f1_score(_to_torch_tensor(y_pred), _to_torch_tensor(y_true), num_classes=num_classes, average='micro').item(),
         'macro': torchmetrics.functional.f1_score(_to_torch_tensor(y_pred), _to_torch_tensor(y_true),
                                                   num_classes=num_classes, average='macro').item(),
     }

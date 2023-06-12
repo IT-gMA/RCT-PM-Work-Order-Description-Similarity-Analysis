@@ -7,6 +7,7 @@ from util_fucntions import util_functions
 from metrics import *
 import copy
 from transformers import AdamW
+from tqdm import tqdm
 
 
 def get_learning_rate(optimiser):
@@ -30,7 +31,7 @@ def write_training_config(num_trains: int, num_vals: int, num_tests: int, classe
                  f"Number of train - validation - test samples: {num_trains} - {num_vals} - {num_tests}\n" \
                  f"Train batch size: {TRAIN_BATCH_SIZE}\nValidation batch size: {VAL_BATCH_SIZE}\n" \
                  f"Max length token: {MAX_LENGTH_TOKEN}\nModel name: {PRETRAINED_MODEL_NAME}\n" \
-                 f"Running log location: {RUNNING_LOG_LOCATION}\nModel location: {SAVED_MODEL_LOCATION}" \
+                 f"Running log location: {RUNNING_LOG_LOCATION}\nModel location: {SAVED_MODEL_LOCATION}\n" \
                  f"{len(classes)} of Class{'es' if len(classes) > 1 else ''}:{all_classes_to_str}" \
                  f"\n_______________________________________________________________________________________\n"
     util_functions.save_running_logs(_saved_log, RUNNING_LOG_LOCATION)
@@ -62,19 +63,19 @@ def run_model(dataloader, model, loss_func, optimiser, is_train=True) -> tuple:
     total_f1_micro = 0
     model.train() if is_train else model.eval()
 
-    for batch in dataloader:
+    for batch in tqdm(dataloader):
         true_labels = dataloader.dataset.get_label_index(batch[LABEL_KEY_NAME])
-        if len(true_labels.shape) > 1:
-            true_labels = true_labels.squeeze()
-
         # Forward pass
         predicted_labels = _get_forward_pass(batch, model)
 
-        if len(predicted_labels.shape) > 1:
-            predicted_labels = predicted_labels.squeeze()
+        '''if len(predicted_labels.shape) != len(true_labels.shape):
+            true_labels = true_labels.squeeze()
+            predicted_labels = predicted_labels.squeeze()'''
 
         # Compute the loss
-        loss = loss_func(true_labels, predicted_labels)
+        # print(f'actuals: {true_labels}')
+        # print(len(predicted_labels.shape))
+        loss = loss_func(predicted_labels, true_labels)
         if DEVICE == 'mps':
             loss = loss.type(torch.float32)
 
@@ -86,6 +87,8 @@ def run_model(dataloader, model, loss_func, optimiser, is_train=True) -> tuple:
 
         # Accumulate the epoch loss
         total_loss += loss.item()
+        _, predicted_labels = torch.max(predicted_labels, 1)
+        # print(f'predicteds: {predicted_labels}')
         total_accuracy += cal_accuracy(true_labels, predicted_labels)
         total_recall += cal_recall(true_labels, predicted_labels)
         total_precision += cal_precision(true_labels, predicted_labels)
@@ -93,9 +96,8 @@ def run_model(dataloader, model, loss_func, optimiser, is_train=True) -> tuple:
         total_f1_macro += f1_scores['macro']
         total_f1_macro += f1_scores['micro']
 
-    return total_loss / len(dataloader), total_accuracy / len(dataloader), total_recall / len(
-        dataloader), total_precision / len(dataloader), total_f1_macro / len(dataloader), total_f1_micro / len(
-        dataloader)
+    return tuple([score / len(dataloader) for score in
+                 [total_loss, total_accuracy, total_recall, total_precision, total_f1_macro, total_f1_micro]])
 
 
 def train(train_dataloader, model, loss_func, optimiser, epoch: int) -> tuple:
@@ -161,6 +163,10 @@ def main():
     best_accuracy = 0
 
     write_training_config(len(train_set), len(val_set), len(test_set), _classes)
+    # print('label to idx:')
+    # for label_to_idx in test_loader.dataset.format_label_to_index():
+    #    print(label_to_idx)
+
     for epoch in range(NUM_EPOCHS):
         wandb.log({'Train/lr': get_learning_rate(optimiser)})
 

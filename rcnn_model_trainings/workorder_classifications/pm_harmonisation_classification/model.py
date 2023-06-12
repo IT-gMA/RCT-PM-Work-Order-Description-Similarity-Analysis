@@ -3,6 +3,7 @@ import torch
 from torch import nn, optim
 from transformers import BertModel, GPT2Model
 from util_fucntions import util_functions
+import torch.nn.functional as F
 
 
 class TextClassification(nn.Module):
@@ -12,18 +13,15 @@ class TextClassification(nn.Module):
         self.model = BertModel.from_pretrained(PRETRAINED_MODEL_NAME) if IS_BERT else GPT2Model.from_pretrained(PRETRAINED_MODEL_NAME)
         self.dropout = nn.Dropout(dropout_rate)
         self.fc = nn.Sequential(
-            nn.Linear(self.model.config.hidden_size, 256),
-            nn.LeakyReLU(),
-            nn.Linear(256, num_classes),
-            # nn.LeakyReLU(),
-            # nn.Linear(16, 1),
+            nn.Linear(self.model.config.hidden_size, num_classes),
         )
 
     def forward(self, input_ids, attention_mask):
         outputs = self.model(input_ids=input_ids, attention_mask=attention_mask)
         pooled_output = outputs.pooler_output
         pooled_output = self.dropout(pooled_output)  # Apply dropout
-        return self.fc(pooled_output)
+        logits = self.fc(pooled_output)
+        return F.softmax(logits, dim=1)
 
     def get_num_classes(self) -> int:
         return self.num_classes
