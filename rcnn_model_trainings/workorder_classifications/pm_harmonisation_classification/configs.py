@@ -5,11 +5,11 @@ from util_fucntions import util_functions
 #from lightning.pytorch.trainer import Trainer
 #from lightning.pytorch.callbacks.early_stopping import EarlyStopping
 
-MODEL_ITERATION = 0
+MODEL_ITERATION = 1
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "mps")
 print(f'Running on {DEVICE}')
-INIT_LEARNING_RATE = 2e-4
+INIT_LEARNING_RATE = 1e-4
 MIN_LEARNING_RATE = 1e-6
 
 LABEL_KEY_NAME = 'harmonised_desc'
@@ -26,7 +26,7 @@ if PADDING_TOKEN is not None:
     MODEL_TOKENIZER.add_special_tokens({'pad_token': PADDING_TOKEN})
     padding_token_id = MODEL_TOKENIZER.encode(PADDING_TOKEN)[0]
 
-MAX_LENGTH_TOKEN = 160
+MAX_LENGTH_TOKEN = 256
 
 MSE_REDUCTION = 'mean'
 WEIGHT_DECAY = .0001
@@ -43,7 +43,7 @@ NUM_WORKERS = 0
 NUM_EPOCHS = 4000
 VAL_EPOCH = 20
 SAVED_EPOCH = 400
-TRAIN_BATCH_SIZE = 32
+TRAIN_BATCH_SIZE = 18
 VAL_BATCH_SIZE = 4
 
 RANDOM_SEED = 10
