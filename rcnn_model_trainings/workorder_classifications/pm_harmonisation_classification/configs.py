@@ -47,8 +47,8 @@ TRAIN_BATCH_SIZE = 32
 VAL_BATCH_SIZE = 4
 
 RANDOM_SEED = 10
-TRAIN_RATIO = .65
-VALIDATION_RATIO = .2
+TRAIN_RATIO = .7
+VALIDATION_RATIO = .15
 TEST_RATIO = .15
 DATA_FILE_PATH = '../../../xlsx_resources/for_trainings/maximo_pm_to_gap_pm_desc_map.xlsx'
 
