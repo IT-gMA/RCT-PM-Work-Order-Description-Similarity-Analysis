@@ -32,7 +32,7 @@ def write_training_config(num_trains: int, num_vals: int, num_tests: int, classe
                  f"Train batch size: {TRAIN_BATCH_SIZE}\nValidation batch size: {VAL_BATCH_SIZE}\n" \
                  f"Max length token: {MAX_LENGTH_TOKEN}\nModel name: {PRETRAINED_MODEL_NAME}\n" \
                  f"Running log location: {RUNNING_LOG_LOCATION}\nModel location: {SAVED_MODEL_LOCATION}\n" \
-                 f"{len(classes)} of Class{'es' if len(classes) > 1 else ''}:{all_classes_to_str}" \
+                 f"{len(classes)} Class{'es' if len(classes) > 1 else ''}: {all_classes_to_str}" \
                  f"\n_______________________________________________________________________________________\n"
     util_functions.save_running_logs(_saved_log, RUNNING_LOG_LOCATION)
 
@@ -155,7 +155,9 @@ def test(test_dataloader, model, loss_func):
 def main():
     train_set, val_set, test_set, _classes = get_splitted_dataset()
     train_loader, validation_loader, test_loader = get_data_loaders(train_set, val_set, test_set, _classes)
-    model = TextClassification(num_classes=len(_classes)).to(DEVICE)
+
+    static_classes = train_loader.dataset.classes
+    model = TextClassification(num_classes=len(static_classes)).to(DEVICE)
     best_model = copy.deepcopy(model)
     # MY_TRAINER.fit(model)
 
