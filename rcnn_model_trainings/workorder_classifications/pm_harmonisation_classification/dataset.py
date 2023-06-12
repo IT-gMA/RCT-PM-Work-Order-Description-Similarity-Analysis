@@ -7,14 +7,20 @@ from itertools import groupby
 from operator import itemgetter
 
 
+def format_label_indexes(label_indexes: list) -> list:
+    return [{'idx': idx, 'label': label.item()} for idx, label in label_indexes]
+
+
 class TextClassificationDataset(Dataset):
     def __init__(self, data, tokenizer, max_length, classes: list):
         self.data = data
         self.tokenizer = tokenizer
         self.max_length = max_length
-        self.classes = classes
-        self.num_classes = len(classes)
-        self.label_to_index = {label: index for index, label in enumerate(classes)}
+
+        json_class_data = get_static_classes_data()
+        self.classes = json_class_data[STATIC_CLASS_LABEL_KEY_NAME]
+        self.num_classes = len(self.classes)
+        self.label_to_index = json_class_data[STATIC_ENUMERATED_CLASS_DATA_NAME]
 
     def __len__(self):
         return len(self.data)
@@ -58,9 +64,6 @@ class TextClassificationDataset(Dataset):
     def format_label_to_index(self) -> list:
         return [{'idx': idx, 'label': label} for label, idx in self.label_to_index.items()]
 
-    def format_label_indexes(self, label_indexes: list) -> list:
-        return [{'idx': idx, 'label': label.item()} for idx, label in label_indexes]
-
 
 def _even_out_labels(excel_data: list) -> list:
     util_functions.random_seed_shuffle(seed=int(RANDOM_SEED / 1.5), og_list=excel_data)
@@ -98,8 +101,8 @@ def get_splitted_dataset() -> tuple:
 
 
 def get_data_loaders(train_set: list, validation_set: list, test_set: list, classes: list) -> tuple:
-    samples_used_for_training = [data[SAMPLE_IDX_CODE_NAME] for data in train_set]
-    util_functions.write_to_json_file(samples_used_for_training, SAVED_TRAINED_SAMPLE_IDX_LOCATION)
+    # samples_used_for_training = [data[SAMPLE_IDX_CODE_NAME] for data in train_set]
+    # util_functions.write_to_json_file(samples_used_for_training, SAVED_TRAINED_SAMPLE_IDX_LOCATION)
 
     train_loader = DataLoader(
         dataset=TextClassificationDataset(train_set, MODEL_TOKENIZER, MAX_LENGTH_TOKEN, classes),
@@ -119,6 +122,40 @@ def get_data_loaders(train_set: list, validation_set: list, test_set: list, clas
         num_workers=NUM_WORKERS
     )
     return train_loader, validation_loader, test_loader
+
+
+def _write_enumerated_classes_to_json(classes: list):
+    classes.sort()
+    classes = [{STATIC_CLASS_IDX_KEY_NAME: index,
+                STATIC_CLASS_LABEL_KEY_NAME: label} for index, label in enumerate(classes)]
+    for data in classes:
+        print(data)
+    util_functions.write_to_json_file(data_list=classes, file_path=STATIC_CLASS_LABEL_FILE_LOCATION)
+
+
+def _read_static_json_classes():
+    class_json_data = util_functions.read_from_json_file(STATIC_CLASS_LABEL_FILE_LOCATION)
+    for data in class_json_data:
+        print(data)
+
+
+def get_enumerated_class_idx() -> list:
+    return sorted([data[STATIC_CLASS_IDX_KEY_NAME] for data in
+                   util_functions.read_from_json_file(STATIC_CLASS_LABEL_FILE_LOCATION)])
+
+
+def get_static_class_labels() -> list:
+    return [data[STATIC_CLASS_LABEL_KEY_NAME] for data in
+            sorted(util_functions.read_from_json_file(STATIC_CLASS_LABEL_FILE_LOCATION),
+                   key=itemgetter(STATIC_CLASS_IDX_KEY_NAME))]
+
+
+def get_static_classes_data() -> dict:
+    json_class_data = sorted(util_functions.read_from_json_file(STATIC_CLASS_LABEL_FILE_LOCATION),
+                             key=itemgetter(STATIC_CLASS_IDX_KEY_NAME))
+    return {STATIC_ENUMERATED_CLASS_DATA_NAME: util_functions.list_of_dicts_to_single_dict(list_of_dicts=json_class_data, key_name=STATIC_CLASS_LABEL_KEY_NAME, value_name=STATIC_CLASS_IDX_KEY_NAME),
+            STATIC_CLASS_IDX_KEY_NAME: [data[STATIC_CLASS_IDX_KEY_NAME] for data in json_class_data],
+            STATIC_CLASS_LABEL_KEY_NAME: [data[STATIC_CLASS_LABEL_KEY_NAME] for data in json_class_data], }
 
 
 def main():

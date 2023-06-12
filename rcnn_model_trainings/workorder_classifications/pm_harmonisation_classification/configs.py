@@ -59,3 +59,9 @@ SAVED_MODEL_FORMAT = '.pt'
 
 SAVED_UNTRAINED_SAMPLE_IDX_LOCATION = f'saved_untrained_wos/bert_based_uncased/running_iteration_{MODEL_ITERATION}.json'
 SAVED_TRAINED_SAMPLE_IDX_LOCATION = f'saved_trained_wos/bert_based_uncased/running_iteration_{MODEL_ITERATION}.json'
+
+# Static class label file
+STATIC_CLASS_LABEL_FILE_LOCATION = 'static_classes.json'
+STATIC_CLASS_IDX_KEY_NAME = 'class_idx'
+STATIC_CLASS_LABEL_KEY_NAME = 'class_label'
+
