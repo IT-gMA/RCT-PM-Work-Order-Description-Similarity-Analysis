@@ -195,9 +195,9 @@ def save_running_logs(info: str, saved_path: str):
 
 def save_model(model, saved_location: str, optimiser, final=False, epoch=0, loss=0):
     _save_model_state = {
-            'model_state_dict': model.state_dict(),
-            'optimizer_state_dict': optimiser.state_dict(),
-        }
+        'model_state_dict': model.state_dict(),
+        'optimizer_state_dict': optimiser.state_dict(),
+    }
     if not final:
         _save_model_state = {**_save_model_state, **{
             'epoch': epoch,
@@ -209,3 +209,7 @@ def save_model(model, saved_location: str, optimiser, final=False, epoch=0, loss
 
 def get_formatted_today_str(twelve_h=False):
     return datetime.now().strftime('%I:%M %p %d/%m/%Y' if twelve_h else '%H:%M %d/%m/%Y')
+
+
+def list_of_dicts_to_single_dict(list_of_dicts: list, key_name: str, value_name: str) -> dict:
+    return {data[key_name]: data[value_name] for data in list_of_dicts}
