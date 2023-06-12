@@ -7,3 +7,8 @@ util_fucntions/upload_harmonised_pm_desc_to_dataverse.py
 rcnn_model_trainings/workorder_classifications/work_order_desc_semantic_analysis/wandb
 rcnn_model_trainings/workorder_classifications/pm_harmonisation_classification/wandb
 util_fucntions/format_some_excel.py
+ .idea/Project Skynet Stuff.iml
+ xlsx_resources/.DS_Store
+ xlsx_resources/pfm_wa_report/.contract_workorders_from_nov_2021.xlsx.icloud
+  util_fucntions/__pycache__/util_functions.cpython-38.pyc
+  *.icloud
