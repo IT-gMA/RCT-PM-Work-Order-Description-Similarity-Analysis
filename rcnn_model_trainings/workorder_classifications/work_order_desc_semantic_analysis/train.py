@@ -6,6 +6,7 @@ from dataset import get_splitted_dataset, get_data_loaders
 from util_fucntions import util_functions
 from metrics import cal_rmse, cal_mae
 import copy
+from tqdm import tqdm
 
 
 def get_learning_rate(optimiser):
@@ -56,7 +57,7 @@ def run_model(dataloader, model, loss_func, optimiser, is_train=True) -> tuple:
     total_mae = 0
     model.train() if is_train else model.eval()
 
-    for batch in dataloader:
+    for batch in tqdm(dataloader):
         target_similarity_scores = batch['similarity'].to(DEVICE)  # actual similarity scores
         if len(target_similarity_scores.shape) > 1:
             target_similarity_scores = target_similarity_scores.squeeze()
@@ -83,6 +84,7 @@ def run_model(dataloader, model, loss_func, optimiser, is_train=True) -> tuple:
         total_mae += cal_mae(target_similarity_scores, outputs)
         total_rmse += cal_rmse(target_similarity_scores, outputs)
 
+    print('\n')
     return total_loss / len(dataloader), total_mae / len(dataloader), total_rmse / len(dataloader)
 
 
