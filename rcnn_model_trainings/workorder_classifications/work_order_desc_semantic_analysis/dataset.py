@@ -38,6 +38,7 @@ class WorkOrderDescriptionSemanticDataset(Dataset):
             padding='max_length',
             return_tensors='pt'
         )
+        inputs = inputs.to(DEVICE)
 
         # Convert the similarity score to a torch.Tensor
         similarity = torch.tensor(similarity, dtype=torch.float32)
