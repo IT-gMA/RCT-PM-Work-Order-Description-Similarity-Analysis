@@ -12,3 +12,4 @@ util_fucntions/format_some_excel.py
  xlsx_resources/pfm_wa_report/.contract_workorders_from_nov_2021.xlsx.icloud
   util_fucntions/__pycache__/util_functions.cpython-38.pyc
   *.icloud
+  rcnn_model_trainings/workorder_classifications/work_order_desc_semantic_analysis.py
