@@ -43,6 +43,7 @@ class TextClassificationDataset(Dataset):
             padding='max_length', max_length=self.max_length,
             truncation=True, return_tensors='pt'
         )
+        encoding = encoding.to(DEVICE)
 
         input_ids = encoding['input_ids'].squeeze()
         attention_mask = encoding['attention_mask'].squeeze()
