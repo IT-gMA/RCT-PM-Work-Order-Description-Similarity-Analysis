@@ -41,7 +41,7 @@ def write_training_config(num_trains: int, num_vals: int, num_tests: int, classe
 
 def model_param_tweaking(model) -> tuple:
     loss_func = nn.CrossEntropyLoss()
-    optimiser = AdamW(model.parameters(), lr=INIT_LEARNING_RATE, weight_decay=WEIGHT_DECAY)
+    optimiser = AdamW(model.parameters(), lr=INIT_LEARNING_RATE, weight_decay=WEIGHT_DECAY, epsilon=OPTIMISER_EPSILON)
 
     if MIN_LEARNING_RATE > 0:
         lr_scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimiser, mode='max', factor=.1, patience=PATIENCE,

@@ -9,8 +9,8 @@ MODEL_ITERATION = 1
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "mps")
 print(f'Running on {DEVICE}')
-INIT_LEARNING_RATE = 1e-4
-MIN_LEARNING_RATE = 1e-6
+INIT_LEARNING_RATE = 1e-5
+MIN_LEARNING_RATE = 1e-8
 
 LABEL_KEY_NAME = 'harmonised_desc'
 INPUT_KEY_NAME = 'curr_desc'
@@ -33,6 +33,7 @@ WEIGHT_DECAY = .0001
 SCHEDULED = True
 PATIENCE = 4
 DROPOUT = 0.1
+OPTIMISER_EPSILON = 1e-08
 #EARLY_STOPPING_CALLBACK = EarlyStopping(monitor="val_mae", patience=PATIENCE, mode="min")
 #MY_TRAINER = Trainer(callbacks=[EARLY_STOPPING_CALLBACK])
 
