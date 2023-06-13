@@ -30,13 +30,18 @@ class TextClassificationDataset(Dataset):
         input_text = item[INPUT_KEY_NAME]
         label_text = item[LABEL_KEY_NAME]
 
-        encoding = self.tokenizer.encode_plus(
+        '''encoding = self.tokenizer.encode_plus(
             input_text,
             add_special_tokens=True,
             max_length=self.max_length,
             padding='max_length',
             truncation=True,
             return_tensors='pt'
+        )'''
+        encoding = self.tokenizer(
+            input_text,
+            padding='max_length', max_length=self.max_length,
+            truncation=True, return_tensors='pt'
         )
 
         input_ids = encoding['input_ids'].squeeze()
