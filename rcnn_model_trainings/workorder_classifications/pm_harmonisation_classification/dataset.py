@@ -85,9 +85,11 @@ def get_splitted_dataset() -> tuple:
     validation_set = []
     test_set = []
 
+    print(f"Reading from {len(MULTI_DATA_FILES)} xlsx training dataset file{'s' if len(MULTI_DATA_FILES > 1) else ''}", end=': ')
     grouped_by_label_datas = _even_out_labels(util_functions.flatten_list(
-        [util_functions.read_excel_file(path=data_file_path, format_key=True) for data_file_path in MULTI_DATA_FILES]
+        [util_functions.read_excel_file(path=data_file_path, format_key=True) for data_file_path in tqdm(MULTI_DATA_FILES)]
     ))
+    print('Complete!')
 
     for grouped_by_label_data in tqdm(grouped_by_label_datas):
         grouped_data = grouped_by_label_data['grouped_data']
