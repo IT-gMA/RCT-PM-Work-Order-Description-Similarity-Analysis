@@ -52,6 +52,11 @@ TRAIN_RATIO = .7
 VALIDATION_RATIO = .15
 TEST_RATIO = .15
 DATA_FILE_PATH = '../../../xlsx_resources/for_trainings/maximo_pm_to_gap_pm_desc_map.xlsx'
+MULTI_DATA_FILES = ['../../../xlsx_resources/for_trainings/maximo_pm_to_gap_pm_desc_map_v2.xlsx',
+                    '../../../xlsx_resources/for_trainings/maximo_pm_to_gap_pm_desc_map_v3.xlsx',
+                    '../../../xlsx_resources/for_trainings/maximo_pm_to_gap_pm_desc_map_v4.xlsx',
+                    '../../../xlsx_resources/for_trainings/maximo_pm_to_gap_pm_desc_map_v5.xlsx',
+                    ]
 
 WANDB_PROJECT_NAME = f'Maximo to GAP App harmonised description BERT Base Uncased Model Training Iter{MODEL_ITERATION}'
 RUNNING_LOG_LOCATION = f'saved_logs/bert_based_uncased_run_logs/running_iteration_{MODEL_ITERATION}.txt'

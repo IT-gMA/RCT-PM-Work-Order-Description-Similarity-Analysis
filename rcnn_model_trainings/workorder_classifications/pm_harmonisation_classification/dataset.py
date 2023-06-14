@@ -85,7 +85,9 @@ def get_splitted_dataset() -> tuple:
     validation_set = []
     test_set = []
 
-    grouped_by_label_datas = _even_out_labels(util_functions.read_excel_file(path=DATA_FILE_PATH, format_key=True))
+    grouped_by_label_datas = _even_out_labels(util_functions.flatten_list(
+        [util_functions.read_excel_file(path=data_file_path, format_key=True) for data_file_path in MULTI_DATA_FILES]
+    ))
 
     for grouped_by_label_data in tqdm(grouped_by_label_datas):
         grouped_data = grouped_by_label_data['grouped_data']
@@ -159,9 +161,12 @@ def get_static_class_labels() -> list:
 def get_static_classes_data() -> dict:
     json_class_data = sorted(util_functions.read_from_json_file(STATIC_CLASS_LABEL_FILE_LOCATION),
                              key=itemgetter(STATIC_CLASS_IDX_KEY_NAME))
-    return {STATIC_ENUMERATED_CLASS_DATA_NAME: util_functions.list_of_dicts_to_single_dict(list_of_dicts=json_class_data, key_name=STATIC_CLASS_LABEL_KEY_NAME, value_name=STATIC_CLASS_IDX_KEY_NAME),
-            STATIC_CLASS_IDX_KEY_NAME: [data[STATIC_CLASS_IDX_KEY_NAME] for data in json_class_data],
-            STATIC_CLASS_LABEL_KEY_NAME: [data[STATIC_CLASS_LABEL_KEY_NAME] for data in json_class_data], }
+    return {
+        STATIC_ENUMERATED_CLASS_DATA_NAME: util_functions.list_of_dicts_to_single_dict(list_of_dicts=json_class_data,
+                                                                                       key_name=STATIC_CLASS_LABEL_KEY_NAME,
+                                                                                       value_name=STATIC_CLASS_IDX_KEY_NAME),
+        STATIC_CLASS_IDX_KEY_NAME: [data[STATIC_CLASS_IDX_KEY_NAME] for data in json_class_data],
+        STATIC_CLASS_LABEL_KEY_NAME: [data[STATIC_CLASS_LABEL_KEY_NAME] for data in json_class_data], }
 
 
 def main():
