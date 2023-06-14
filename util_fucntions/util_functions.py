@@ -213,3 +213,13 @@ def get_formatted_today_str(twelve_h=False):
 
 def list_of_dicts_to_single_dict(list_of_dicts: list, key_name: str, value_name: str) -> dict:
     return {data[key_name]: data[value_name] for data in list_of_dicts}
+
+
+def remove_duplicate_in_list(og_list: list, sort_list=False) -> list:
+    og_list = list(set(og_list))
+    non_duplicate_list = []
+    for item in og_list:
+        if lower_case_and_clear_white_space(item, to_regex=False) not in non_duplicate_list or len(
+                non_duplicate_list) < 1:
+            non_duplicate_list.append(item)
+    return sorted(non_duplicate_list) if sort_list else non_duplicate_list
