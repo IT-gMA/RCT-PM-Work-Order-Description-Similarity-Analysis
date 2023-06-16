@@ -182,10 +182,10 @@ def main():
                 val_dataloader=validation_loader, model=model, epoch=epoch,
                 loss_func=loss_func,
                 optimiser=optimiser)
-            avg_overage_scores = mean([avg_accuracy, avg_recall, avg_precision, avg_f1_macro, avg_f1_micro])
+            avg_overall_scores = mean([avg_accuracy, avg_recall, avg_precision, avg_f1_macro, avg_f1_micro])
             # model.validation_step(avg_mae)
-            if avg_accuracy < avg_overage_scores:
-                best_overall_scores = avg_overage_scores
+            if avg_accuracy < avg_overall_scores:
+                best_overall_scores = avg_overall_scores
                 best_model = copy.deepcopy(model)
                 util_functions.save_running_logs(f'\tCurrent best model at epoch {epoch + 1}', RUNNING_LOG_LOCATION)
                 util_functions.save_model(model=best_model,
