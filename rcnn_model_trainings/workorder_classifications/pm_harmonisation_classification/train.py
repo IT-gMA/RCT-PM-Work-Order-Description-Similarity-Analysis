@@ -23,9 +23,10 @@ def wandb_running_log(loss, accuracy, precision, recall, f1_macro, f1_micro, sta
 
 def write_training_config(num_trains: int, num_vals: int, num_tests: int, classes: list, model: TextClassification):
     all_classes_to_str = ', '.join(classes)
+    all_dataset_dir_strs = '\n'.join(MULTI_DATA_FILES)
     _min_lr_stmt = f'Min learning rate {MIN_LEARNING_RATE}\n' if MIN_LEARNING_RATE > 0 else ''
     _saved_log = f"\t{util_functions.get_formatted_today_str(twelve_h=True)}\n" \
-                 f"Dataset directory: {DATA_FILE_PATH}\nScheduled Learning: {SCHEDULED}\nLearning rate: {INIT_LEARNING_RATE}\n{_min_lr_stmt}" \
+                 f"Dataset directory: {all_dataset_dir_strs}\nScheduled Learning: {SCHEDULED}\nLearning rate: {INIT_LEARNING_RATE}\n{_min_lr_stmt}" \
                  f"Dropout: {DROPOUT}\nWeight decay: {WEIGHT_DECAY}\nPatience: {PATIENCE}\n" \
                  f"Number of running epochs: {NUM_EPOCHS}\nValidate after every {VAL_EPOCH}th epoch\n" \
                  f"Train-Validation-Test ratio: {TRAIN_RATIO}-{VALIDATION_RATIO}-{TEST_RATIO}\n" \
@@ -41,7 +42,7 @@ def write_training_config(num_trains: int, num_vals: int, num_tests: int, classe
 
 def model_param_tweaking(model) -> tuple:
     loss_func = nn.CrossEntropyLoss()
-    optimiser = AdamW(model.parameters(), lr=INIT_LEARNING_RATE, weight_decay=WEIGHT_DECAY, epsilon=OPTIMISER_EPSILON)
+    optimiser = AdamW(model.parameters(), lr=INIT_LEARNING_RATE, weight_decay=WEIGHT_DECAY, eps=OPTIMISER_EPSILON)
 
     if MIN_LEARNING_RATE > 0:
         lr_scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimiser, mode='max', factor=.1, patience=PATIENCE,
@@ -53,8 +54,7 @@ def model_param_tweaking(model) -> tuple:
 
 
 def _get_forward_pass(batch, model):
-    # return model(batch['input_ids'].to(DEVICE), batch['attention_mask'].to(DEVICE))
-    return model(**batch)
+    return model(batch['input_ids'].to(DEVICE), batch['attention_mask'].to(DEVICE))
 
 
 def run_model(dataloader, model, loss_func, optimiser, is_train=True) -> tuple:
