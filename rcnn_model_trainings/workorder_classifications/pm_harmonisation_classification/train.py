@@ -54,7 +54,8 @@ def model_param_tweaking(model) -> tuple:
 
 
 def _get_forward_pass(batch, model):
-    return model(batch['input_ids'].to(DEVICE), batch['attention_mask'].to(DEVICE))
+    #return model(batch['input_ids'].to(DEVICE), batch['attention_mask'].to(DEVICE))
+    return model(batch['input_ids'], batch['attention_mask'])
 
 
 def run_model(dataloader, model, loss_func, optimiser, is_train=True) -> tuple:
