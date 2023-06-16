@@ -17,7 +17,7 @@ INPUT_KEY_NAME = 'curr_desc'
 SAMPLE_IDX_CODE_NAME = 'idx'
 
 
-PRETRAINED_MODEL_NAME = 'bert-base-uncased'
+PRETRAINED_MODEL_NAME = 'bert-base-cased'
 
 IS_BERT = 'bert' in util_functions.lower_case_and_clear_white_space(PRETRAINED_MODEL_NAME)
 MODEL_TOKENIZER = BertTokenizer.from_pretrained(PRETRAINED_MODEL_NAME) if IS_BERT else GPT2Tokenizer.from_pretrained(PRETRAINED_MODEL_NAME)
@@ -46,17 +46,21 @@ VAL_EPOCH = 20
 SAVED_EPOCH = 400
 TRAIN_BATCH_SIZE = 18
 VAL_BATCH_SIZE = 4
+SUB_SAMPLE_SIZE_PER_CLASS = None
 
 RANDOM_SEED = 10
 TRAIN_RATIO = .7
 VALIDATION_RATIO = .15
 TEST_RATIO = .15
-DATA_FILE_PATH = '../../../xlsx_resources/for_trainings/maximo_pm_to_gap_pm_desc_map.xlsx'
-MULTI_DATA_FILES = ['../../../xlsx_resources/for_trainings/maximo_pm_to_gap_pm_desc_map_v2.xlsx',
-                    '../../../xlsx_resources/for_trainings/maximo_pm_to_gap_pm_desc_map_v3.xlsx',
-                    '../../../xlsx_resources/for_trainings/maximo_pm_to_gap_pm_desc_map_v4.xlsx',
-                    '../../../xlsx_resources/for_trainings/maximo_pm_to_gap_pm_desc_map_v5.xlsx',
+MULTI_DATA_FILES = [
+                    #'../../../xlsx_resources/for_trainings/maximo_pm_to_gap_pm_desc_map.xlsx',
+                    #'../../../xlsx_resources/for_trainings/maximo_pm_to_gap_pm_desc_map_v2.xlsx',
+                    #'../../../xlsx_resources/for_trainings/maximo_pm_to_gap_pm_desc_map_v3.xlsx',
+                    #'../../../xlsx_resources/for_trainings/maximo_pm_to_gap_pm_desc_map_v4.xlsx',
+                    #'../../../xlsx_resources/for_trainings/maximo_pm_to_gap_pm_desc_map_v5.xlsx',
+                    '../../../xlsx_resources/for_trainings/maximo_pm_to_gap_pm_desc_map_xxs.xlsx',
                     ]
+
 
 WANDB_PROJECT_NAME = f'Maximo to GAP App harmonised description BERT Base Uncased Model Training Iter{MODEL_ITERATION}'
 RUNNING_LOG_LOCATION = f'saved_logs/bert_based_uncased_run_logs/running_iteration_{MODEL_ITERATION}.txt'

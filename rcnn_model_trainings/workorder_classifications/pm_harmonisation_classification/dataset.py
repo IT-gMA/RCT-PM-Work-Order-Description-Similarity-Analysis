@@ -94,6 +94,9 @@ def get_splitted_dataset() -> tuple:
     for grouped_by_label_data in tqdm(grouped_by_label_datas):
         grouped_data = grouped_by_label_data['grouped_data']
         util_functions.random_seed_shuffle(seed=RANDOM_SEED, og_list=grouped_data)
+        if type(SUB_SAMPLE_SIZE_PER_CLASS) is int and SUB_SAMPLE_SIZE_PER_CLASS >= 1000:
+            grouped_data = grouped_data[0: SUB_SAMPLE_SIZE_PER_CLASS]
+
         num_trains = int(len(grouped_data) * TRAIN_RATIO)
         num_vals = int(len(grouped_data) * VALIDATION_RATIO)
 
