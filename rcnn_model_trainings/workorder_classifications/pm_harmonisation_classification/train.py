@@ -9,6 +9,7 @@ import copy
 from transformers import AdamW
 from tqdm import tqdm
 import torch.nn.functional as F
+from statistics import mean
 
 
 def get_learning_rate(optimiser):
@@ -98,7 +99,7 @@ def run_model(dataloader, model, loss_func, optimiser, is_train=True) -> tuple:
         total_precision += cal_precision(true_labels, predicted_labels)
         f1_scores = cal_f1_scores(true_labels, predicted_labels, model.get_num_classes())
         total_f1_macro += f1_scores['macro']
-        total_f1_macro += f1_scores['micro']
+        total_f1_micro += f1_scores['micro']
 
     return tuple([score / len(dataloader) for score in
                  [total_loss, total_accuracy, total_recall, total_precision, total_f1_macro, total_f1_micro]])
@@ -169,7 +170,7 @@ def main():
     # MY_TRAINER.fit(model)
 
     loss_func, optimiser, lr_scheduler = model_param_tweaking(model)
-    best_accuracy = 0
+    best_overall_scores = 0
 
     write_training_config(len(train_set), len(val_set), len(test_set), _classes, model)
 
@@ -181,9 +182,10 @@ def main():
                 val_dataloader=validation_loader, model=model, epoch=epoch,
                 loss_func=loss_func,
                 optimiser=optimiser)
+            avg_overage_scores = mean([avg_loss, avg_accuracy, avg_recall, avg_precision, avg_f1_macro, avg_f1_micro])
             # model.validation_step(avg_mae)
-            if avg_accuracy < best_accuracy:
-                best_accuracy = avg_accuracy
+            if avg_accuracy < avg_overage_scores:
+                best_overall_scores = avg_overage_scores
                 best_model = copy.deepcopy(model)
                 util_functions.save_running_logs(f'\tCurrent best model at epoch {epoch + 1}', RUNNING_LOG_LOCATION)
                 util_functions.save_model(model=best_model,
@@ -201,7 +203,7 @@ def main():
                     RUNNING_LOG_LOCATION)
 
         if SCHEDULED and epoch >= VAL_EPOCH:
-            lr_scheduler.step(best_accuracy)
+            lr_scheduler.step(best_overall_scores)
 
     util_functions.save_running_logs('Training complete, running final testing:', RUNNING_LOG_LOCATION)
     test(test_dataloader=test_loader, model=model, loss_func=loss_func)
