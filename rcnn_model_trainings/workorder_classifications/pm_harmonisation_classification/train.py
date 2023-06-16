@@ -182,7 +182,7 @@ def main():
                 val_dataloader=validation_loader, model=model, epoch=epoch,
                 loss_func=loss_func,
                 optimiser=optimiser)
-            avg_overage_scores = mean([avg_loss, avg_accuracy, avg_recall, avg_precision, avg_f1_macro, avg_f1_micro])
+            avg_overage_scores = mean([avg_accuracy, avg_recall, avg_precision, avg_f1_macro, avg_f1_micro])
             # model.validation_step(avg_mae)
             if avg_accuracy < avg_overage_scores:
                 best_overall_scores = avg_overage_scores
