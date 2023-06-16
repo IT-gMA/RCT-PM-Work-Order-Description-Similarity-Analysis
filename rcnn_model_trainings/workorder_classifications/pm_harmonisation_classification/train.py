@@ -27,7 +27,7 @@ def write_training_config(num_trains: int, num_vals: int, num_tests: int, classe
     _min_lr_stmt = f'Min learning rate {MIN_LEARNING_RATE}\n' if MIN_LEARNING_RATE > 0 else ''
     _saved_log = f"\t{util_functions.get_formatted_today_str(twelve_h=True)}\n" \
                  f"Dataset directory: {all_dataset_dir_strs}\nScheduled Learning: {SCHEDULED}\nLearning rate: {INIT_LEARNING_RATE}\n{_min_lr_stmt}" \
-                 f"Dropout: {DROPOUT}\nWeight decay: {WEIGHT_DECAY}\nPatience: {PATIENCE}\n" \
+                 f"Dropout: {DROPOUT}\nWeight decay: {WEIGHT_DECAY}\nPatience: {PATIENCE}\nEpsilon: {OPTIMISER_EPSILON}\n" \
                  f"Number of running epochs: {NUM_EPOCHS}\nValidate after every {VAL_EPOCH}th epoch\n" \
                  f"Train-Validation-Test ratio: {TRAIN_RATIO}-{VALIDATION_RATIO}-{TEST_RATIO}\n" \
                  f"Number of train - validation - test samples: {num_trains} - {num_vals} - {num_tests}\n" \
