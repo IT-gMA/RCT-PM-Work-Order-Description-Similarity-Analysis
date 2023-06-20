@@ -161,6 +161,8 @@ def main():
             else:
                 no_improvement += 1
 
+            if SCHEDULED:
+                lr_scheduler.step(best_mae)
             if 1 < SCHEDULER_PATIENCE <= no_improvement:
                 util_functions.save_running_logs(f'Early stopped at {epoch + 1} validation Epoch', RUNNING_LOG_LOCATION)
                 break
@@ -173,9 +175,6 @@ def main():
                 util_functions.save_running_logs(
                     f'-----------Save model at epoch [{epoch + 1}/{NUM_EPOCHS}] at {SAVED_MODEL_LOCATION} -----------',
                     RUNNING_LOG_LOCATION)
-
-        if SCHEDULED and epoch >= VAL_EPOCH:
-            lr_scheduler.step(best_mae)
 
     util_functions.save_running_logs('Training complete, running final testing:', RUNNING_LOG_LOCATION)
     test(test_dataloader=test_loader, model=model, loss_func=loss_func)
