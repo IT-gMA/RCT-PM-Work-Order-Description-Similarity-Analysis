@@ -171,26 +171,33 @@ def main():
 
     loss_func, optimiser, lr_scheduler = model_param_tweaking(model)
     best_overall_scores = 0
+    no_improvement = 0
 
     write_training_config(len(train_set), len(val_set), len(test_set), _classes, model)
 
     for epoch in range(NUM_EPOCHS):
         wandb.log({'Train/lr': get_learning_rate(optimiser)})
 
-        if epoch > 1 and (epoch + 1) % VAL_EPOCH == 0:
+        if epoch > 1 and (epoch + 1) % VAL_EPOCH == 0:  # Evaluate validation metrics
             avg_loss, avg_accuracy, avg_recall, avg_precision, avg_f1_macro, avg_f1_micro = validate(
                 val_dataloader=validation_loader, model=model, epoch=epoch,
                 loss_func=loss_func,
                 optimiser=optimiser)
             avg_overall_scores = mean([avg_accuracy, avg_recall, avg_precision, avg_f1_macro, avg_f1_micro])
             # model.validation_step(avg_mae)
-            if avg_accuracy < avg_overall_scores:
+            if best_overall_scores < avg_overall_scores:
+                no_improvement = 0
                 best_overall_scores = avg_overall_scores
                 best_model = copy.deepcopy(model)
                 util_functions.save_running_logs(f'\tCurrent best model at epoch {epoch + 1}', RUNNING_LOG_LOCATION)
                 util_functions.save_model(model=best_model,
                                           optimiser=optimiser, loss=avg_loss, epoch=epoch,
                                           saved_location=f"{SAVED_MODEL_LOCATION}best_model{SAVED_MODEL_FORMAT}")
+            else:
+                no_improvement += 1
+            if no_improvement >= PATIENCE:
+                util_functions.save_running_logs(f'Early stopped at {epoch + 1} validation Epoch', RUNNING_LOG_LOCATION)
+                break
         else:
             avg_loss, avg_accuracy, avg_recall, avg_precision, avg_f1_macro, avg_f1_micro = train(
                 train_dataloader=train_loader, model=model, epoch=epoch,
