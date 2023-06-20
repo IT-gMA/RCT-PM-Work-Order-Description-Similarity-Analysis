@@ -139,6 +139,7 @@ def main():
     #MY_TRAINER.fit(model)
     loss_func, optimiser, lr_scheduler = model_param_tweaking(model)
     best_mae = 10
+    no_improvement = 0
 
     write_training_config(len(train_set), len(val_set), len(test_set), model)
     for epoch in range(NUM_EPOCHS):
@@ -150,12 +151,19 @@ def main():
                                                    optimiser=optimiser)
             #model.validation_step(avg_mae)
             if avg_mae < best_mae:
+                no_improvement = 0
                 best_mae = avg_mae
                 best_model = copy.deepcopy(model)
                 util_functions.save_running_logs(f'\tCurrent best model at epoch {epoch + 1}', RUNNING_LOG_LOCATION)
                 util_functions.save_model(model=best_model,
                                           optimiser=optimiser, loss=avg_loss, epoch=epoch,
                                           saved_location=f"{SAVED_MODEL_LOCATION}best_model{SAVED_MODEL_FORMAT}")
+            else:
+                no_improvement += 1
+
+            if 1 < PATIENCE <= no_improvement:
+                util_functions.save_running_logs(f'Early stopped at {epoch + 1} validation Epoch', RUNNING_LOG_LOCATION)
+                break
         else:
             avg_loss, avg_mae, avg_rmse = train(train_dataloader=train_loader, model=model, epoch=epoch,
                                                 loss_func=loss_func, optimiser=optimiser)
