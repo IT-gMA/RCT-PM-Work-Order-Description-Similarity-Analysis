@@ -10,6 +10,13 @@ MODEL_PATH = 'best_model.pth'
 INPUT_TEXT = ''
 
 
+def get_label_from_index(label_idx: int, class_dicts: list) -> str:
+    corresponding_label_dict = [class_dict for class_dict in class_dicts if
+                                class_dict[STATIC_CLASS_IDX_KEY_NAME] == label_idx]
+    return 'undefined' if len(corresponding_label_dict) < 0 else corresponding_label_dict[0][
+        STATIC_CLASS_LABEL_KEY_NAME]
+
+
 def main():
     json_class_data = get_static_classes_data()
     model = TextClassification(num_classes=len(json_class_data[STATIC_CLASS_LABEL_KEY_NAME]))
@@ -39,13 +46,6 @@ def main():
     # Print the predicted labels and their confidence scores
     for label, prob in zip(predicted_labels, probs):
         print(f'Predicted: {label}\tConfidence Score: {round(prob * 100, 2)}%')
-
-
-def get_label_from_index(label_idx: int, class_dicts: list) -> str:
-    corresponding_label_dict = [class_dict for class_dict in class_dicts if
-                                class_dict[STATIC_CLASS_IDX_KEY_NAME] == label_idx]
-    return 'undefined' if len(corresponding_label_dict) < 0 else corresponding_label_dict[0][
-        STATIC_CLASS_LABEL_KEY_NAME]
 
 
 if __name__ == '__main__':
