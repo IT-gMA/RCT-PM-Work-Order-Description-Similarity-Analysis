@@ -22,7 +22,7 @@ def write_training_config(num_trains: int, num_vals: int, num_tests: int, model:
     _min_lr_stmt = f'Min learning rate {MIN_LEARNING_RATE}\n' if MIN_LEARNING_RATE > 0 else ''
     _saved_log = f"\t{util_functions.get_formatted_today_str(twelve_h=True)}\n" \
                  f"Dataset directory: {DATA_FILE_PATH}\nScheduled Learning: {SCHEDULED}\nLearning rate: {INIT_LEARNING_RATE}\n{_min_lr_stmt}" \
-                 f"Dropout: {DROPOUT}\nWeight decay: {WEIGHT_DECAY}\nPatience: {PATIENCE}\n" \
+                 f"Dropout: {DROPOUT}\nWeight decay: {WEIGHT_DECAY}\nScheduler Patience: {SCHEDULER_PATIENCE}\nEarly Stopping Patience: {EARLY_STOPPING_PATIENCE}\n" \
                  f"Number of running epochs: {NUM_EPOCHS}\nValidate after every {VAL_EPOCH}th epoch\n" \
                  f"MSE Reduction: {MSE_REDUCTION}\nTrain-Validation-Test ratio: {TRAIN_RATIO}-{VALIDATION_RATIO}-{TEST_RATIO}\n" \
                  f"Number of train - validation - test samples: {num_trains} - {num_vals} - {num_tests}\n" \
@@ -39,10 +39,10 @@ def model_param_tweaking(model) -> tuple:
     optimiser = torch.optim.Adam(model.parameters(), lr=INIT_LEARNING_RATE, weight_decay=WEIGHT_DECAY)
 
     if MIN_LEARNING_RATE > 0:
-        lr_scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimiser, mode='min', factor=.1, patience=PATIENCE,
+        lr_scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimiser, mode='min', factor=.1, patience=SCHEDULER_PATIENCE,
                                                                   min_lr=MIN_LEARNING_RATE)
     else:
-        lr_scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimiser, mode='min', factor=.1, patience=PATIENCE)
+        lr_scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimiser, mode='min', factor=.1, patience=SCHEDULER_PATIENCE)
     return loss_func, optimiser, lr_scheduler
 
 
@@ -161,7 +161,7 @@ def main():
             else:
                 no_improvement += 1
 
-            if 1 < PATIENCE <= no_improvement:
+            if 1 < SCHEDULER_PATIENCE <= no_improvement:
                 util_functions.save_running_logs(f'Early stopped at {epoch + 1} validation Epoch', RUNNING_LOG_LOCATION)
                 break
         else:

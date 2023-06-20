@@ -32,9 +32,10 @@ MAX_LENGTH_TOKEN = 256
 MSE_REDUCTION = 'mean'
 WEIGHT_DECAY = .0001
 SCHEDULED = True
-PATIENCE = 10
+SCHEDULER_PATIENCE = 16
+EARLY_STOPPING_PATIENCE = 8
 DROPOUT = 0.1
-EARLY_STOPPING_CALLBACK = EarlyStopping(monitor="val_mae", patience=PATIENCE, mode="min")
+EARLY_STOPPING_CALLBACK = EarlyStopping(monitor="val_mae", patience=EARLY_STOPPING_PATIENCE, mode="min")
 MY_TRAINER = Trainer(callbacks=[EARLY_STOPPING_CALLBACK])
 
 # Model config

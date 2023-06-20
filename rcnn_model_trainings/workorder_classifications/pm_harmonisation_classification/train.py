@@ -28,7 +28,7 @@ def write_training_config(num_trains: int, num_vals: int, num_tests: int, classe
     _min_lr_stmt = f'Min learning rate {MIN_LEARNING_RATE}\n' if MIN_LEARNING_RATE > 0 else ''
     _saved_log = f"\t{util_functions.get_formatted_today_str(twelve_h=True)}\n" \
                  f"Dataset directory: {all_dataset_dir_strs}\nScheduled Learning: {SCHEDULED}\nLearning rate: {INIT_LEARNING_RATE}\n{_min_lr_stmt}" \
-                 f"Dropout: {DROPOUT}\nWeight decay: {WEIGHT_DECAY}\nPatience: {PATIENCE}\nEpsilon: {OPTIMISER_EPSILON}\n" \
+                 f"Dropout: {DROPOUT}\nWeight decay: {WEIGHT_DECAY}\nScheduler Patience: {SCHEDULER_PATIENCE}\nEarly Stopping Patience: {EARLY_STOPPER_PATIENCE}\nEpsilon: {OPTIMISER_EPSILON}\n" \
                  f"Number of running epochs: {NUM_EPOCHS}\nValidate after every {VAL_EPOCH}th epoch\n" \
                  f"Train-Validation-Test ratio: {TRAIN_RATIO}-{VALIDATION_RATIO}-{TEST_RATIO}\n" \
                  f"Number of train - validation - test samples: {num_trains} - {num_vals} - {num_tests}\n" \
@@ -46,10 +46,10 @@ def model_param_tweaking(model) -> tuple:
     optimiser = AdamW(model.parameters(), lr=INIT_LEARNING_RATE, weight_decay=WEIGHT_DECAY, eps=OPTIMISER_EPSILON)
 
     if MIN_LEARNING_RATE > 0:
-        lr_scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimiser, mode='max', factor=.1, patience=PATIENCE,
+        lr_scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimiser, mode='max', factor=.1, patience=SCHEDULER_PATIENCE,
                                                                   min_lr=MIN_LEARNING_RATE, verbose=True)
     else:
-        lr_scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimiser, mode='max', factor=.1, patience=PATIENCE,
+        lr_scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimiser, mode='max', factor=.1, patience=SCHEDULER_PATIENCE,
                                                                   verbose=True)
     return loss_func, optimiser, lr_scheduler
 
@@ -195,7 +195,9 @@ def main():
                                           saved_location=f"{SAVED_MODEL_LOCATION}best_model{SAVED_MODEL_FORMAT}")
             else:
                 no_improvement += 1
-            if 1 < PATIENCE <= no_improvement:
+            if SCHEDULED:
+                lr_scheduler.step(best_overall_scores)
+            if 1 < EARLY_STOPPER_PATIENCE <= no_improvement:
                 util_functions.save_running_logs(f'Early stopped at {epoch + 1} validation Epoch', RUNNING_LOG_LOCATION)
                 break
         else:
@@ -208,9 +210,6 @@ def main():
                 util_functions.save_running_logs(
                     f'-----------Save model at epoch [{epoch + 1}/{NUM_EPOCHS}] at {SAVED_MODEL_LOCATION} -----------',
                     RUNNING_LOG_LOCATION)
-
-        if SCHEDULED and epoch >= VAL_EPOCH:
-            lr_scheduler.step(best_overall_scores)
 
     util_functions.save_running_logs('Training complete, running final testing:', RUNNING_LOG_LOCATION)
     test(test_dataloader=test_loader, model=model, loss_func=loss_func)
