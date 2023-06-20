@@ -195,7 +195,7 @@ def main():
                                           saved_location=f"{SAVED_MODEL_LOCATION}best_model{SAVED_MODEL_FORMAT}")
             else:
                 no_improvement += 1
-            if no_improvement >= PATIENCE:
+            if 1 < PATIENCE <= no_improvement:
                 util_functions.save_running_logs(f'Early stopped at {epoch + 1} validation Epoch', RUNNING_LOG_LOCATION)
                 break
         else:
