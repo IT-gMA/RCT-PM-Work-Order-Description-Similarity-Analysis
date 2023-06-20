@@ -171,7 +171,9 @@ def get_static_classes_data() -> dict:
                                                                                        key_name=STATIC_CLASS_LABEL_KEY_NAME,
                                                                                        value_name=STATIC_CLASS_IDX_KEY_NAME),
         STATIC_CLASS_IDX_KEY_NAME: [data[STATIC_CLASS_IDX_KEY_NAME] for data in json_class_data],
-        STATIC_CLASS_LABEL_KEY_NAME: [data[STATIC_CLASS_LABEL_KEY_NAME] for data in json_class_data], }
+        STATIC_CLASS_LABEL_KEY_NAME: [data[STATIC_CLASS_LABEL_KEY_NAME] for data in json_class_data],
+        'class_json_data': json_class_data,
+    }
 
 
 def main():
