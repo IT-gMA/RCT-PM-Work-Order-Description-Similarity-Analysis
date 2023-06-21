@@ -19,7 +19,7 @@
   {"class_idx": 17, "class_label": "Building Management System (BMS)"},
   {"class_idx": 18, "class_label": "Chiller & Cooling Tower"},
   {"class_idx": 19, "class_label": "Communication: GPS NTP Server"},
-  {"class_idx": 20, "class_label": "Effluent System"},
+  {"class_idx": 20, "class_label": "Sewerage Pumping Station"},
   {"class_idx": 21, "class_label": "Effluent System (Biomax)"},
   {"class_idx": 22, "class_label": "Emergency & Exit Lighting"},
   {"class_idx": 23, "class_label": "Emergency Eye Wash / Safety Shower"},
