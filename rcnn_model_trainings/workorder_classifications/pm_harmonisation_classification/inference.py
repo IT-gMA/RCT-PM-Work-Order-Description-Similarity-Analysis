@@ -6,8 +6,8 @@ from util_fucntions import util_functions
 from metrics import *
 import torch.nn.functional as F
 
-MODEL_PATH = 'best_model.pth'
-INPUT_TEXT = ''
+MODEL_PATH = 'saved_models/bert_based_cased_models_iteration_0/final_model.pt'
+INPUT_TEXT = "EWIS"
 
 
 def get_label_from_index(label_idx: int, class_dicts: list) -> str:
@@ -20,11 +20,11 @@ def get_label_from_index(label_idx: int, class_dicts: list) -> str:
 def main():
     json_class_data = get_static_classes_data()
     model = TextClassification(num_classes=len(json_class_data[STATIC_CLASS_LABEL_KEY_NAME]))
-    model.load_state_dict(torch.load(MODEL_PATH))
+    model.load_state_dict(torch.load(MODEL_PATH)['model_state_dict'])
     model.eval()
     model.to(DEVICE)
 
-    encodings = MODEL_TOKENIZER.tokenizer(
+    encodings = MODEL_TOKENIZER(
         INPUT_TEXT,
         padding='max_length', max_length=MAX_LENGTH_TOKEN,
         truncation=True, return_tensors='pt'
@@ -40,6 +40,8 @@ def main():
     # Get the predicted label indexes and convert them to labels
     _, predicted_labels = torch.max(outputs, dim=1)
     predicted_labels = predicted_labels.squeeze().tolist()
+    print(f"predicted label: {[class_dict for class_dict in json_class_data['class_json_data'] if class_dict['class_idx'] == predicted_labels][0]['class_label']}")
+    print(predicted_labels)
     predicted_labels = [get_label_from_index(label_idx=label, class_dicts=json_class_data['class_json_data']) for label
                         in predicted_labels]
 

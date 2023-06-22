@@ -1,0 +1,1747 @@
+[
+    {
+        "class_idx": 0,
+        "class_label": "ACM Emu Pick",
+        "main_subjs": [
+            "ACM Emu Pick",
+            "ACM Emu Picks",
+            "ACM-Emu-Pick",
+            "Asbestos Containing Materials Emu Pick",
+            "Asbestos Containing Materials Emu Picks"
+        ]
+    },
+    {
+        "class_idx": 1,
+        "class_label": "Access Equipment: Scissor Lift",
+        "main_subjs": [
+            "Access Equipment: Scissor Lift",
+            "Access Equipment: Scissor Lifts",
+            "Access Equipment Scissor-Lift",
+            "Scissor Lift - Access Equipments",
+            "Mobile Work Platform: Scissors",
+            "Mobile Work Platform: Scissor-Lift",
+            "MWP: Scissors",
+            "MWP: Scissor-Lift",
+            "Mobile Work Platform (MWP) - Scissor",
+            "Mobile Work Platform (MWP) - Scissor-Lift"
+        ]
+    },
+    {
+        "class_idx": 2,
+        "class_label": "Access and Lighting System",
+        "main_subjs": [
+            "Access and Lighting System",
+            "Lighting and Access system",
+            "Access and Lighting",
+            "Lighting and Access",
+            "Access & Lighting System",
+            "Lighting & Access system",
+            "Access & Lighting",
+            "Lighting & Access"
+        ]
+    },
+    {
+        "class_idx": 3,
+        "class_label": "Air Compressor",
+        "main_subjs": [
+            "Air Compressor",
+            "Air Compressors",
+            "Air-Compressor",
+            "Air Compressor: Piston",
+            "Air Compressor Piston",
+            "Piston - Air Compressor",
+            "Air Compressor: Dryer",
+            "Air Compressor Dryer",
+            "Dryer - Air Compressor"
+        ]
+    },
+    {
+        "class_idx": 4,
+        "class_label": "Air Compressor: Pressure Vessel",
+        "main_subjs": [
+            "Air Compressor: Pressure Vessel",
+            "Air Compressor: Pressure Vessels",
+            "Air Compressor - Pressure Vessel",
+            "Air-Compressor Pressure-Vessel",
+            "Air Compressor: Receiver",
+            "Air Compressor: Receivers",
+            "Air Compressor - Receiver",
+            "Air Receivers",
+            "Air Receiver",
+            "Air-Receiver",
+            "Compressor / Air Receivers",
+            "Compressor - Air Receiver",
+            "Compressor Air-Receiver",
+            "Compressor / Pressure Vessels",
+            "Compressor - Pressure Vessel",
+            "Compressor Pressure-Vessel"
+        ]
+    },
+    {
+        "class_idx": 5,
+        "class_label": "Air Conditioning: Air Handing Unit (AHU)",
+        "main_subjs": [
+            "Air Conditioning: Air Handing Unit (AHU)",
+            "Air Conditioning: Air Handing Unit / AHU",
+            "Air Conditioning: AHU",
+            "Air Conditioning / AHU",
+            "Air Con: Air Handing Unit (AHU)",
+            "Air Con: Air Handing Unit / AHU",
+            "Air Con: AHU",
+            "Air Conditioning / AHU",
+            "AC: Air Handing Unit (AHU)",
+            "AC: Air Handing Unit / AHU",
+            "AC: AHU",
+            "Air Conditioning / AHU"
+        ]
+    },
+    {
+        "class_idx": 6,
+        "class_label": "Air Conditioning: Evaporative Cooler",
+        "main_subjs": [
+            "Evaporative Cooler",
+            "Evaporative Cooler / Gas",
+            "Evaporative-Cooler",
+            "Evaporative Coolers",
+            "Gas Evaporative Cooler",
+            "Evaporative Cooler: Gas",
+            "Evaporative-Cooler (Gas)",
+            "Air Conditioning: Evaporative Cooler",
+            "Air Conditioning Evaporative Cooler / Gas",
+            "AirCon: Evaporative Cooler",
+            "AirCon Evaporative Cooler / Gas",
+            "AC: Evaporative Cooler",
+            "AC Evaporative Cooler / Gas"
+        ]
+    },
+    {
+        "class_idx": 7,
+        "class_label": "Air Conditioning: Package",
+        "main_subjs": [
+            "Air Conditioning: Package",
+            "Package - Air Conditioning",
+            "Air Conditioning - Packages",
+            "Air Con: Package",
+            "Package - Air Con",
+            "Air Con - Packages",
+            "AC: Package",
+            "Package - AC",
+            "AC - Packages"
+        ]
+    },
+    {
+        "class_idx": 8,
+        "class_label": "Air Conditioning: Split",
+        "main_subjs": [
+            "Air Conditioning: Split - SSEN:BE",
+            "Split (SSEN:BE) - Air Conditioning",
+            "Air Conditioning - Splits",
+            "Air Con: Split",
+            "Split - Air Con (SSEN:BE)",
+            "Air Con - Splits",
+            "AC: Split",
+            "Split - SSEN:BE - AC",
+            "AC - Splits",
+            "SSEN:BE Air Conditioning",
+            "SSEN:BE-Split Air Conditioning",
+            "SSEN:BE AirCon",
+            "SSEN:BE-Split Air Con",
+            "SSEN:BE AC",
+            "SSEN:BE-Split AC"
+        ]
+    },
+    {
+        "class_idx": 9,
+        "class_label": "Air Conditioning: Split / Cassette",
+        "main_subjs": [
+            "Air Conditioning: Split / Cassette",
+            "Air Conditioning: Cassette or Split",
+            "Air Con: Split / Cassette",
+            "Air Con: Cassette or Split",
+            "AC: Split / Cassette",
+            "AC: Cassette or Split"
+        ]
+    },
+    {
+        "class_idx": 10,
+        "class_label": "Air Conditioning: Split / Non - Ducted",
+        "main_subjs": [
+            "Air Conditioning: Split / Non - Ducted",
+            "Air Conditioning: NonDucted or Split",
+            "Air Con: Split / NonDucted",
+            "Air Con: NonDucted or Split",
+            "AC: Split / Non - Ducted",
+            "AC: NonDucted or Split"
+        ]
+    },
+    {
+        "class_idx": 11,
+        "class_label": "Air Conditioning: Variable Air Volume (VAV)",
+        "main_subjs": [
+            "Air Conditioning: Variable Air Volume (VAV)",
+            "Air Conditioning: VAV",
+            "Air Con: Variable Air Volume (VAV)",
+            "Air Con: VAV",
+            "AC: Variable Air Volume (VAV)",
+            "AC: VAV",
+            "Variable Air Volume / VAV - Air Conditioning",
+            "VAV - Air Conditioning",
+            "Variable Air Volume / VAV - AirCon",
+            "VAV - AirCon",
+            "Variable Air Volume / VAV - AC",
+            "VAV - AC"
+        ]
+    },
+    {
+        "class_idx": 12,
+        "class_label": "Air Conditioning: Variable Refrigerant Flow (VRF)",
+        "main_subjs": [
+            "Air Conditioning: Variable Refrigerant Flow (VRF)",
+            "Air Conditioning: VRF",
+            "Air Con: Variable Refrigerant Flow (VRF)",
+            "Air Con: VRF",
+            "AC: Variable Refrigerant Flow (VRF)",
+            "AC: VRF",
+            "Variable Refrigerant Flow / VRF - Air Conditioning",
+            "VRF - Air Conditioning",
+            "Variable Refrigerant Flow / VRF - AirCon",
+            "VRF - AirCon",
+            "Variable Refrigerant Flow / VRF - AC",
+            "VRF - AC"
+        ]
+    },
+    {
+        "class_idx": 13,
+        "class_label": "Air Conditioning: Variable Refrigerant Volume (VRV)",
+        "main_subjs": [
+            "Air Conditioning: Variable Refrigerant Volume (VRV)",
+            "Air Conditioning: VRV",
+            "Air Con: Variable Refrigerant Volume (VRV)",
+            "Air Con: VRV",
+            "AC: Variable Refrigerant Volume (VRV)",
+            "AC: VRV",
+            "Variable Refrigerant Volume / VRV - Air Conditioning",
+            "VRV - Air Conditioning",
+            "Variable Refrigerant Volume / VRV - AirCon",
+            "VRV - AirCon",
+            "Variable Refrigerant Volume / VRV - AC",
+            "VRV - AC"
+        ]
+    },
+    {
+        "class_idx": 14,
+        "class_label": "Air Receiver",
+        "main_subjs": [
+            "Air Receivers",
+            "Air-Receiver",
+            "Air-Receiver"
+        ]
+    },
+    {
+        "class_idx": 15,
+        "class_label": "Airconditioning System and Central Plant",
+        "main_subjs": [
+            "Airconditioning System and Central Plant",
+            "Central Plant and Air Conditioning System",
+            "Air Conditioning System & Central Plant",
+            "Central Plant and Air Con System",
+            "Air Con System & Central Plant",
+            "Central Plant and AC System",
+            "AC System & Central Plant",
+            "Plant Managements",
+            "Plant-Management",
+            "Plant-Management",
+            "Central Plant Management",
+            "Plant Management system"
+        ]
+    },
+    {
+        "class_idx": 16,
+        "class_label": "Backflow Prevention Valve",
+        "main_subjs": [
+            "Backflow Prevention Valve",
+            "Backflow Prevention Valves",
+            "Backflow-Prevention-Valve",
+            "Backflow Prevention",
+            "Backflow Preventions",
+            "Backflow-Prevention",
+            "Back Flow Prevention",
+            "Back Flow Preventions",
+            "Back-Flow-Prevention"
+        ]
+    },
+    {
+        "class_idx": 17,
+        "class_label": "Building Management System (BMS)",
+        "main_subjs": [
+            "Building Management System (BMS)",
+            "Building Management System / BMS",
+            "BMS or Building Management System",
+            "BMS",
+            "BMS Controls",
+            "BMS Control",
+            "BMS-Control",
+            "BMS Service",
+            "Building Management System / BMS controls",
+            "BMS control or Building Management System"
+        ]
+    },
+    {
+        "class_idx": 18,
+        "class_label": "Chiller & Cooling Tower",
+        "main_subjs": [
+            "Chiller & Cooling Tower",
+            "Cooling Tower & Chiller",
+            "Chillers and Cooling Towers",
+            "Cooling-Tower and Chillers",
+            "Cooling Tower",
+            "Cooling Towers",
+            "Cooling-Tower",
+            "Cooling Tower unit",
+            "Cooling Tower units",
+            "Cooling-Tower unit"
+        ]
+    },
+    {
+        "class_idx": 19,
+        "class_label": "Communication: GPS NTP Server",
+        "main_subjs": [
+            "Communication: GPS NTP Server",
+            "Communication: NTP GPS Servers",
+            "Communications: GPS-NTP-Server",
+            "GPS NTP Server - Communication",
+            "NTP/GPS Server - Communication",
+            "NTP Server Communication",
+            "GPS Server Communication",
+            "Communication - NTP",
+            "Communication - GPS"
+        ]
+    },
+    {
+        "class_idx": 20,
+        "class_label": "Sewerage Pumping Station",
+        "main_subjs": [
+            "Sewerage Pumping Station",
+            "Sewerage - Submersible Pump",
+            "Effluent pumping systems (Sewerage pumps)",
+            "Sewerage Pump Stations",
+            "Sewerage: Submersible Pumping",
+            "Effluent System",
+            "Effluent-System",
+            "EffluentSystem",
+            "Effluent-System",
+            "Effluent System: Submersible Pump",
+            "Effluent System - Submersible Pump",
+            "Submersible Pump Effluent System",
+            "Submersible Pump - Effluent System"
+        ]
+    },
+    {
+        "class_idx": 21,
+        "class_label": "Effluent System (Biomax)",
+        "main_subjs": [
+            "Effluent System (Biomax)",
+            "Effluent System - Biomax",
+            "Effluent System: Biomax",
+            "Biomax",
+            "Biomax system",
+            "Biomax Effluent",
+            "Biomax-Effluent",
+            "Biomax / Effluent System",
+            "Biomax - Effluent Systems"
+        ]
+    },
+    {
+        "class_idx": 22,
+        "class_label": "Emergency & Exit Lighting",
+        "main_subjs": [
+            "Emergency & Exit Lighting",
+            "Exit Lighting and Emergency",
+            "Exit Lighting",
+            "Exit Lightings",
+            "Exit-Lighting",
+            "Emergency - Exit Lighting",
+            "Exit Lighting - Emergency"
+        ]
+    },
+    {
+        "class_idx": 23,
+        "class_label": "Emergency Eye Wash / Safety Shower",
+        "main_subjs": [
+            "Emergency Eye Wash / Safety Shower",
+            "Emergency Eye Wash / Safety Showers",
+            "Safety Shower / Emergency Eye Wash",
+            "Emergency Eye Wash - Safety Shower",
+            "Emergency Eye Wash - Safety Showers",
+            "Emergency Eye Wash",
+            "Emergency-Eye-Wash",
+            "Emergency Eye Wash Unit",
+            "Safety Shower",
+            "Safety Showers",
+            "Safety Showers"
+        ]
+    },
+    {
+        "class_idx": 24,
+        "class_label": "Fire Alarm System (FIP)",
+        "main_subjs": [
+            "Fire Alarm System (FIP)",
+            "Fire Alarm System or FIP",
+            "FIP (Fire Alarm System)",
+            "Fire Alarm Systems",
+            "FIP",
+            "FIP unit",
+            "FIP system",
+            "FIP's",
+            "FIP alarm system",
+            "FIP Alarms"
+        ]
+    },
+    {
+        "class_idx": 25,
+        "class_label": "Fire Blanket",
+        "main_subjs": [
+            "Fire Blanket",
+            "Fire Blankets",
+            "Fire-Blanket",
+            "Fire Blanket Unit",
+            "Fire Blanket units"
+        ]
+    },
+    {
+        "class_idx": 26,
+        "class_label": "Fire Break",
+        "main_subjs": [
+            "Fire Break",
+            "Fire Breaks",
+            "Fire-Break",
+            "Fire Break Unit",
+            "Fire Break units"
+        ]
+    },
+    {
+        "class_idx": 27,
+        "class_label": "Fire Detection: Smoke / Heat",
+        "main_subjs": [
+            "Fire Detection: Smoke / Heat",
+            "Fire Detection: Heat & Smoke",
+            "Fire Detection: Smoke and Heat",
+            "Fire Smoke / Heat Detectors",
+            "Fire Heat and Smoke Detectors",
+            "Fire Smoke-Heat Detection system",
+            "Fire Heat-Smoke Detection system",
+            "Fire Detector: Heat",
+            "Fire Detector: Smoke"
+        ]
+    },
+    {
+        "class_idx": 28,
+        "class_label": "Fire Emergency Warning & Intercommunications Systems (EWIS) or (OWS)",
+        "main_subjs": [
+            "Fire Emergency Warning & Intercommunications Systems (EWIS) or (OWS)",
+            "Fire Emergency Warning and InterComm Systems (OWS / OWS)",
+            "OWS",
+            "OWS Unit",
+            "EWIS",
+            "EWIS Unit",
+            "OWS system",
+            "EWIS system",
+            "Fire Emergency Warning and Intercommunications System",
+            "EWIS / Fire Emergency Warning and Intercommunications System",
+            "Occupant Warning System / OWS",
+            "OWS or Occupant Warning System"
+        ]
+    },
+    {
+        "class_idx": 29,
+        "class_label": "Fire Extinguisher",
+        "main_subjs": [
+            "Fire Extinguisher",
+            "Fire Extinguishers",
+            "Fire-Extinguisher",
+            "Fire Extinguisher unit",
+            "Emergency Fire Extinguisher",
+            "Fire Extinguisher signage",
+            "Fire Emergency: Extinguishers"
+        ]
+    },
+    {
+        "class_idx": 30,
+        "class_label": "Fire Hose Reel",
+        "main_subjs": [
+            "Fire Hose Reel",
+            "Fire Hose Reels",
+            "Fire-Hose-Reel",
+            "Fire Hose Reel unit",
+            "Emergency Fire Hose Reel",
+            "Fire Hose Reel signage",
+            "Fire Emergency: Hose Reel"
+        ]
+    },
+    {
+        "class_idx": 31,
+        "class_label": "Fire Hydrant",
+        "main_subjs": [
+            "Fire Hydrant",
+            "Fire Hydrants",
+            "Fire-Hose-Reel",
+            "Fire Hydrant unit",
+            "Emergency Fire Hydrant",
+            "Fire Hydrant signage",
+            "Fire Emergency: Hydrant",
+            "Fire Hydrant - Major Overhaul",
+            "Fire Hydrant - Major Overhauls",
+            "Fire Hydrant: Major Overhaul",
+            "Fire Hydrant - Overhaul",
+            "Fire Hydrant - Overhauls",
+            "Fire Hydrant: Overhaul",
+            "Fire Hydrant - Hydrostatic",
+            "Fire Hydrant - Hydrostatics",
+            "Fire Hydrant: Hydrostatic"
+        ]
+    },
+    {
+        "class_idx": 32,
+        "class_label": "Fire Water Storage Tank",
+        "main_subjs": [
+            "Fire Water Storage Tank",
+            "Fire Water Storage Tanks",
+            "Fire-Water-Storage-Tank",
+            "Fire Water Storage",
+            "Fire Water Storages",
+            "Water Storage for Fire Emergency",
+            "Fire Water Storage unit",
+            "Fire Water Storage units"
+        ]
+    },
+    {
+        "class_idx": 33,
+        "class_label": "Gas Appliance",
+        "main_subjs": [
+            "Gas Appliance",
+            "Gas Appliances",
+            "Gas-Appliance",
+            "Gas Appliance Unit",
+            "Gas Appliance units",
+            "Gas Appliance System",
+            "Gas Appliance systems"
+        ]
+    },
+    {
+        "class_idx": 34,
+        "class_label": "Gas Detection System",
+        "main_subjs": [
+            "Gas Detection System",
+            "Gas-Detection-System",
+            "Gas Detection",
+            "Gas-Detection",
+            "Gas Detector",
+            "Gas-Detector",
+            "Gas Detectors",
+            "Gas Detecting system"
+        ]
+    },
+    {
+        "class_idx": 35,
+        "class_label": "Grease Trap:",
+        "main_subjs": [
+            "Grease Trap",
+            "Grease Traps",
+            "Grease Trap unit",
+            "Grease Trap units",
+            "Grease Trap System"
+        ]
+    },
+    {
+        "class_idx": 36,
+        "class_label": "Grounds Maintenance",
+        "main_subjs": [
+            "Grounds Maintenance",
+            "Grounds Maintenances",
+            "Ground-Maintenance",
+            "Grounds Maintenance Service",
+            "Grounds Maintenance system",
+            "Ground Maintenance",
+            "Ground Maintenances"
+        ]
+    },
+    {
+        "class_idx": 37,
+        "class_label": "Hot Water Unit: Gas & Electric",
+        "main_subjs": [
+            "Hot Water Unit: Gas & Electric",
+            "Hot Water Unit: Electric and Gas",
+            "HWU: Electric & Gas",
+            "HWU: Gas and Electric",
+            "Gas & Electric Hot Water System",
+            "Electric and Gas Hot-Water-System",
+            "Hot Water System: Electric and Gas"
+        ]
+    },
+    {
+        "class_idx": 38,
+        "class_label": "Lighting Poles: External",
+        "main_subjs": [
+            "Lighting Poles: External",
+            "Lighting Pole: External",
+            "Lighting Pole (External)",
+            "Lighting Pole",
+            "Lighting Poles",
+            "Lighting-Pole",
+            "External Lighting Pole",
+            "External Lighting Poles"
+        ]
+    },
+    {
+        "class_idx": 39,
+        "class_label": "Manual Call Points / MCP",
+        "main_subjs": [
+            "Manual Call Points / MCP",
+            "MCP (Manual Call Point)",
+            "MCP or Manual-Call-Point",
+            "Manual Call Points",
+            "Manual-Call-Point",
+            "MCP",
+            "MCP's",
+            "MCP unit",
+            "MCP System",
+            "MCP Units",
+            "MCP servicing"
+        ]
+    },
+    {
+        "class_idx": 40,
+        "class_label": "Mechanical Services Switchboard (MSSB)",
+        "main_subjs": [
+            "Mechanical Services Switchboard (MSSB)",
+            "Mechanical Services SwitchBoard / MSSB",
+            "MSSB (Mechanical Services Switchboards)",
+            "Mechanical Services Switchboard",
+            "MSSB",
+            "MSSB units",
+            "MSSB System",
+            "MSSB servicing"
+        ]
+    },
+    {
+        "class_idx": 41,
+        "class_label": "Pest Control",
+        "main_subjs": [
+            "Pest Control",
+            "Pest Controls",
+            "Pest-Control",
+            "Pest Control Service",
+            "Pest Control Servicing",
+            "General Pest Control",
+            "wide variety Pests control"
+        ]
+    },
+    {
+        "class_idx": 42,
+        "class_label": "Pit:",
+        "main_subjs": [
+            "Pit",
+            "Pits",
+            "Paint / Clay pit",
+            "Paint / Clay pits",
+            "Clay - Paint pit",
+            "Pit: Paint / Clay",
+            "Paint / Resisn pit",
+            "Paint / Resisn pits",
+            "Resisn - Paint pit",
+            "Pit: Paint / Resisn",
+            "Oil pit",
+            "Oil Pits",
+            "Pit: Oil"
+        ]
+    },
+    {
+        "class_idx": 43,
+        "class_label": "Residual Current Devices (RCD)",
+        "main_subjs": [
+            "RCD",
+            "RCD's",
+            "RCD controls",
+            "RCD System",
+            "Residual Current Devices (RCD)",
+            "Residual Current Device / RCD",
+            "RCD or Residual Current Device"
+        ]
+    },
+    {
+        "class_idx": 44,
+        "class_label": "Security System",
+        "main_subjs": [
+            "Security System",
+            "Security Systems",
+            "Security-System",
+            "Security System Service",
+            "General Security",
+            "General Security System"
+        ]
+    },
+    {
+        "class_idx": 45,
+        "class_label": "Security System: CCTV Camera Post / Column",
+        "main_subjs": [
+            "Security System: CCTV Camera Post / Column",
+            "Security System: CCTV Column or Camera Posts",
+            "Security System: CCTV Camera Post",
+            "Security System: CCTV Camera Column",
+            "Security System: CCTV Camera Posts",
+            "Security System: CCTV camera Columns",
+            "Security System: CCTV Post",
+            "Security System: CCTV Column"
+        ]
+    },
+    {
+        "class_idx": 46,
+        "class_label": "Security System: Modem / Media Converter",
+        "main_subjs": [
+            "Security System: Modem / Media Converter",
+            "Security System: Media Converter - Modem",
+            "Security System: Modem",
+            "Security System: Modems",
+            "Security System: Media Converter",
+            "Security System: Media Converters",
+            "Modem / Media Converter (Security System)",
+            "Media Converter - Modem (Security System)"
+        ]
+    },
+    {
+        "class_idx": 47,
+        "class_label": "Security System: Vehicle Barrier / Boomgate",
+        "main_subjs": [
+            "Security System: Vehicle Barrier / Boomgate",
+            "Security System: Boom Gate - Vehicle Barrier",
+            "Security System: Vehicle Barrier",
+            "Security System: Vehicle Barriers",
+            "Security System: Boomgate",
+            "Security System: Boomgates",
+            "Security System: Boom Gate",
+            "Security System: Boom Gates",
+            "Vehicle Barrier / Boomgate (Security System)",
+            "Boom Gate - Vehicle Barrier (Security System)"
+        ]
+    },
+    {
+        "class_idx": 48,
+        "class_label": "Sharps Service Disposal",
+        "main_subjs": [
+            "Sharps Service Disposal",
+            "Sharps Service Disposals",
+            "Sharps Services Disposal",
+            "Sharps Service: Disposal",
+            "Sharps Service - Disposal",
+            "Sharps-Service Disposal",
+            "Sharps Services: Disposal"
+        ]
+    },
+    {
+        "class_idx": 49,
+        "class_label": "Sport Court & Playground Equipment",
+        "main_subjs": [
+            "Sport Court & Playground Equipment",
+            "Playground Equipment & Sport Court",
+            "Sport Courts and Play Ground Equipment",
+            "Sport Court & Play Ground Equipment",
+            "Playground Equipment",
+            "Play Ground Equipment",
+            "Playground-Equipments",
+            "Play-Ground Equipments"
+        ]
+    },
+    {
+        "class_idx": 50,
+        "class_label": "Sport Court & Playground Equipment inc Natureplay",
+        "main_subjs": [
+            "Sport Court & Playground Equipment inc Natureplay",
+            "Play ground Equipment and Sport Court inc. Natureplay",
+            "Sport Court & Playground Equipment including Nature Play",
+            "Sport Court & Playground Equipment (Natureplay included)",
+            "Play ground Equipment and Sport Court Natureplay",
+            "Sport Court & Playground Equipment with Nature Play",
+            "Playground Equipment inc Natureplay",
+            "Play Ground Equipment inc Nature Play",
+            "Playground-Equipments inc Natureplay",
+            "Play-Ground Equipments inc Natureplay",
+            "Playground Equipment with Natureplay",
+            "Play Ground Equipment (Natureplay included)",
+            "Natureplay Playground-Equipments"
+        ]
+    },
+    {
+        "class_idx": 51,
+        "class_label": "Testing & Tagging",
+        "main_subjs": [
+            "Testing & Tagging",
+            "Taggings and Testing",
+            "Testings and Tagging",
+            "Tagging and Testings",
+            "Testing & Tagging: Portable Equipments",
+            "Tagging & Testing: Portable Equipment",
+            "Testing and Tagging: Portable Equipments",
+            "Tagging and Testing: Portable Equipment"
+        ]
+    },
+    {
+        "class_idx": 52,
+        "class_label": "Thermostatic Mixing Valve",
+        "main_subjs": [
+            "Thermostatic Mixing Valve",
+            "Thermostatic Mixing Valves",
+            "Thermostatic-Mixing-Valve",
+            "Mixing Valve: Thermostatic",
+            "Mixing Valve - Thermostatic",
+            "Thermostatic Mixing Valve Unit"
+        ]
+    },
+    {
+        "class_idx": 53,
+        "class_label": "Variable Speed Drive (VSD)",
+        "main_subjs": [
+            "Variable Speed Drive (VSD)",
+            "Variable Speed Drives / VSD",
+            "VSD or Variable Speed Drives",
+            "VSD (Variable-Speed-Drive)",
+            "Variable Speed Drive",
+            "Variable Speed Drives",
+            "VSD",
+            "VSD's",
+            "VSD System",
+            "VSD Unit"
+        ]
+    },
+    {
+        "class_idx": 54,
+        "class_label": "Waste Management",
+        "main_subjs": [
+            "Waste Management",
+            "Waste Managements",
+            "Waste-Management",
+            "Waste (treatment) Management",
+            "Waste Management/Treatment",
+            "Waste treatment/Management",
+            "Waste Management Srevice",
+            "Waste Management System"
+        ]
+    },
+    {
+        "class_idx": 55,
+        "class_label": "Wind Turbine",
+        "main_subjs": [
+            "Wind Turbine",
+            "Wind Turbines",
+            "Wind-Turbine",
+            "Wind Turbine System",
+            "Wind Turbine Unit",
+            "Wind Turbine Units",
+            "Wind Turbine Managment"
+        ]
+    },
+    {
+        "class_idx": 56,
+        "class_label": "Cleaning Services:",
+        "main_subjs": [
+            "Cleaning Services",
+            "Cleaning-Service",
+            "Cleaning Service",
+            "Cleaning Service (CL)",
+            "Cleaning Services (CL)",
+            "Cleaning-Service (CL)",
+            "Service: Cleaning"
+        ]
+    },
+    {
+        "class_idx": 57,
+        "class_label": "Climbing Wall / Abseiling Structure",
+        "main_subjs": [
+            "Climbing Wall / Abseiling Structure",
+            "Abseiling Structure / Climbing Wall",
+            "Climbing Wall or Abseiling Structure",
+            "Abseiling Structure or Climbing Wall",
+            "Climbing Walls",
+            "Climbing Wall",
+            "Climbing-Wall",
+            "Climbing Wall structure",
+            "Abseiling Structure",
+            "Abseiling Structures"
+        ]
+    },
+    {
+        "class_idx": 58,
+        "class_label": "Combi Oven: Filter",
+        "main_subjs": [
+            "Combi Oven: Filter",
+            "Combi Oven: Filters",
+            "Combi-Oven: Filtering",
+            "Filters - Xsential10 RO 4 Stage System Gac/TX/CCF - Combi Ovens",
+            "Filter: Combi Oven",
+            "Filter: Combi Ovens",
+            "Filter: Combi-Oven",
+            "Filters: Combi Ovens - Essential10 RO 4 Stage System Gac/TX/CCF",
+            "Filters (Essential10 RO 4 Stage System Gac/TX/CCF): Combi Ovens",
+            "Filter - Essential10 RO 4 Stage System Gac/TX/CCF on Combi Ovens",
+            "Filters (Xsential10 RO 4 Stage System Gac/TX/CCF): Combi Ovens",
+            "Filter - Xsential10 RO 4 Stage System Gac/TX/CCF on Combi Ovens"
+        ]
+    },
+    {
+        "class_idx": 59,
+        "class_label": "Dangerous Goods Safety Storage Cabinets",
+        "main_subjs": [
+            "Dangerous Goods Safety Storage Cabinets",
+            "Dangerous Goods Safety Storage Cabinet",
+            "Dangerous Goods: Safety Storage Cabinets",
+            "Dangerous Goods: Safety Storage Cabinet",
+            "Dangerous Goods: Safety-Storage-Cabinet",
+            "Safety Storage Cabinets - Dangerous Goods",
+            "Safety-Storage-Cabinet - Dangerous Goods"
+        ]
+    },
+    {
+        "class_idx": 60,
+        "class_label": "Design & Technology: Fixed Equipment",
+        "main_subjs": [
+            "Design & Technology: Fixed Equipment",
+            "Design and Technology: Fixed Equipment",
+            "Technology & Design: Fixed Equipment",
+            "Technology and Design: Fixed Equipment",
+            "Design & Technology: Fixed-Equipment",
+            "Design and Technology: Fixed-Equipment",
+            "Technology & Design: Fixed-Equipment",
+            "Technology and Design: Fixed-Equipment",
+            "Design & Technology: Fixed Equipments",
+            "Design and Technology: Fixed Equipments",
+            "Technology & Design: Fixed Equipments",
+            "Technology and Design: Fixed Equipments"
+        ]
+    },
+    {
+        "class_idx": 61,
+        "class_label": "Design & Technology: Portable Gas Welding System",
+        "main_subjs": [
+            "Design & Technology: Portable Gas Welding System",
+            "Design and Technology: Portable Gas Welding System",
+            "Technology & Design: Portable Gas Welding System",
+            "Technology and Design: Portable Gas Welding System",
+            "Design & Technology: Portable-Gas-Welding-System",
+            "Design and Technology: Portable-Gas-Welding-System",
+            "Technology & Design: Portable-Gas-Welding-System",
+            "Technology and Design: Portable-Gas-Welding-System",
+            "Design & Technology: Portable Gas Welding Systems",
+            "Design and Technology: Portable Gas Welding Systems",
+            "Technology & Design: Portable Gas Welding Systems",
+            "Technology and Design: Portable Gas Welding Systems",
+            "Design & Technology: Portable Gas Welding",
+            "Design and Technology: Portable Gas Welding",
+            "Technology & Design: Portable Gas Welding",
+            "Technology and Design: Portable Gas Welding",
+            "Design & Technology: Portable-Gas-Welding",
+            "Design and Technology: Portable-Gas-Welding",
+            "Technology & Design: Portable-Gas-Welding",
+            "Technology and Design: Portable-Gas-Welding"
+        ]
+    },
+    {
+        "class_idx": 62,
+        "class_label": "Design & Technology: Reticulated Gas Welding System",
+        "main_subjs": [
+            "Design & Technology: Reticulated Gas Welding System",
+            "Design and Technology: Reticulated Gas Welding System",
+            "Technology & Design: Reticulated Gas Welding System",
+            "Technology and Design: Reticulated Gas Welding System",
+            "Design & Technology: Reticulated-Gas-Welding-System",
+            "Design and Technology: Reticulated-Gas-Welding-System",
+            "Technology & Design: Reticulated-Gas-Welding-System",
+            "Technology and Design: Reticulated-Gas-Welding-System",
+            "Design & Technology: Reticulated Gas Welding Systems",
+            "Design and Technology: Reticulated Gas Welding Systems",
+            "Technology & Design: Reticulated Gas Welding Systems",
+            "Technology and Design: Reticulated Gas Welding Systems",
+            "Design & Technology: Reticulated Gas Welding",
+            "Design and Technology: Reticulated Gas Welding",
+            "Technology & Design: Reticulated Gas Welding",
+            "Technology and Design: Reticulated Gas Welding",
+            "Design & Technology: Reticulated-Gas-Welding",
+            "Design and Technology: Reticulated-Gas-Welding",
+            "Technology & Design: Reticulated-Gas-Welding",
+            "Technology and Design: Reticulated-Gas-Welding"
+        ]
+    },
+    {
+        "class_idx": 63,
+        "class_label": "Door: Automatic",
+        "main_subjs": [
+            "Door: Automatic",
+            "Automatic Door",
+            "Automatic Doors",
+            "Doors: Automatic",
+            "Door: Auto",
+            "Auto Door",
+            "Auto Doors",
+            "Doors: Auto",
+            "Automatic Door system",
+            "Automatic-Door",
+            "Auto Door system",
+            "Auto-Door"
+        ]
+    },
+    {
+        "class_idx": 64,
+        "class_label": "Door: Bi-Fold",
+        "main_subjs": [
+            "Door: Bi-Fold",
+            "Bi-Fold Door",
+            "Bi-Fold Doors",
+            "Doors: Bi-Fold",
+            "Door: BiFold",
+            "BiFold Door",
+            "BiFold Doors",
+            "Doors: BiFold",
+            "Bi-Fold Door system",
+            "Bi-Fold-Door",
+            "BiFold Door system",
+            "BiFold-Door",
+            "Door: Automatic Bi-Fold",
+            "Automatic Door: Bi-Fold",
+            "Door: Auto Bi-Fold",
+            "Auto Door: Bi-Fold"
+        ]
+    },
+    {
+        "class_idx": 65,
+        "class_label": "Door: Roller",
+        "main_subjs": [
+            "Door: Roller",
+            "Roller Door",
+            "Roller Doors",
+            "Doors: Roller",
+            "Roller Door system",
+            "Roller-Door",
+            "Door: Automatic Roller",
+            "Automatic Door: Roller",
+            "Door: Auto Roller",
+            "Auto Door: Roller"
+        ]
+    },
+    {
+        "class_idx": 66,
+        "class_label": "Drinking Water Unit: Boiling / Chilled",
+        "main_subjs": [
+            "Drinking Water Unit: Boiling / Chilled",
+            "Drinking Water Unit: Chilled / Boiling",
+            "Drinking Unit: Filtered",
+            "Drinking Water Unit: Filtered",
+            "Drinking Units: Filtered",
+            "Drinking-Water-Unit: Filtered",
+            "Drinking Unit: Chilled",
+            "Drinking Water Unit: Chilled",
+            "Drinking Units: Chilled",
+            "Drinking-Water-Unit: Chilled",
+            "Drinking Unit: Boiling",
+            "Drinking Water Unit: Boiling",
+            "Drinking Units: Boiling",
+            "Drinking-Water-Unit: Boiling",
+            "Boiling/Chilled Water Units",
+            "Chilled/Boiling Water Units",
+            "Boiling-Chilled Water Unit",
+            "Chilled-Boiling Water Unit"
+        ]
+    },
+    {
+        "class_idx": 67,
+        "class_label": "Fall Protection System",
+        "main_subjs": [
+            "Fall Protection System",
+            "Fall Protection Systems",
+            "Fall-Protection-System",
+            "Fall Protection",
+            "Fall Protections",
+            "Fall-Protection"
+        ]
+    },
+    {
+        "class_idx": 68,
+        "class_label": "Fan: Extraction / Chemical",
+        "main_subjs": [
+            "Fan: Extraction / Chemical",
+            "Fan: Chemical / Extraction",
+            "Fan: Extraction / Chemical Store",
+            "Fan: Chemical / Extraction Store",
+            "Extraction: Chemical Store",
+            "Extraction: Chemical-Store",
+            "Chemical Store - Extraction",
+            "Chemical Store - (Fan) Extraction"
+        ]
+    },
+    {
+        "class_idx": 69,
+        "class_label": "Fan: Extraction / Dust",
+        "main_subjs": [
+            "Fan: Extraction / Dust",
+            "Fan: Dust / Extraction",
+            "Fan: Extraction-Dust",
+            "Fan: Dust-Extraction",
+            "Extraction: Dust",
+            "Extractions: Dust",
+            "Extraction - Dust",
+            "Dust - Extraction",
+            "Dust - (Fan) Extraction"
+        ]
+    },
+    {
+        "class_idx": 70,
+        "class_label": "Fan: Extraction / Spray Booth",
+        "main_subjs": [
+            "Fan: Extraction / Spray Booth",
+            "Fan: Spray Booth / Extraction",
+            "Fan: Extraction Spray-Booth",
+            "Fan: Spray Booth-Extraction",
+            "Extraction: Spray Booth",
+            "Extractions: Spray Booth",
+            "Extraction - Spray Booth",
+            "Spray Booth - Extraction",
+            "Spray Booth - (Fan) Extraction"
+        ]
+    },
+    {
+        "class_idx": 71,
+        "class_label": "Fan: Large Diameter",
+        "main_subjs": [
+            "Fan: Large Diameter",
+            "Fans: Large Diameter",
+            "Fan: Large-Diameter",
+            "Fans: Large-Diameter",
+            "Large Diameter Fan",
+            "Large Diameter Fans",
+            "Large-Diameter-Fan",
+            "Large Diameter Fan system",
+            "Large-Diameter-Fan system"
+        ]
+    },
+    {
+        "class_idx": 72,
+        "class_label": "Fan: Ventilation Exhaust",
+        "main_subjs": [
+            "Fan: Ventilation Exhaust",
+            "Fans: Ventilation Exhaust",
+            "Fan: Ventilation-Exhaust",
+            "Fans: Ventilation-Exhaust",
+            "Ventilation Exhaust Fan",
+            "Ventilation Exhaust Fans",
+            "Ventilation-Exhaust-Fan",
+            "Ventilation Exhaust Fan system",
+            "Ventilation-Exhaust-Fan system"
+        ]
+    },
+    {
+        "class_idx": 73,
+        "class_label": "Fire Door Set: Hinged & Pivoted",
+        "main_subjs": [
+            "Fire Door Set: Hinged & Pivoted",
+            "Fire Door Set: Pivoted & Hinged",
+            "Fire Door Set: Hinged and Pivoted",
+            "Fire Door Set: Pivoted and Hinged",
+            "Hinged & Pivoted Fire Door Set",
+            "Pivoted & Hinged Fire Door Set",
+            "Hinged & Pivoted Fire Door Sets",
+            "Hinged and Pivoted Fire Door Set",
+            "Pivoted and Hinged Fire Door Set",
+            "Pivoted and Hinged Fire Door Sets"
+        ]
+    },
+    {
+        "class_idx": 74,
+        "class_label": "Fire Door Set: Sliding",
+        "main_subjs": [
+            "Fire Door Set: Sliding",
+            "Fire Door Set: Slidings",
+            "Fire Door: Sliding",
+            "Fire Doors: Sliding",
+            "Sliding Fire Door Set",
+            "Sliding Fire-Door-Set",
+            "Sliding Fire Door",
+            "Sliding Fire Doors"
+        ]
+    },
+    {
+        "class_idx": 75,
+        "class_label": "Fire Hydrant Booster Connection",
+        "main_subjs": [
+            "Fire Hydrant Booster Connection",
+            "Booster Connection Fire Hydrants",
+            "Fire Hydrant: Booster Connection",
+            "Fire Hydrant: Booster Connections",
+            "Fire Hydrant: Booster - Flow Test",
+            "Fire Hydrant: Boosters - FlowTest",
+            "Fire Brigade Booster Connection: Overhaul",
+            "Fire Brigade Booster Connection - Overhaul",
+            "Fire Brigade Booster Connection: Pressure Gauges",
+            "Fire Brigade Booster Connection - Pressure Gauge",
+            "Fire Hydrant: Booster - Hydrostatic Test",
+            "Fire-Hydrant: Boosters - Hydrostatic Test"
+        ]
+    },
+    {
+        "class_idx": 76,
+        "class_label": "Fire Pump: Diesel",
+        "main_subjs": [
+            "Fire Pump: Diesel",
+            "Fire-Pump: Diesel",
+            "Fire Pump System: Diesel",
+            "Fire Pump - Diesel",
+            "Fire Pump System - Diesel",
+            "Diesel Fire Pumps",
+            "Diesel-Fire-Pump",
+            "Diesel Fire Pump"
+        ]
+    },
+    {
+        "class_idx": 77,
+        "class_label": "Fire Pump: Electric",
+        "main_subjs": [
+            "Fire Pump: Electric",
+            "Fire-Pump: Electric",
+            "Fire Pump System: Electric",
+            "Fire Pump - Electric",
+            "Fire Pump System - Electric",
+            "Electric Fire Pumps",
+            "Electric-Fire-Pump",
+            "Electric Fire Pump"
+        ]
+    },
+    {
+        "class_idx": 78,
+        "class_label": "Fire Damper",
+        "main_subjs": [
+            "Fire Damper",
+            "Fire Dampers",
+            "Fire-Damper",
+            "Fire Damper Unit",
+            "Fire Damper System",
+            "Fire Damper units"
+        ]
+    },
+    {
+        "class_idx": 79,
+        "class_label": "Flag Pole",
+        "main_subjs": [
+            "Flag Pole",
+            "Flag Poles",
+            "Flag-Pole",
+            "Flag Pole Unit",
+            "Flag Pole System",
+            "FlagPole",
+            "FlagPoles"
+        ]
+    },
+    {
+        "class_idx": 80,
+        "class_label": "Fume Cupboards",
+        "main_subjs": [
+            "Fume Cupboards",
+            "Fume Cupboard",
+            "Fume-Cupboard",
+            "Fume Cupboard unit",
+            "Fume Cupboards (Fume Hoods)",
+            "Fume Cupboard (Fume Hood)",
+            "Fume Cupboards / Fume Hoods",
+            "Fume Cupboards / Hoods",
+            "Fume Hoods / Cupboards",
+            "Fume Cupboards or Hoods",
+            "Fume Hoods or Cupboards"
+        ]
+    },
+    {
+        "class_idx": 81,
+        "class_label": "Gas Tank: LPG",
+        "main_subjs": [
+            "Gas Tank: LPG",
+            "Gas Tank LPG",
+            "Gas Tank - LPG",
+            "Gas Tanks: LPG",
+            "Gas Tanks LPG",
+            "Gas Tanks - LPG",
+            "LPG Gas Tank",
+            "LPG - Gas Tank",
+            "LPG Gas Tanks",
+            "LPG Gas-Tank"
+        ]
+    },
+    {
+        "class_idx": 82,
+        "class_label": "Gas Space Heating",
+        "main_subjs": [
+            "Gas Space Heating",
+            "Gas-Space-Heating",
+            "Gas Space Heater",
+            "Gas Space Heating System",
+            "Gas Space Heating Unit",
+            "Gas Space Heat units"
+        ]
+    },
+    {
+        "class_idx": 83,
+        "class_label": "Gate:",
+        "main_subjs": [
+            "Gate",
+            "Gates",
+            "Gate: Automatic",
+            "Gates: Automatic",
+            "Gate: Auto",
+            "Gates: Auto",
+            "Automatic Gate",
+            "Automatic Gates",
+            "Auto Gate",
+            "Auto Gates"
+        ]
+    },
+    {
+        "class_idx": 84,
+        "class_label": "Gutters, Downpipes & Roofs",
+        "main_subjs": [
+            "Gutters, Downpipes & Roofs",
+            "Gutters, Downpipes and Roofs",
+            "Gutters, Roofs and Downpipes",
+            "Downpipes, Roofs & Gutters",
+            "Gutters, Downpipes & Roofs - G Block only",
+            "Gutters, Downpipes and Roofs - only G Block",
+            "Gutters, Roofs and Downpipes - G Block only",
+            "Downpipes, Roofs & Gutters - only G Blocks",
+            "Gutters, Downpipes & Roofs(excl.G.Block)",
+            "Gutters, Downpipes and Roofs(excluding G Blocks)",
+            "Gutters, Roofs and Downpipes(G -lock excluded)",
+            "Downpipes, Roofs & Gutters(excl.G.Block)"
+        ]
+    },
+    {
+        "class_idx": 85,
+        "class_label": "Gym Equipment: Fixed",
+        "main_subjs": [
+            "Gym Equipment: Fixed",
+            "Gym-Equipment: Fixed",
+            "Gym Equipment (Fixed)",
+            "Gym Equipments - Fixed",
+            "Fixed Gym Equipment",
+            "Fixed Gym Equipments",
+            "Fixed Gym-Equipment"
+        ]
+    },
+    {
+        "class_idx": 86,
+        "class_label": "Irrigation:",
+        "main_subjs": [
+            "Irrigation",
+            "Irrigations",
+            "Irrigation Aeration Stream",
+            "Irrigation: Aeration Stream",
+            "Aeration Stream Irrigation",
+            "Irrigation Filter",
+            "Irrigation: Filter",
+            "Filter Irrigation",
+            "Irrigation Bore",
+            "Irrigation: Bore",
+            "Bore Irrigation",
+            "Irrigation Iron Filtration",
+            "Irrigation: Iron Filtration",
+            "Iron Filtration Irrigation",
+            "Bore water filtration systems",
+            "Bore water filtration system",
+            "Bore-water-filtration system"
+        ]
+    },
+    {
+        "class_idx": 87,
+        "class_label": "Irrigation: Tank",
+        "main_subjs": [
+            "Irrigation Tank",
+            "Irrigation: Tank",
+            "Tank Irrigation",
+            "Irrigation Tanks",
+            "Irrigation: Tanks",
+            "Water Collection",
+            "Water-Collection",
+            "Water Collections",
+            "Water Collection system",
+            "Irrigation Tank (Water Collection)",
+            "Water collection (Irrigation Tank)"
+        ]
+    },
+    {
+        "class_idx": 88,
+        "class_label": "Kitchen Canopy",
+        "main_subjs": [
+            "Kitchen Canopy",
+            "Kitchen Canopies",
+            "Kitchen-Canopy",
+            "Canopy Flue & Fan",
+            "Canopy Fan & Flue",
+            "Canopy Flue and Fan",
+            "Canopy Fan and Flue",
+            "Kitchen Canopy Flue & Fan",
+            "Kitchen Canopy Fan & Flue",
+            "Kitchen Canopy Flue and Fan",
+            "Kitchen Canopy Fan and Flue"
+        ]
+    },
+    {
+        "class_idx": 89,
+        "class_label": "Lift: Passenger",
+        "main_subjs": [
+            "Lift: Passenger",
+            "Lift - Passenger",
+            "Lifts for passengers",
+            "Lift",
+            "Lifts",
+            "Lift monitoring service",
+            "Lift: monitoring service",
+            "Lift - Monitoring Service"
+        ]
+    },
+    {
+        "class_idx": 90,
+        "class_label": "Lifting Equipment: Hoist / Winch",
+        "main_subjs": [
+            "Lifting Equipment: Hoist / Winch",
+            "Lifting Equipments: Winch / Hoist",
+            "Lifting Equipments: Hoist or Winch",
+            "Lifting Equipment: Winch or Hoist",
+            "Lifting Equipment: Hoist",
+            "Lifting-Equipment: Winches",
+            "Lifting Equipment - Hoist",
+            "Lifting-Equipment: Hoists",
+            "Lifting Equipment Winch",
+            "Lifting Equipment - Winch"
+        ]
+    },
+    {
+        "class_idx": 91,
+        "class_label": "Lifting Equipment: Vehicle Hoist",
+        "main_subjs": [
+            "Lifting Equipment: Vehicle Hoist",
+            "Lifting Equipments - Vehicle Hoist",
+            "Lifting Equipments: Vehicle Hoist",
+            "Lifting Equipment: Vehicle",
+            "Lifting Equipments: Vehicles",
+            "Lifting Equipment - Vehicle",
+            "Lifting Equipment Vehicle",
+            "Lifting Equipment Vehicles",
+            "Lifting Equipment - Vehicles",
+            "Vehicle Hoist Lifting Equipments",
+            "Lifting Equipment Hoist Vehicle"
+        ]
+    },
+    {
+        "class_idx": 92,
+        "class_label": "Microwave: Leakage",
+        "main_subjs": [
+            "Microwave: Leakage",
+            "Microwave Leakage",
+            "Microwave - Leakage",
+            "Microwave Leakages",
+            "Microwave: Leaking Management",
+            "Microwave Leaking Management",
+            "Microwave - Leaking Management"
+        ]
+    },
+    {
+        "class_idx": 93,
+        "class_label": "Mobile Work Platforms",
+        "main_subjs": [
+            "Mobile Work Platforms",
+            "Mobile Work Platform",
+            "Mobile-Work-Platform",
+            "Mobile Scaffolding",
+            "Mobile-Scaffolding",
+            "Mobile Scaffolds",
+            "Work Platform: Mobile"
+        ]
+    },
+    {
+        "class_idx": 94,
+        "class_label": "Oil Separator",
+        "main_subjs": [
+            "Oil Separator",
+            "Oil Separators",
+            "Oil-Separator",
+            "Oil Separator: Pump",
+            "Oil Separators pump",
+            "Oil Separator pumps",
+            "Oil Separator - Pump",
+            "Pump: Oil Separator",
+            "Pump Oil Separator",
+            "Pump - Oil Separators"
+        ]
+    },
+    {
+        "class_idx": 95,
+        "class_label": "Operable Walls / Auto Doors",
+        "main_subjs": [
+            "Operable Walls / Auto Doors",
+            "Auto Door / Operable Wall",
+            "Operable Walls or Auto Doors",
+            "Auto Door or Operable Wall",
+            "Operable Walls / Automatic Doors",
+            "Automatic Door / Operable Wall",
+            "Operable Walls or Automatic Doors",
+            "Automatic Door or Operable Wall",
+            "Operable Walls / Doors",
+            "Operable Walls or Doors"
+        ]
+    },
+    {
+        "class_idx": 96,
+        "class_label": "PAC:",
+        "main_subjs": [
+            "PAC",
+            "PACs",
+            "PAC's",
+            "PAC: Audio System",
+            "PAC Audio System",
+            "PAC - Audio System",
+            "PAC: Curtain",
+            "PAC Curtains",
+            "PAC - Curtains",
+            "PAC: Lighting Grids / Bar",
+            "PAC Lighting Grid / Bars",
+            "PAC - Lighting Bar / Grid",
+            "PAC: Lighting System",
+            "PAC Lighting System",
+            "PAC - Lighting System",
+            "PAC: Retractable Seating",
+            "PAC Retractable Seating",
+            "PAC - Retractable Seating",
+            "PAC: Staging System",
+            "PAC Staging System",
+            "PAC - Staging System",
+            "Lighting Grid/Bar",
+            "Lighting Bar/Grid",
+            "Lighting Grid or Bar",
+            "Lighting Bar or Grid"
+        ]
+    },
+    {
+        "class_idx": 97,
+        "class_label": "PAC: Hoist / Winch",
+        "main_subjs": [
+            "PAC: Hoist / Winch",
+            "PAC - Winches / Hoist",
+            "PAC: Hoist / Winches",
+            "Hoists/Winches",
+            "Hoist/Winch",
+            "Performing Arts - hoists and winches",
+            "Performing Arts - hoists & winches",
+            "Performing Arts - winch and hoist"
+        ]
+    },
+    {
+        "class_idx": 98,
+        "class_label": "Aspirating Smoke Detector: ASD / VESDA",
+        "main_subjs": [
+            "Aspirating Smoke Detector: ASD / VESDA",
+            "Aspirating Smoke Detector: ASD (VESDA)",
+            "Very Early Smoke Detection Apparatus: VESDA / ASD",
+            "Very Early Smoke Detection Apparatus: VESDA (ASD)",
+            "Very Early Smoke Detection Apparatus",
+            "Aspirating Smoke Detectors",
+            "ASD",
+            "ASD System",
+            "VESDA System",
+            "VESDA",
+            "VESDA (Very Early Smoke Detection Apparatus)",
+            "ASD (Aspirating Smoke Detectors)"
+        ]
+    },
+    {
+        "class_idx": 99,
+        "class_label": "Post mounted Changeable Message Board",
+        "main_subjs": [
+            "Post mounted Changeable Message Board",
+            "Post mounted Changeable Message Boards",
+            "Mounted Changeable Message Board",
+            "Mounted Changeable Message Boards",
+            "Post mounted Changeable msg Board",
+            "Post mounted Changeable msg Boards",
+            "Mounted Changeable msg Board",
+            "Mounted Changeable msg Boards"
+        ]
+    },
+    {
+        "class_idx": 100,
+        "class_label": "Potable Water System",
+        "main_subjs": [
+            "Potable Water System",
+            "Potable-Water System",
+            "Potable Water System - UV Treatment System",
+            "Potable Water System: UV Treatment System",
+            "Potable Water - UV Treatment System",
+            "Potable Water: UV Treatment System",
+            "Potable Water System - UV Treatment",
+            "Potable Water Equipment - Major - Lab Testing Of Water Potable and Bore",
+            "Potable Water Equipment: Lab Testing Of Water Potable and Bore",
+            "Potable Water Equipment: Lab-tests Of Bore & Water Potable"
+        ]
+    },
+    {
+        "class_idx": 101,
+        "class_label": "Pump: Irrigation",
+        "main_subjs": [
+            "Pump: Irrigation",
+            "Pump: Irrigations",
+            "Pump - Irrigation",
+            "Pump Irrigation",
+            "Irrigation Pump",
+            "Irrigation: Pump",
+            "Irrigation-Pump",
+            "Irrigation Pumps"
+        ]
+    },
+    {
+        "class_idx": 102,
+        "class_label": "Refrigeration: Cool Room / Commercial",
+        "main_subjs": [
+            "Refrigeration: Cool Room / Commercial",
+            "Refrigeration: Commercial Cool Room",
+            "Refrigeration: Cool Rooms / Commercial",
+            "Refrigeration: Commercial Cool Rooms",
+            "Refrigeration Cool Room",
+            "Refrigeration Cool Rooms",
+            "Refrigeration - Cool Room",
+            "Refrigeration - Cool Rooms"
+        ]
+    },
+    {
+        "class_idx": 103,
+        "class_label": "Solar Electric System",
+        "main_subjs": [
+            "Solar Electric System",
+            "Solar Electric Systems",
+            "Solar-Electric-System",
+            "Solar Electric Unit",
+            "Solar Panel",
+            "Solar Panels",
+            "Solar-Panel"
+        ]
+    },
+    {
+        "class_idx": 104,
+        "class_label": "Sport Court",
+        "main_subjs": [
+            "Sport Court",
+            "Sport Courts",
+            "Sport Court",
+            "Sport Court Equipment",
+            "Sport Court Equipments",
+            "Sport-Court-Equipment"
+        ]
+    },
+    {
+        "class_idx": 105,
+        "class_label": "Stormwater drainage:",
+        "main_subjs": [
+            "Stormwater drainage",
+            "Stormwater-drainage",
+            "Stormwater drainage unit",
+            "Storm water sump cleaning",
+            "Storm water sump Clean up",
+            "Cleaning Storm-water-sump"
+        ]
+    },
+    {
+        "class_idx": 106,
+        "class_label": "Sullage Pump Undersink",
+        "main_subjs": [
+            "Sullage Pump Undersink",
+            "Sullage-Pump-Undersink",
+            "Pump: Macerator",
+            "Pump Macerator",
+            "Pump - Macerator",
+            "Macerator: Pump",
+            "Macerator Pumps",
+            "Macerator - Pump",
+            "Macerators - sink macerators and pumps",
+            "Macerators: (under)sink & pumps",
+            "Macerators: sinks and pumps"
+        ]
+    },
+    {
+        "class_idx": 107,
+        "class_label": "Swimming Pool",
+        "main_subjs": [
+            "Swimming Pool",
+            "Swimming pool equipment & Servicing",
+            "Swimming pool Equipments and Servicing",
+            "Swimming Pool: Put Pool In Holiday Mode",
+            "Swimming Pool: Hydrotherapy",
+            "Swimming Pool: Hydrotherapy Service",
+            "Swimming Pool - Hydrotherapy",
+            "Swimming Pool - Hydrotherapy Service"
+        ]
+    },
+    {
+        "class_idx": 108,
+        "class_label": "Tempering Valve",
+        "main_subjs": [
+            "Tempering Valve",
+            "Tempering Valves",
+            "Tempering-Valve",
+            "Tempering Valve system",
+            "Tempering Valve unit"
+        ]
+    },
+    {
+        "class_idx": 109,
+        "class_label": "Tree Management",
+        "main_subjs": [
+            "Tree Management",
+            "Tree Managements",
+            "Tree-Management",
+            "Management: tree",
+            "Management: trees"
+        ]
+    },
+    {
+        "class_idx": 110,
+        "class_label": "Water Treatment System",
+        "main_subjs": [
+            "Water Treatment System",
+            "Water-Treatment-System",
+            "Water Treatment",
+            "Water Treatments",
+            "Water Treatment System: Cooling tower Risk Assessment",
+            "Water Treatment: Cooling tower Risk Assessment",
+            "Water Treatment System: Risk Assessment Cooling tower",
+            "Water Treatment: Risk Assessment Cooling tower"
+        ]
+    },
+    {
+        "class_idx": 111,
+        "class_label": "Water Treatment: Grey Water",
+        "main_subjs": [
+            "Water Treatment: Grey Water",
+            "Water Treatment system: Grey Water",
+            "Water Treatments: Grey-Water",
+            "Grey Water Treatment",
+            "Grey Water Treatments",
+            "Grey Water Treatment System",
+            "Grey Water Treatment Systems"
+        ]
+    },
+    {
+        "class_idx": 112,
+        "class_label": "Water Sampling Potable",
+        "main_subjs": [
+            "Water Sampling Potable",
+            "Water Sampling: Potable Water",
+            "Potable Water Sampling",
+            "Potable Water Sampling System",
+            "Water Sampling Microbiological",
+            "Water Sampling: Microbiological",
+            "Microbiological Water Sampling",
+            "Microbiological Water Sampling System",
+            "Water service - domestic water services not from scheme",
+            "Water Sampling -  Microbiological"
+        ]
+    }
+]

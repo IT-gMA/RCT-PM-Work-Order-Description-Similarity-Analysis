@@ -5,11 +5,11 @@ from util_fucntions import util_functions
 #from lightning.pytorch.trainer import Trainer
 #from lightning.pytorch.callbacks.early_stopping import EarlyStopping
 
-MODEL_ITERATION = 0
+MODEL_ITERATION = 1
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "mps")
 print(f'Running on {DEVICE}')
-INIT_LEARNING_RATE = 2e-5
+INIT_LEARNING_RATE = 1e-5
 MIN_LEARNING_RATE = 1e-8
 
 LABEL_KEY_NAME = 'harmonised_desc'
@@ -53,14 +53,9 @@ RANDOM_SEED = 10
 TRAIN_RATIO = .7
 VALIDATION_RATIO = .15
 TEST_RATIO = .15
-MULTI_DATA_FILES = [
-                    #'../../../xlsx_resources/for_trainings/maximo_pm_to_gap_pm_desc_map.xlsx',
-                    #'../../../xlsx_resources/for_trainings/maximo_pm_to_gap_pm_desc_map_v2.xlsx',
-                    #'../../../xlsx_resources/for_trainings/maximo_pm_to_gap_pm_desc_map_v3.xlsx',
-                    #'../../../xlsx_resources/for_trainings/maximo_pm_to_gap_pm_desc_map_v4.xlsx',
-                    #'../../../xlsx_resources/for_trainings/maximo_pm_to_gap_pm_desc_map_v5.xlsx',
-                    '../../../xlsx_resources/for_trainings/maximo_pm_to_gap_pm_desc_map_xxs.xlsx',
-                    ]
+MULTI_DATA_FILES = []
+for version in range(0, 5):
+    MULTI_DATA_FILES.append(f'../../../xlsx_resources/for_trainings/maximo_pm_desc_map_reworked_S/maximo_pm_desc_map_reworked_it{version}.xlsx')
 
 
 WANDB_PROJECT_NAME = f'Maximo to GAP App harmonised description BERT Base Cased Model Training Iter{MODEL_ITERATION}'
