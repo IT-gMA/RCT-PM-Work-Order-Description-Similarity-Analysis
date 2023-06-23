@@ -54,7 +54,7 @@ TRAIN_RATIO = .7
 VALIDATION_RATIO = .15
 TEST_RATIO = .15
 MULTI_DATA_FILES = []
-for version in range(0, 5):
+for version in range(0, 4):
     MULTI_DATA_FILES.append(f'../../../xlsx_resources/for_trainings/maximo_pm_desc_map_reworked_S/maximo_pm_desc_map_reworked_it{version}.xlsx')
 
 
