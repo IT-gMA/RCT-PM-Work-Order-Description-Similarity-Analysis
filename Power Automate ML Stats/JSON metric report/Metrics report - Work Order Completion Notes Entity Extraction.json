@@ -1,0 +1,239 @@
+{
+    "metrics": [
+        {
+            "isGlobalScore": true,
+            "name": "f1Score",
+            "value": 0.5239992141723633,
+            "type": "Percentage"
+        },
+        {
+            "isGlobalScore": true,
+            "name": "precision",
+            "value": 0.5499579906463623,
+            "type": "Percentage"
+        },
+        {
+            "isGlobalScore": true,
+            "name": "recall",
+            "value": 0.5003805160522461,
+            "type": "Percentage"
+        },
+        {
+            "isGlobalScore": true,
+            "name": "misclassificationDistributionPerReferenceTag",
+            "value": {
+                "asset": [
+                    {
+                        "Key": "NotAnEntity",
+                        "Value": 0.963133633
+                    },
+                    {
+                        "Key": "None",
+                        "Value": 0.0138248848
+                    },
+                    {
+                        "Key": "issue",
+                        "Value": 0.00921659
+                    },
+                    {
+                        "Key": "cause",
+                        "Value": 0.00921659
+                    },
+                    {
+                        "Key": "remedy",
+                        "Value": 0.004608295
+                    }
+                ],
+                "cause": [
+                    {
+                        "Key": "NotAnEntity",
+                        "Value": 0.8467742
+                    },
+                    {
+                        "Key": "issue",
+                        "Value": 0.153225809
+                    }
+                ],
+                "issue": [
+                    {
+                        "Key": "NotAnEntity",
+                        "Value": 0.95714283
+                    },
+                    {
+                        "Key": "cause",
+                        "Value": 0.0357142873
+                    },
+                    {
+                        "Key": "asset",
+                        "Value": 0.007142857
+                    }
+                ],
+                "None": [
+                    {
+                        "Key": "NotAnEntity",
+                        "Value": 0.9765625
+                    },
+                    {
+                        "Key": "issue",
+                        "Value": 0.015625
+                    },
+                    {
+                        "Key": "asset",
+                        "Value": 0.0078125
+                    }
+                ],
+                "NotAnEntity": [
+                    {
+                        "Key": "remedy",
+                        "Value": 0.298136652
+                    },
+                    {
+                        "Key": "asset",
+                        "Value": 0.298136652
+                    },
+                    {
+                        "Key": "issue",
+                        "Value": 0.166149065
+                    },
+                    {
+                        "Key": "None",
+                        "Value": 0.128881991
+                    },
+                    {
+                        "Key": "cause",
+                        "Value": 0.108695649
+                    }
+                ],
+                "remedy": [
+                    {
+                        "Key": "NotAnEntity",
+                        "Value": 0.9948718
+                    },
+                    {
+                        "Key": "issue",
+                        "Value": 0.00512820529
+                    }
+                ]
+            },
+            "type": "DictionaryPercentageList"
+        },
+        {
+            "isGlobalScore": true,
+            "name": "numberOfSentencesTestSet",
+            "value": 197,
+            "type": "Numerical"
+        },
+        {
+            "isGlobalScore": true,
+            "name": "grade",
+            "value": 2,
+            "type": "Numerical"
+        }
+    ],
+    "details": [
+        {
+            "id": "asset",
+            "category": "entity",
+            "metrics": [
+                {
+                    "name": "f1Score",
+                    "value": 0.5772866010665894,
+                    "type": "Percentage"
+                },
+                {
+                    "name": "precision",
+                    "value": 0.5877403616905212,
+                    "type": "Percentage"
+                },
+                {
+                    "name": "recall",
+                    "value": 0.5671981573104858,
+                    "type": "Percentage"
+                },
+                {
+                    "name": "numberOfExamplesPerEntityCategoryTestSet",
+                    "value": 439,
+                    "type": "Numerical"
+                }
+            ]
+        },
+        {
+            "id": "cause",
+            "category": "entity",
+            "metrics": [
+                {
+                    "name": "f1Score",
+                    "value": 0.4565254747867584,
+                    "type": "Percentage"
+                },
+                {
+                    "name": "precision",
+                    "value": 0.5086206793785095,
+                    "type": "Percentage"
+                },
+                {
+                    "name": "recall",
+                    "value": 0.4141104221343994,
+                    "type": "Percentage"
+                },
+                {
+                    "name": "numberOfExamplesPerEntityCategoryTestSet",
+                    "value": 163,
+                    "type": "Numerical"
+                }
+            ]
+        },
+        {
+            "id": "issue",
+            "category": "entity",
+            "metrics": [
+                {
+                    "name": "f1Score",
+                    "value": 0.4340410530567169,
+                    "type": "Percentage"
+                },
+                {
+                    "name": "precision",
+                    "value": 0.4663212299346924,
+                    "type": "Percentage"
+                },
+                {
+                    "name": "recall",
+                    "value": 0.40594059228897095,
+                    "type": "Percentage"
+                },
+                {
+                    "name": "numberOfExamplesPerEntityCategoryTestSet",
+                    "value": 202,
+                    "type": "Numerical"
+                }
+            ]
+        },
+        {
+            "id": "remedy",
+            "category": "entity",
+            "metrics": [
+                {
+                    "name": "f1Score",
+                    "value": 0.5007607936859131,
+                    "type": "Percentage"
+                },
+                {
+                    "name": "precision",
+                    "value": 0.5112359523773193,
+                    "type": "Percentage"
+                },
+                {
+                    "name": "recall",
+                    "value": 0.49070632457733154,
+                    "type": "Percentage"
+                },
+                {
+                    "name": "numberOfExamplesPerEntityCategoryTestSet",
+                    "value": 269,
+                    "type": "Numerical"
+                }
+            ]
+        }
+    ]
+}
