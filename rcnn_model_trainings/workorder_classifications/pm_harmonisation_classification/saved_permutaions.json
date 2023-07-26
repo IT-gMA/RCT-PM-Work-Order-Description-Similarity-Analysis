@@ -7,7 +7,8 @@
             "ACM Emu Picks",
             "ACM-Emu-Pick",
             "Asbestos Containing Materials Emu Pick",
-            "Asbestos Containing Materials Emu Picks"
+            "Asbestos Containing Materials Emu Picks",
+            "ACM Pick"
         ]
     },
     {
@@ -46,12 +47,11 @@
         "main_subjs": [
             "Air Compressor",
             "Air Compressors",
-            "Air-Compressor",
             "Air Compressor: Piston",
-            "Air Compressor Piston",
+            "Compressor Piston",
             "Piston - Air Compressor",
             "Air Compressor: Dryer",
-            "Air Compressor Dryer",
+            "Compressor Dryer",
             "Dryer - Air Compressor"
         ]
     },
@@ -61,14 +61,10 @@
         "main_subjs": [
             "Air Compressor: Pressure Vessel",
             "Air Compressor: Pressure Vessels",
-            "Air Compressor - Pressure Vessel",
-            "Air-Compressor Pressure-Vessel",
             "Air Compressor: Receiver",
-            "Air Compressor: Receivers",
-            "Air Compressor - Receiver",
+            "Compressor: Receiver",
+            "Compressor:",
             "Air Receivers",
-            "Air Receiver",
-            "Air-Receiver",
             "Compressor / Air Receivers",
             "Compressor - Air Receiver",
             "Compressor Air-Receiver",
@@ -111,7 +107,8 @@
             "AirCon: Evaporative Cooler",
             "AirCon Evaporative Cooler / Gas",
             "AC: Evaporative Cooler",
-            "AC Evaporative Cooler / Gas"
+            "AC Evaporative Cooler / Gas",
+            "EVAP"
         ]
     },
     {
@@ -119,14 +116,13 @@
         "class_label": "Air Conditioning: Package",
         "main_subjs": [
             "Air Conditioning: Package",
-            "Package - Air Conditioning",
-            "Air Conditioning - Packages",
+            "Packages Air Conditioning",
             "Air Con: Package",
-            "Package - Air Con",
-            "Air Con - Packages",
+            "Packaged - Air Con",
             "AC: Package",
-            "Package - AC",
-            "AC - Packages"
+            "Packaged AC",
+            "AC - Package",
+            "Packed AirConditioning"
         ]
     },
     {
@@ -135,13 +131,13 @@
         "main_subjs": [
             "Air Conditioning: Split - SSEN:BE",
             "Split (SSEN:BE) - Air Conditioning",
-            "Air Conditioning - Splits",
-            "Air Con: Split",
-            "Split - Air Con (SSEN:BE)",
+            "Split Air Conditioning",
+            "Split Air Con",
+            "Split Air Con (SSEN:BE)",
             "Air Con - Splits",
             "AC: Split",
             "Split - SSEN:BE - AC",
-            "AC - Splits",
+            "Split AC",
             "SSEN:BE Air Conditioning",
             "SSEN:BE-Split Air Conditioning",
             "SSEN:BE AirCon",
@@ -155,10 +151,10 @@
         "class_label": "Air Conditioning: Split / Cassette",
         "main_subjs": [
             "Air Conditioning: Split / Cassette",
-            "Air Conditioning: Cassette or Split",
+            " Cassette / Split Air Conditioning",
             "Air Con: Split / Cassette",
-            "Air Con: Cassette or Split",
-            "AC: Split / Cassette",
+            "Cassette / Split Air Con",
+            " Split/Cassette AC",
             "AC: Cassette or Split"
         ]
     },
@@ -167,11 +163,11 @@
         "class_label": "Air Conditioning: Split / Non - Ducted",
         "main_subjs": [
             "Air Conditioning: Split / Non - Ducted",
-            "Air Conditioning: NonDucted or Split",
-            "Air Con: Split / NonDucted",
+            "NonDucted or Split Air Conditioning",
+            "Split / NonDucted Air Con",
             "Air Con: NonDucted or Split",
             "AC: Split / Non - Ducted",
-            "AC: NonDucted or Split"
+            "NonDucted / Split AC"
         ]
     },
     {
@@ -189,7 +185,7 @@
             "Variable Air Volume / VAV - AirCon",
             "VAV - AirCon",
             "Variable Air Volume / VAV - AC",
-            "VAV - AC"
+            "VAV - AC", "VAV"
         ]
     },
     {
@@ -207,7 +203,7 @@
             "Variable Refrigerant Flow / VRF - AirCon",
             "VRF - AirCon",
             "Variable Refrigerant Flow / VRF - AC",
-            "VRF - AC"
+            "VRF - AC", "VRF"
         ]
     },
     {
@@ -225,16 +221,21 @@
             "Variable Refrigerant Volume / VRV - AirCon",
             "VRV - AirCon",
             "Variable Refrigerant Volume / VRV - AC",
-            "VRV - AC"
+            "VRV - AC", "VRV"
         ]
     },
     {
         "class_idx": 14,
-        "class_label": "Air Receiver",
+        "class_label": "Irrigation: Bore",
         "main_subjs": [
-            "Air Receivers",
-            "Air-Receiver",
-            "Air-Receiver"
+            "Bore Irrigation",
+            "Irrigation: Bore",
+            "Irrigation Bore",
+            "Irrigation-Bore",
+            "Irrigation Flow Bore", "Irrigation pressure Bore", "Bore Irrigation pressure",
+             "Bore water filtration systems",
+            "Bore water filtration system",
+            "Bore-water-filtration system"
         ]
     },
     {
@@ -628,12 +629,9 @@
         "class_label": "Pest Control",
         "main_subjs": [
             "Pest Control",
-            "Pest Controls",
-            "Pest-Control",
             "Pest Control Service",
-            "Pest Control Servicing",
-            "General Pest Control",
-            "wide variety Pests control"
+            "Termite Thermal Imaging", "Rodent Thermal Imaging", "Mice/Rat Thermal-Imaging", "Thermal Imaging: Mosquito", "Cockroach Thermal Imaging",
+            "Termites", "Rodents", "Mice/Rats", "Mosquitoes"
         ]
     },
     {
@@ -757,17 +755,11 @@
         "main_subjs": [
             "Sport Court & Playground Equipment inc Natureplay",
             "Play ground Equipment and Sport Court inc. Natureplay",
-            "Sport Court & Playground Equipment including Nature Play",
             "Sport Court & Playground Equipment (Natureplay included)",
             "Play ground Equipment and Sport Court Natureplay",
-            "Sport Court & Playground Equipment with Nature Play",
             "Playground Equipment inc Natureplay",
-            "Play Ground Equipment inc Nature Play",
-            "Playground-Equipments inc Natureplay",
             "Play-Ground Equipments inc Natureplay",
-            "Playground Equipment with Natureplay",
-            "Play Ground Equipment (Natureplay included)",
-            "Natureplay Playground-Equipments"
+            "Play Ground Equipment (Natureplay included)"
         ]
     },
     {
@@ -775,13 +767,14 @@
         "class_label": "Testing & Tagging",
         "main_subjs": [
             "Testing & Tagging",
-            "Taggings and Testing",
-            "Testings and Tagging",
+            "Portable Electrical Equipment: Testing & Tagging",
+            "Portable Equipments: Testings and Tagging",
             "Tagging and Testings",
-            "Testing & Tagging: Portable Equipments",
+            "Testing & Tagging: Portable Electrical Equipments",
             "Tagging & Testing: Portable Equipment",
-            "Testing and Tagging: Portable Equipments",
+            "Testing and Tagging: Portable Electrical Equipments",
             "Tagging and Testing: Portable Equipment"
+
         ]
     },
     {
@@ -905,16 +898,16 @@
         "main_subjs": [
             "Design & Technology: Fixed Equipment",
             "Design and Technology: Fixed Equipment",
-            "Technology & Design: Fixed Equipment",
+            "Manual Art Equipments",
             "Technology and Design: Fixed Equipment",
-            "Design & Technology: Fixed-Equipment",
+            "Manual Art Equipment",
             "Design and Technology: Fixed-Equipment",
             "Technology & Design: Fixed-Equipment",
-            "Technology and Design: Fixed-Equipment",
+            "Manual Arts Equipments",
             "Design & Technology: Fixed Equipments",
             "Design and Technology: Fixed Equipments",
-            "Technology & Design: Fixed Equipments",
-            "Technology and Design: Fixed Equipments"
+            "Manual-Art-Equipments",
+            "Manual (Art) Equipments"
         ]
     },
     {
@@ -1087,7 +1080,8 @@
             "Extractions: Dust",
             "Extraction - Dust",
             "Dust - Extraction",
-            "Dust - (Fan) Extraction"
+            "Dust - (Fan) Extraction",
+            "SawDust"
         ]
     },
     {
@@ -1302,17 +1296,17 @@
         "class_label": "Gutters, Downpipes & Roofs",
         "main_subjs": [
             "Gutters, Downpipes & Roofs",
-            "Gutters, Downpipes and Roofs",
-            "Gutters, Roofs and Downpipes",
-            "Downpipes, Roofs & Gutters",
+            "Roofs",
+            "Gutters",
+            "Downpipes",
             "Gutters, Downpipes & Roofs - G Block only",
             "Gutters, Downpipes and Roofs - only G Block",
             "Gutters, Roofs and Downpipes - G Block only",
-            "Downpipes, Roofs & Gutters - only G Blocks",
-            "Gutters, Downpipes & Roofs(excl.G.Block)",
+            "Downpipes and Roofs",
+            "Gutters & Downpipes",
             "Gutters, Downpipes and Roofs(excluding G Blocks)",
             "Gutters, Roofs and Downpipes(G -lock excluded)",
-            "Downpipes, Roofs & Gutters(excl.G.Block)"
+            "Roof & Gutter"
         ]
     },
     {
@@ -1340,15 +1334,9 @@
             "Irrigation Filter",
             "Irrigation: Filter",
             "Filter Irrigation",
-            "Irrigation Bore",
-            "Irrigation: Bore",
-            "Bore Irrigation",
             "Irrigation Iron Filtration",
             "Irrigation: Iron Filtration",
-            "Iron Filtration Irrigation",
-            "Bore water filtration systems",
-            "Bore water filtration system",
-            "Bore-water-filtration system"
+            "Iron Filtration Irrigation"
         ]
     },
     {
@@ -1382,7 +1370,8 @@
             "Kitchen Canopy Flue & Fan",
             "Kitchen Canopy Fan & Flue",
             "Kitchen Canopy Flue and Fan",
-            "Kitchen Canopy Fan and Flue"
+            "Kitchen Canopy Fan and Flue",
+            "Kitchen Exhausts", "Kitchen Exhaust"
         ]
     },
     {
@@ -1451,11 +1440,13 @@
         "main_subjs": [
             "Mobile Work Platforms",
             "Mobile Work Platform",
-            "Mobile-Work-Platform",
+            "MWP: Scaffolding", "MWP - Scaffolds",
             "Mobile Scaffolding",
             "Mobile-Scaffolding",
+            "MWP: Scaffold",
             "Mobile Scaffolds",
-            "Work Platform: Mobile"
+            "Work Platform: Mobile",
+            "MWP", "MWP's", "MWP system", "MWP units"
         ]
     },
     {
@@ -1482,12 +1473,12 @@
             "Auto Door / Operable Wall",
             "Operable Walls or Auto Doors",
             "Auto Door or Operable Wall",
-            "Operable Walls / Automatic Doors",
+            "Operable Wall / Automatic Doors",
             "Automatic Door / Operable Wall",
             "Operable Walls or Automatic Doors",
             "Automatic Door or Operable Wall",
             "Operable Walls / Doors",
-            "Operable Walls or Doors"
+            "Operable Wall or Doors"
         ]
     },
     {
@@ -1495,30 +1486,18 @@
         "class_label": "PAC:",
         "main_subjs": [
             "PAC",
-            "PACs",
-            "PAC's",
-            "PAC: Audio System",
             "PAC Audio System",
             "PAC - Audio System",
             "PAC: Curtain",
-            "PAC Curtains",
-            "PAC - Curtains",
             "PAC: Lighting Grids / Bar",
-            "PAC Lighting Grid / Bars",
-            "PAC - Lighting Bar / Grid",
-            "PAC: Lighting System",
-            "PAC Lighting System",
             "PAC - Lighting System",
             "PAC: Retractable Seating",
-            "PAC Retractable Seating",
-            "PAC - Retractable Seating",
             "PAC: Staging System",
-            "PAC Staging System",
             "PAC - Staging System",
             "Lighting Grid/Bar",
-            "Lighting Bar/Grid",
-            "Lighting Grid or Bar",
-            "Lighting Bar or Grid"
+            "Lighting Bar or Grid",
+            "Lighting Bars",
+            "Lighting Grids"
         ]
     },
     {
@@ -1528,9 +1507,7 @@
             "PAC: Hoist / Winch",
             "PAC - Winches / Hoist",
             "PAC: Hoist / Winches",
-            "Hoists/Winches",
             "Hoist/Winch",
-            "Performing Arts - hoists and winches",
             "Performing Arts - hoists & winches",
             "Performing Arts - winch and hoist"
         ]
@@ -1562,9 +1539,8 @@
             "Mounted Changeable Message Board",
             "Mounted Changeable Message Boards",
             "Post mounted Changeable msg Board",
-            "Post mounted Changeable msg Boards",
-            "Mounted Changeable msg Board",
-            "Mounted Changeable msg Boards"
+            "changeable Message Board Post mounted",
+            "Changeable Message Board"
         ]
     },
     {
@@ -1687,7 +1663,8 @@
             "Tempering Valves",
             "Tempering-Valve",
             "Tempering Valve system",
-            "Tempering Valve unit"
+            "Tempering Valve unit",
+            "Temper Valve"
         ]
     },
     {
