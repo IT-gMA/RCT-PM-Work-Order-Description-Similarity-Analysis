@@ -11,7 +11,7 @@ from transformers import BertModel, BertTokenizer
 
 device = torch.device("cuda" if torch.cuda.is_available() else "mps")
 
-bert_version = 'bert-large-cased'
+bert_version = 'bert-large-uncased'
 tokenizer = BertTokenizer.from_pretrained(bert_version)
 
 model = BertModel.from_pretrained(bert_version)
@@ -19,20 +19,11 @@ model = model.eval()
 model = model.to(device)
 
 texts = [
-    'Unit 4, Cameras in perimeter zones 1,3,4,5,6 & PTZ 38 are not working',
-    '3 Monthly - CCTV System - Head End - Server/Workstation/Software/Licence - Inspect, Update & Report',
-    '3 Monthly - CCTV System  - Head End - Monitor -Inspect, Clean & Report',
-    '3M - CCTV System  - Camera - Internal  -Inspect, Clean & Report',
-    'Annually-Thermostatic Mixing Valve - Inspection, Service & Report',
-    '3 Monthly - CCTV System  - Head End - Recorder -Inspect, Clean & Report',
-    '3M - CCTV System  - Camera - PTZ - Inspect, Clean & Report',
-    '3M - CCTV System  - Power Supply  - Inspect, Clean & Report',
-    'Monthly-Irrigation - Inspection, Service and Report',
-    '3M - CCTV System  - Encoder / Decoder  - Inspect, Clean & Report',
-    '3M - Security System: CCTV Camera / External - Inspection, Clean & Report',
-    '3M - Security System: CCTV Video Modem / Media Converter - Inspection, Clean & Report',
-    '3M - Security System: CCTV Video Distribution / Multiplexer / Quad - Inspection, Clean & Report',
-    'Quarterly-Steam Boilers - Inspection and Report',
+    'Grapefruit Pink (IMPORTED)',
+    'Grapefruit Pink KG (IMPORTED)',
+    'Grapes Red 10kg Carton ',
+    'Grape White 10kg CARTON ',
+    'Kiwi Fruit EA (IMPORTED)'
 ]
 
 encodings = tokenizer(
@@ -42,9 +33,6 @@ encodings = tokenizer(
 )
 
 encodings = encodings.to(device)
-
-for tokens in encodings['input_ids']:
-    print(tokenizer.convert_ids_to_tokens(tokens))
 
 with torch.no_grad():
     # get the model embeddings
