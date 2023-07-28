@@ -46,9 +46,8 @@ LIST_OF_MAINTENANCE_FREQS = ['1Y', 'Annually', 'yearly', '6M', 'weekly', 'daily'
                              'In accordance with Department of Education regulations', 'Once every three weeks',
                              'once every 3 week', 'Only when requested', 'upon requested']
 HARMONISED_CLASS = 'Water Sampling Potable'
-print(f'CLass label is {HARMONISED_CLASS}')
 START_INDEX = 0
-MAX_NUM_SAMPLES = 10000
+MAX_NUM_SAMPLES = 18000
 REQUEST_URI = "https://prod-01.australiasoutheast.logic.azure.com:443/workflows/3fafd3aaca5f4fbc9d346a99db7e7d67/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=VBHoh6Hoae9mzF1-WqF9COY5R9tcN6Y2L_iDYrkjKxU"
 
 
@@ -261,7 +260,7 @@ def main():
                     all_permutations.append(
                         generate_advanced_permutations(list_of_strs=[service_padding, main_subject, sp_word],
                                                        separators=[' - ']))
-                    for freq in random_frequencies:
+                    for freq in random_frequencies[:math.ceil(len(random_frequencies) / 10)]:
                         all_permutations.append(
                             generate_advanced_permutations(list_of_strs=[freq, main_subject, service_padding, sp_word],
                                                            separators=[' ', ': ', ' - ']))
@@ -293,35 +292,26 @@ def main():
 
     _map_iter = 0
     curr_row_counts = 0
-    for i in range(0, len(upload_json_datas)):
-        upload_json_data = upload_json_datas[i]
-        curr_row_counts += len(upload_json_data)
+    step = 1048570
+    start = 0
+    end = step
+    for i in range(0, len(upload_json_datas), step):
         rows = [
-                    [
-                        upload_json_data['idx'],
-                        upload_json_data['curr_desc'],
-                        upload_json_data['class_uid'],
-                        upload_json_data['harmonised_desc']
-                     ]
-                ]
-        # rows = [[row['idx'], row['curr_desc'], row['class_uid'], row['harmonised_desc']] for row in upload_json_data]
+            [
+                upload_json_data['idx'],
+                upload_json_data['curr_desc'],
+                upload_json_data['class_uid'],
+                upload_json_data['harmonised_desc']
+            ] for upload_json_data in upload_json_datas[start:end]
+        ]
+        util_functions.save_dict_to_excel_workbook_with_row_formatting(
+            file_path=f'{SAVED_FILE_PATH}{_map_iter}.xlsx',
+            headers=WORKBOOK_HEADERS,
+            rows=rows)
 
-        if curr_row_counts < 1:
-            util_functions.save_dict_to_excel_workbook_with_row_formatting(
-                file_path=f'{SAVED_FILE_PATH}{_map_iter}.xlsx',
-                headers=WORKBOOK_HEADERS,
-                rows=rows)
-        elif 0 < curr_row_counts < 1048572:
-            util_functions.append_excel_workbook(file_path=f'{SAVED_FILE_PATH}{_map_iter}.xlsx',
-                                                 rows=rows,
-                                                 worksheet_name='Sheet1')
-        else:
-            curr_row_counts = 0
-            _map_iter += 1
-            util_functions.save_dict_to_excel_workbook_with_row_formatting(
-                file_path=f'{SAVED_FILE_PATH}{_map_iter}.xlsx',
-                headers=WORKBOOK_HEADERS,
-                rows=rows)
+        start = end
+        end += step
+        _map_iter += 1
 
     print(f'Last index is {idx}')
 
