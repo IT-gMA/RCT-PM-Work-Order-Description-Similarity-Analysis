@@ -223,3 +223,7 @@ def remove_duplicate_in_list(og_list: list, sort_list=False) -> list:
                 non_duplicate_list) < 1:
             non_duplicate_list.append(item)
     return sorted(non_duplicate_list) if sort_list else non_duplicate_list
+
+
+def str_to_regex(input_string: str) -> str:
+    return re.sub(r"[^a-zA-Z0-9]+", '', input_string)

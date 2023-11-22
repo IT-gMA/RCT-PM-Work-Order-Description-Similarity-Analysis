@@ -1,0 +1,172 @@
+	02:24 PM 20/06/2023
+Dataset directory: ../../../xlsx_resources/for_trainings/maximo_pm_to_gap_pm_desc_map_xxs.xlsx
+Scheduled Learning: True
+Learning rate: 2e-05
+Min learning rate 1e-08
+Dropout: 0.1
+Weight decay: 0.0001
+Patience: 5
+Epsilon: 1e-08
+Number of running epochs: 1000
+Validate after every 20th epoch
+Train-Validation-Test ratio: 0.7-0.15-0.15
+Number of train - validation - test samples: 47152 - 10080 - 10192
+Train batch size: 18
+Validation batch size: 4
+Max length token: 256
+Model name: bert-base-cased
+Model's Full Connect Layer Structure:Sequential(
+  (0): Linear(in_features=768, out_features=56, bias=True)
+)
+Running log location: saved_logs/bert_based_cased_run_logs/running_iteration_0.txt
+Model location: saved_models/bert_based_cased_models_iteration_0/
+56 Classes: ACM Emu Pick, Access Equipment: Scissor Lift, Access and Lighting System, Air Compressor, Air Compressor: Pressure Vessel, Air Conditioning: Air Handing Unit (AHU), Air Conditioning: Evaporative Cooler, Air Conditioning: Package, Air Conditioning: Split, Air Conditioning: Split / Cassette, Air Conditioning: Split / Non - Ducted, Air Conditioning: Variable Air Volume (VAV), Air Conditioning: Variable Refrigerant Flow (VRF), Air Conditioning: Variable Refrigerant Volume (VRV), Air Receiver, Airconditioning System and Central Plant, Backflow Prevention Valve, Building Management System (BMS), Chiller & Cooling Tower, Communication: GPS NTP Server, Effluent System, Effluent System (Biomax), Emergency & Exit Lighting, Emergency Eye Wash / Safety Shower, Fire Alarm System (FIP), Fire Blanket, Fire Break, Fire Detection: Smoke / Heat, Fire Emergency Warning & Intercommunications Systems (EWIS) or (OWS), Fire Extinguisher, Fire Hose Reel, Fire Hydrant, Fire Water Storage Tank, Gas Appliance, Gas Detection System, Grease Trap:, Grounds Maintenance, Hot Water Unit: Gas & Electric, Lighting Poles: External, Manual Call Points / MCP, Mechanical Services Switchboard (MSSB), Pest Control, Pit:, Residual Current Devices (RCD), Security System, Security System: CCTV Camera Post / Column, Security System: Modem / Media Converter, Security System: Vehicle Barrier / Boomgate, Sharps Service Disposal, Sport Court & Playground Equipment, Sport Court & Playground Equipment inc Natureplay, Testing & Tagging, Thermostatic Mixing Valve, Variable Speed Drive (VSD), Waste Management, Wind Turbine
+_______________________________________________________________________________________
+
+Epoch [1/1000] Average train Loss: 3.1759	Average Accuracy: 93.61%	Average Precision: 0.9361	Average Recall: 0.9361	Average F1 Macro: 0.9207	Average F1 Micro: 0.9361	Learning rate: 2e-05
+Epoch [2/1000] Average train Loss: 3.0570	Average Accuracy: 99.97%	Average Precision: 0.9997	Average Recall: 0.9997	Average F1 Macro: 0.9994	Average F1 Micro: 0.9997	Learning rate: 2e-05
+Epoch [3/1000] Average train Loss: 3.0559	Average Accuracy: 99.99%	Average Precision: 0.9999	Average Recall: 0.9999	Average F1 Macro: 0.9997	Average F1 Micro: 0.9999	Learning rate: 2e-05
+Epoch [4/1000] Average train Loss: 3.0562	Average Accuracy: 99.96%	Average Precision: 0.9996	Average Recall: 0.9996	Average F1 Macro: 0.9993	Average F1 Micro: 0.9996	Learning rate: 2e-05
+Epoch [5/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 0.9999	Average F1 Micro: 1.0000	Learning rate: 2e-05
+Epoch [6/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 0.9999	Average F1 Micro: 1.0000	Learning rate: 2e-05
+Epoch [7/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 0.9999	Average F1 Micro: 1.0000	Learning rate: 2e-05
+Epoch [8/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 0.9999	Average F1 Micro: 1.0000	Learning rate: 2e-05
+Epoch [9/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 0.9999	Average F1 Micro: 1.0000	Learning rate: 2e-05
+Epoch [10/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 0.9999	Average F1 Micro: 1.0000	Learning rate: 2e-05
+Epoch [11/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 0.9999	Average F1 Micro: 1.0000	Learning rate: 2e-05
+Epoch [12/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 0.9999	Average F1 Micro: 1.0000	Learning rate: 2e-05
+Epoch [13/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 0.9999	Average F1 Micro: 1.0000	Learning rate: 2e-05
+Epoch [14/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 0.9999	Average F1 Micro: 1.0000	Learning rate: 2e-05
+Epoch [15/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 0.9999	Average F1 Micro: 1.0000	Learning rate: 2e-05
+Epoch [16/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 0.9999	Average F1 Micro: 1.0000	Learning rate: 2e-05
+Epoch [17/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 0.9999	Average F1 Micro: 1.0000	Learning rate: 2e-05
+Epoch [18/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 0.9999	Average F1 Micro: 1.0000	Learning rate: 2e-05
+Epoch [19/1000] Average train Loss: 3.0626	Average Accuracy: 99.3%	Average Precision: 0.9930	Average Recall: 0.9930	Average F1 Macro: 0.9880	Average F1 Micro: 0.9930	Learning rate: 2e-05
+Validation Epoch [20/1000] Average Loss: 3.0706	Average Accuracy: 98.5%	Average Precision: 0.9850	Average Recall: 0.9850	Average F1 Macro: 0.9763	Average F1 Micro: 0.9850	
+	Current best model at epoch 20
+Epoch [21/1000] Average train Loss: 3.0749	Average Accuracy: 98.07%	Average Precision: 0.9807	Average Recall: 0.9807	Average F1 Macro: 0.9666	Average F1 Micro: 0.9807	Learning rate: 2e-05
+Epoch [22/1000] Average train Loss: 3.0704	Average Accuracy: 98.51%	Average Precision: 0.9851	Average Recall: 0.9851	Average F1 Macro: 0.9742	Average F1 Micro: 0.9851	Learning rate: 2e-05
+Epoch [23/1000] Average train Loss: 3.0704	Average Accuracy: 98.51%	Average Precision: 0.9851	Average Recall: 0.9851	Average F1 Macro: 0.9742	Average F1 Micro: 0.9851	Learning rate: 2e-05
+Epoch [24/1000] Average train Loss: 3.0704	Average Accuracy: 98.51%	Average Precision: 0.9851	Average Recall: 0.9851	Average F1 Macro: 0.9742	Average F1 Micro: 0.9851	Learning rate: 2e-05
+Epoch [25/1000] Average train Loss: 3.0704	Average Accuracy: 98.51%	Average Precision: 0.9851	Average Recall: 0.9851	Average F1 Macro: 0.9742	Average F1 Micro: 0.9851	Learning rate: 2e-05
+Epoch [26/1000] Average train Loss: 3.0704	Average Accuracy: 98.51%	Average Precision: 0.9851	Average Recall: 0.9851	Average F1 Macro: 0.9742	Average F1 Micro: 0.9851	Learning rate: 2e-05
+Epoch [27/1000] Average train Loss: 3.0704	Average Accuracy: 98.51%	Average Precision: 0.9851	Average Recall: 0.9851	Average F1 Macro: 0.9742	Average F1 Micro: 0.9851	Learning rate: 2e-05
+Epoch [28/1000] Average train Loss: 3.0704	Average Accuracy: 98.51%	Average Precision: 0.9851	Average Recall: 0.9851	Average F1 Macro: 0.9742	Average F1 Micro: 0.9851	Learning rate: 2.0000000000000003e-06
+Epoch [29/1000] Average train Loss: 3.0704	Average Accuracy: 98.51%	Average Precision: 0.9851	Average Recall: 0.9851	Average F1 Macro: 0.9742	Average F1 Micro: 0.9851	Learning rate: 2.0000000000000003e-06
+Epoch [30/1000] Average train Loss: 3.0704	Average Accuracy: 98.51%	Average Precision: 0.9851	Average Recall: 0.9851	Average F1 Macro: 0.9742	Average F1 Micro: 0.9851	Learning rate: 2.0000000000000003e-06
+Epoch [31/1000] Average train Loss: 3.0651	Average Accuracy: 99.04%	Average Precision: 0.9904	Average Recall: 0.9904	Average F1 Macro: 0.9834	Average F1 Micro: 0.9904	Learning rate: 2.0000000000000003e-06
+Epoch [32/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 2.0000000000000003e-06
+Epoch [33/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 2.0000000000000003e-06
+Epoch [34/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 2.0000000000000004e-07
+Epoch [35/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 2.0000000000000004e-07
+Epoch [36/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 2.0000000000000004e-07
+Epoch [37/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 2.0000000000000004e-07
+Epoch [38/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 2.0000000000000004e-07
+Epoch [39/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 2.0000000000000004e-07
+Validation Epoch [40/1000] Average Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	
+	Current best model at epoch 40
+Epoch [41/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 2.0000000000000007e-08
+Epoch [42/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 2.0000000000000007e-08
+Epoch [43/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 2.0000000000000007e-08
+Epoch [44/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 2.0000000000000007e-08
+Epoch [45/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 2.0000000000000007e-08
+Epoch [46/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 2.0000000000000007e-08
+Epoch [47/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [48/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [49/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [50/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [51/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [52/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [53/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [54/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [55/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [56/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [57/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [58/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [59/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Validation Epoch [60/1000] Average Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	
+Epoch [61/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [62/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [63/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [64/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [65/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [66/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [67/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [68/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [69/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [70/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [71/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [72/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [73/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [74/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [75/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [76/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [77/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [78/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [79/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Validation Epoch [80/1000] Average Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	
+Epoch [81/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [82/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [83/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [84/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [85/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [86/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [87/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [88/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [89/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [90/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [91/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [92/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [93/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [94/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [95/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [96/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [97/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [98/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [99/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Validation Epoch [100/1000] Average Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	
+Epoch [101/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [102/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [103/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [104/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [105/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [106/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [107/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [108/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [109/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [110/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [111/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [112/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [113/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [114/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [115/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [116/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [117/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [118/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [119/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Validation Epoch [120/1000] Average Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	
+Epoch [121/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [122/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [123/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [124/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [125/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [126/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [127/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [128/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [129/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [130/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [131/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [132/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [133/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [134/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [135/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [136/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [137/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [138/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Epoch [139/1000] Average train Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	Learning rate: 1e-08
+Validation Epoch [140/1000] Average Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	
+Early stopped at 140 validation Epoch
+Training complete, running final testing:
+Test --- Average Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	
+Testing with best VAL model:
+Test --- Average Loss: 3.0556	Average Accuracy: 100.0%	Average Precision: 1.0000	Average Recall: 1.0000	Average F1 Macro: 1.0000	Average F1 Micro: 1.0000	

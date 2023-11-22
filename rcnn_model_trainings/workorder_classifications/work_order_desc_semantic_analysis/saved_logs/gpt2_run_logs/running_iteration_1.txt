@@ -1,0 +1,42 @@
+	08:34 PM 01/06/2023
+Dataset directory: ../../../xlsx_resources/for_trainings/Book5.xlsx
+Scheduled Learning: True
+Learning rate: 0.001
+Min learning rate 2e-05
+Dropout: 0.1
+Weight decay: 0.0001
+Patience: 16
+Number of running epochs: 1500
+Validate after every 10th epoch
+MSE Reduction: mean
+Train-Validation-Test ratio: 0.65-0.2-0.15
+Number of train - validation - test samples: 816 - 251 - 190
+Train batch size: 18
+Validation batch size: 4
+Max length token: 256
+Model name: gpt2
+Running log location: saved_logs/gpt2_run_logs/running_iteration_1.txt
+Model location: saved_models/gpt2_models_iteration_1/
+_______________________________________________________________________________________
+
+	08:36 PM 01/06/2023
+Dataset directory: ../../../xlsx_resources/for_trainings/Book5.xlsx
+Scheduled Learning: True
+Learning rate: 0.001
+Min learning rate 2e-05
+Dropout: 0.1
+Weight decay: 0.0001
+Patience: 16
+Number of running epochs: 1500
+Validate after every 10th epoch
+MSE Reduction: mean
+Train-Validation-Test ratio: 0.65-0.2-0.15
+Number of train - validation - test samples: 816 - 251 - 190
+Train batch size: 18
+Validation batch size: 4
+Max length token: 256
+Model name: gpt2
+Running log location: saved_logs/gpt2_run_logs/running_iteration_1.txt
+Model location: saved_models/gpt2_models_iteration_1/
+_______________________________________________________________________________________
+
