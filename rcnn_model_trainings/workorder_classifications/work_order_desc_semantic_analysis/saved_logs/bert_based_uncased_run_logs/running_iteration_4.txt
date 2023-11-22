@@ -1,0 +1,43 @@
+	09:36 AM 02/06/2023
+Dataset directory: ../../../xlsx_resources/for_trainings/Book5.xlsx
+Scheduled Learning: True
+Learning rate: 0.001
+Min learning rate 2e-05
+Dropout: 0.1
+Weight decay: 0.0001
+Patience: 16
+Number of running epochs: 2000
+Validate after every 10th epoch
+MSE Reduction: mean
+Train-Validation-Test ratio: 0.65-0.2-0.15
+Number of train - validation - test samples: 816 - 251 - 190
+Train batch size: 4
+Validation batch size: 4
+Max length token: 128
+Model name: bert-base-uncased
+Running log location: saved_logs/bert_based_uncased_run_logs/running_iteration_4.txt
+Model location: saved_models/bert_base_uncased_models_iteration_4/
+_______________________________________________________________________________________
+
+Epoch [1/2000] Average train Loss: 0.1246	Average RMSE: 0.0003	Average MAE: 0.2268	Learning rate: 0.0010
+	09:40 AM 02/06/2023
+Dataset directory: ../../../xlsx_resources/for_trainings/Book5.xlsx
+Scheduled Learning: True
+Learning rate: 0.001
+Min learning rate 2e-05
+Dropout: 0.1
+Weight decay: 0.0001
+Patience: 16
+Number of running epochs: 2000
+Validate after every 10th epoch
+MSE Reduction: mean
+Train-Validation-Test ratio: 0.65-0.2-0.15
+Number of train - validation - test samples: 816 - 251 - 190
+Train batch size: 4
+Validation batch size: 4
+Max length token: 128
+Model name: bert-base-uncased
+Running log location: saved_logs/bert_based_uncased_run_logs/running_iteration_4.txt
+Model location: saved_models/bert_base_uncased_models_iteration_4/
+_______________________________________________________________________________________
+

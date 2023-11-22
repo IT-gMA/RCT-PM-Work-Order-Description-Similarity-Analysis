@@ -1,0 +1,25 @@
+	05:00 PM 17/06/2023
+Dataset directory: ../../../xlsx_resources/for_trainings/maximo_pm_to_gap_pm_desc_map_xxs.xlsx
+Scheduled Learning: True
+Learning rate: 2e-05
+Min learning rate 1e-08
+Dropout: 0.1
+Weight decay: 0.0001
+Patience: 4
+Epsilon: 1e-08
+Number of running epochs: 1600
+Validate after every 20th epoch
+Train-Validation-Test ratio: 0.7-0.15-0.15
+Number of train - validation - test samples: 47152 - 10080 - 10192
+Train batch size: 18
+Validation batch size: 4
+Max length token: 256
+Model name: bert-base-cased
+Model's Full Connect Layer Structure:Sequential(
+  (0): Linear(in_features=768, out_features=56, bias=True)
+)
+Running log location: saved_logs/bert_based_cased_run_logs/running_iteration_0.txt
+Model location: saved_models/bert_based_cased_models_iteration_0/
+56 Classes: ACM Emu Pick, Access Equipment: Scissor Lift, Access and Lighting System, Air Compressor, Air Compressor: Pressure Vessel, Air Conditioning: Air Handing Unit (AHU), Air Conditioning: Evaporative Cooler, Air Conditioning: Package, Air Conditioning: Split, Air Conditioning: Split / Cassette, Air Conditioning: Split / Non - Ducted, Air Conditioning: Variable Air Volume (VAV), Air Conditioning: Variable Refrigerant Flow (VRF), Air Conditioning: Variable Refrigerant Volume (VRV), Air Receiver, Airconditioning System and Central Plant, Backflow Prevention Valve, Building Management System (BMS), Chiller & Cooling Tower, Communication: GPS NTP Server, Effluent System, Effluent System (Biomax), Emergency & Exit Lighting, Emergency Eye Wash / Safety Shower, Fire Alarm System (FIP), Fire Blanket, Fire Break, Fire Detection: Smoke / Heat, Fire Emergency Warning & Intercommunications Systems (EWIS) or (OWS), Fire Extinguisher, Fire Hose Reel, Fire Hydrant, Fire Water Storage Tank, Gas Appliance, Gas Detection System, Grease Trap:, Grounds Maintenance, Hot Water Unit: Gas & Electric, Lighting Poles: External, Manual Call Points / MCP, Mechanical Services Switchboard (MSSB), Pest Control, Pit:, Residual Current Devices (RCD), Security System, Security System: CCTV Camera Post / Column, Security System: Modem / Media Converter, Security System: Vehicle Barrier / Boomgate, Sharps Service Disposal, Sport Court & Playground Equipment, Sport Court & Playground Equipment inc Natureplay, Testing & Tagging, Thermostatic Mixing Valve, Variable Speed Drive (VSD), Waste Management, Wind Turbine
+_______________________________________________________________________________________
+

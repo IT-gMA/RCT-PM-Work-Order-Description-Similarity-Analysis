@@ -16,3 +16,4 @@ util_fucntions/format_some_excel_v2.py
  rcnn_model_trainings/workorder_classifications/work_order_desc_semantic_analysis.py
  rcnn_model_trainings/workorder_classifications/pm_harmonisation_classification/static_classes_copy.json
  rcnn_model_trainings/workorder_classifications/pm_harmonisation_classification/saved_permutaions.json
+ xlsx_resources/
